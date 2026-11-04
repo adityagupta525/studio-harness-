@@ -35,6 +35,11 @@ Stage 0 only: filesystem, git diff, `scripts/validate-harness.sh`.
 ## Escalation conditions
 A candidate that Ashish might want promoted early (ask; do not decide); a contradiction between a promoted lesson and new evidence; any suspected context leak (incident); a request to store something sensitive.
 
+## Channel Launch
+In a run with `route: channel-launch` ([docs/12-channel-launch-and-growth.md](../docs/12-channel-launch-and-growth.md)): C12 custody of the measurement loop: keeps `channel-metrics.md` honest, files `reviews/` entries only after posts exist, and turns learnings into single-observation lesson candidates. Never promotes on one channel; a channel's own metrics stay in that channel's scope.
+
+Handoff additions (the block below does not change): `deliverables`: reviews/, lesson-candidates entries. `open_decisions`: re-approval needed for any change to a locked item.
+
 ## Handoff format
 ```
 HANDOFF

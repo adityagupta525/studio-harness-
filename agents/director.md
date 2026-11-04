@@ -29,11 +29,17 @@ Stage 0 only by default (Claude Code, Git, filesystem, shell, creative-os skills
 
 ## Verification required
 - `scripts/check-run-completeness.sh runs/<run-id>` passes before a gate is declared met.
+- No research, routes or production starts while `practice: unknown`; the practice is set from the brief, never defaulted to satisfy a check.
 - Every handoff has non-empty `verification` and `risks`; gaps are named in the report.
 - Reply to Ashish: short, answer first, "not verified" stated when true.
 
 ## Escalation conditions
 Escalate to Ashish immediately for: any gated action (paid, publish, send, login, connect, delete, deploy, financial or legal, licence, install); a conflict between the charter and a request; a route that fails a veto; missing real references; a blocked source; any incident ([docs/11-incident-and-recovery.md](../docs/11-incident-and-recovery.md)).
+
+## Channel Launch
+In a run with `route: channel-launch` ([docs/12-channel-launch-and-growth.md](../docs/12-channel-launch-and-growth.md)): Owns C1 (channel brief) and C10 (production system), and requests every lock: `lock_positioning`, `lock_pillars`, `lock_visual_direction`, `lock_calendar`, each as a pending row, then asks Ashish and records his words. Never locks on a specialist's say-so, never starts C7 before positioning is locked, never lets spend start before positioning and visual direction are locked.
+
+Handoff additions (the block below does not change): `deliverables`: channel-brief.md, approvals.csv lock rows, post-cards/. `open_decisions`: the next lock Ashish must approve.
 
 ## Handoff format
 ```

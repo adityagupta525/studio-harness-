@@ -16,7 +16,7 @@
 - Not accessed (and why):
 
 ## 2. Signal table (trend and packaging claims)
-A trend claim needs date, platform, geography, format, source, a measurable signal and its uncertainty. One post is an observation, never a trend, and never "viral".
+A trend claim needs date, platform, geography, format, source, a measurable signal and its uncertainty. One post is an observation, never a trend; a claim that a post "went viral" or "outperformed" needs a claim tag (format: docs/08).
 
 | Source id | Platform | Geography | Format | Date or window | Signal (metric, value, unit) | Items (n) | Uncertainty | Signal type |
 |---|---|---|---|---|---|---|---|---|

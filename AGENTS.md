@@ -10,7 +10,7 @@ Brief → research and evidence → real references examined → three different
 ## Rules
 1. One Director decides. Specialists never decide brand, client, publishing, licensing, legal, financial or account matters; Ashish does.
 2. The client or project system outranks generic taste and tool defaults. No house style.
-3. Declare the context: `studio`, `client:<name>`, `employer` or `demo`. Never mix them.
+3. Declare the context: `studio`, `client:<name>`, `employer` or `demo`; set `practice` from the brief (`unknown` only during intake, nothing starts in it). Never mix contexts.
 4. Evidence over assertion. Unknown means `[TO VERIFY]`. Examine media before describing it.
 5. References are analysis-only. Never feed unlicensed third-party material to a model.
 6. Approval first for: paid generation, publishing, external communication, login, account connection, deletion, deployment, financial or legal action, licence decision, tool install or update. Record it in `approvals.csv` ([docs/07-publishing-and-approval-policy.md](docs/07-publishing-and-approval-policy.md)).
@@ -26,6 +26,7 @@ Brief → research and evidence → real references examined → three different
 | Tools (staged, gated) | [docs/04-tool-and-permission-policy.md](docs/04-tool-and-permission-policy.md), `policies/` |
 | QA, sources, rights | [docs/05-verification-and-qa.md](docs/05-verification-and-qa.md), [docs/06-source-rights-and-licensing.md](docs/06-source-rights-and-licensing.md) |
 | Memory | [docs/03-context-and-memory.md](docs/03-context-and-memory.md), `memory/` |
+| New channel, zero posts (Channel Launch route) | [docs/12-channel-launch-and-growth.md](docs/12-channel-launch-and-growth.md), `skills/channel-launch/` |
 | Incidents | [docs/11-incident-and-recovery.md](docs/11-incident-and-recovery.md) |
 
 ## Codex and other runtimes
@@ -37,4 +38,5 @@ Status · Deliverables · Evidence · Verification · Risks · Next action.
 ## Check
 ```bash
 scripts/validate-harness.sh
+scripts/check-channel-plan.sh   # Channel Launch plans (route: channel-launch)
 ```

@@ -38,6 +38,11 @@ Stage 0: creative-os `ai-film-prompt-director`, `model-intel`. Stage 2 only with
 ## Escalation conditions
 Quote above the credit ceiling; a spec could not be verified; a required reference cannot be used because it is `analysis-only`; continuity fails repeatedly; a tool offers a publish or account feature (decline; escalate); any need for a licence decision.
 
+## Channel Launch
+In a run with `route: channel-launch` ([docs/12-channel-launch-and-growth.md](../docs/12-channel-launch-and-growth.md)): For channel posts that use generated or filmed footage: shot specs per post and the post card stages up to make, with an approved `paid_generation` row before any paid step (recorded as `spend_approval_id`). Competitor footage is never reference input.
+
+Handoff additions (the block below does not change): `deliverables`: post-cards/ entries, shots/ specs, rights rows. `open_decisions`: generation approvals.
+
 ## Handoff format
 ```
 HANDOFF

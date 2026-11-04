@@ -10,7 +10,7 @@ description: Produce three genuinely different routes (safe, brave, wild) with a
 Any brief that needs a creative direction: film, motion, graphic, content series, brand. For content briefs the route also names the format, pillar and cadence idea (no posting).
 
 ## Steps
-1. Confirm G3: references examined, evidence in `sources.csv`. If fewer than 8 real, say so; do not pad.
+1. Confirm G1 (concrete practice set) and G3: references examined, evidence in `sources.csv`. If fewer than 8 real, say so; do not pad.
 2. Set the parameters the work will be judged on before designing: brand fit, distinctiveness, craft, cultural accuracy, accessibility and usability, feasibility, the brief's success measure.
 3. Write three routes in `runs/<run-id>/routes.md` from `templates/creative-route.md`: safe, brave, wild. Fill the axis table (palette, medium/capture, light, composition device, pacing, concept). **Any two routes share at most one axis position.**
 4. Each route cites reference ids (technique only) and says what is invented. Style comes from the client system, never a house style.

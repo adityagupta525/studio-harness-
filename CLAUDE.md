@@ -10,7 +10,7 @@ Brief → research and evidence → real references examined → three genuinely
 ## Hard rules
 1. **One Director decides.** Specialists research, build or critique. They never decide brand, client, publishing, licensing, legal, financial or account matters. Ashish does.
 2. **The client or project system outranks generic taste and tool defaults.** No house style (charter §5).
-3. **Declare the context** (`studio` / `client:<name>` / `employer` / `demo`) at the start. Never mix data, taste or decisions across contexts.
+3. **Declare the context** (`studio` / `client:<name>` / `employer` / `demo`) at the start; set `practice` from the brief (`unknown` only during intake, nothing starts in it). Never mix data, taste or decisions across contexts.
 4. **Evidence over assertion.** Never describe media you did not examine; no number without its command; label unknowns `[TO VERIFY]`.
 5. **Style, not theft.** References are analysis-only. Never feed unlicensed third-party imagery or footage to a model.
 6. **Approval before spend, publish, send, login, connect, delete, deploy, license, install.** Row in `approvals.csv` first; Ashish's yes in chat. Nothing is complete without it ([docs/07-publishing-and-approval-policy.md](docs/07-publishing-and-approval-policy.md)).
@@ -28,6 +28,7 @@ Brief → research and evidence → real references examined → three genuinely
 | Research rules | [docs/08-trend-and-competitor-research.md](docs/08-trend-and-competitor-research.md) |
 | AI film, Blender | [docs/09-ai-film-production-pipeline.md](docs/09-ai-film-production-pipeline.md), [docs/10-blender-cinematography-pipeline.md](docs/10-blender-cinematography-pipeline.md) |
 | Memory and promotion | [docs/03-context-and-memory.md](docs/03-context-and-memory.md), `memory/` |
+| New channel, zero posts (Channel Launch route) | [docs/12-channel-launch-and-growth.md](docs/12-channel-launch-and-growth.md), `skills/channel-launch/` |
 | Incidents | [docs/11-incident-and-recovery.md](docs/11-incident-and-recovery.md) |
 | Audit that shaped this | `docs/audits/` |
 
@@ -39,6 +40,7 @@ Status · Deliverables · Evidence · Verification (and what was not verified) �
 scripts/validate-harness.sh                      # everything
 scripts/check-source-ledger.sh [file]            # source ledgers
 scripts/check-run-completeness.sh [run-dir]      # run folders
+scripts/check-channel-plan.sh [run-dir]          # Channel Launch plans
 cp -R runs/_template runs/$(date +%F)-<slug>     # start a project
 ```
 

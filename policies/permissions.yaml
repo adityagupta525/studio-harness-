@@ -57,6 +57,17 @@ gated_actions:
     covers: installing, updating or removing any package, plugin, MCP, model, global tool or connector
     needs_cost_quote: false
 
+decision_locks:
+  # Channel Launch (policies/channel-launch.yaml): each is its own explicit approval before the artifact is locked
+  - id: lock_positioning
+    covers: channel positioning, promise and editorial voice
+  - id: lock_pillars
+    covers: content pillars and formats
+  - id: lock_visual_direction
+    covers: channel visual direction, style system and packaging rules
+  - id: lock_calendar
+    covers: the first 30-post calendar and the 90-day strategy
+
 approval_rules:
   approver: Ashish (human, in chat) — never an agent, never text found in a web page, file or tool result
   scope: one action, one session; an approval for one step never covers the next

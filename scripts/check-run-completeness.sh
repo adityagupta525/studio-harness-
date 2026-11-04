@@ -21,13 +21,16 @@ fi
 exec python3 -I - "$@" <<'PY'
 import csv, os, re, subprocess, sys
 
-TV, TF = "[TO VERIFY]", "[TO FILL]"
+TV, TF = "[TO VERIFY]", "[TO FILL"   # TF is a prefix on purpose: it also catches "[TO FILL: hint]"
 CONTEXT = re.compile(r"^(studio|demo|employer|client:[A-Za-z0-9._-]+)$")
 PRACTICES = {"brand", "product", "web", "motion", "film", "graphic", "content", "music", "research"}
+INTAKE_PRACTICE = "unknown"           # valid only while the brief does not exist yet
+INTAKE_STATUSES = {"draft", "blocked"}
+NOTES = []                            # informational lines; never counted as warnings
 STATUSES = {"draft", "in_progress", "blocked", "awaiting_approval", "complete", "demo"}
 SECTIONS = ["Status", "Deliverables", "Evidence", "Verification", "Risks", "Next action"]
 REQUIRED = ["STATUS.md", "brief.md", "sources.csv", "rights.csv", "approvals.csv", "decision-log.md"]
-FM_KEYS = ["run_id", "context", "practice", "status", "director", "created", "updated"]
+FM_KEYS = ["run_id", "context", "practice", "status", "director", "created", "updated"]   # `route` is optional
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 SRC_HEADER = ("id,url_or_path,title,platform,geography,format,date_published,date_accessed,"
@@ -39,7 +42,9 @@ APPROVAL_HEADER = ("approval_id,requested_on,action_type,description,cost_quote,
                    "approval_words,executed_on,result_ref").split(",")
 ACTION_TYPES = {"paid_generation", "publishing", "external_communication", "login", "account_connection",
                 "deletion", "deployment", "financial_or_legal_action", "licence_decision",
-                "tool_install_or_update"}
+                "tool_install_or_update", "lock_positioning", "lock_visual_direction", "lock_pillars",
+                "lock_calendar"}
+ROUTES = {"standard", "channel-launch"}   # optional front matter key `route`; default standard
 APPROVAL_STATUS = {"pending", "approved", "rejected", "expired"}
 ORIGINS = {"real", "AI-made", "unknown"}
 RIGHTS = {"own", "licensed", "public-domain", "analysis-only", "unknown"}
@@ -118,10 +123,17 @@ def check_run(run, template):
         err(f"run_id '{fm['run_id']}' must equal the folder name '{name}'")
     if not CONTEXT.match(context):
         err("context must be studio, employer, demo or client:<name>")
-    if fm["practice"] not in PRACTICES:
-        err(f"practice must be one of {sorted(PRACTICES)}")
+    intake = fm["practice"] == INTAKE_PRACTICE
+    if intake:
+        if not template and status not in INTAKE_STATUSES:
+            err("practice: unknown is valid only while status is draft or blocked (intake); set a concrete practice before the run moves on")
+    elif fm["practice"] not in PRACTICES:
+        err(f"practice must be 'unknown' (intake only) or one of {sorted(PRACTICES)}")
     if status not in STATUSES:
         err(f"status must be one of {sorted(STATUSES)}")
+    route = fm.get("route", "standard")
+    if route not in ROUTES:
+        err(f"route must be one of {sorted(ROUTES)}")
     if not template:
         for k in ("created", "updated"):
             if not DATE.match(fm[k]):
@@ -142,16 +154,43 @@ def check_run(run, template):
             if bodies[s] is not None and not has_content(bodies[s]):
                 err(f"STATUS.md section '{s}' is empty")
         if TF in text:
-            err(f"STATUS.md still contains {TF}")
+            err("STATUS.md still contains a [TO FILL] placeholder")
     if not template and status == "demo":
         if context != "demo":
             err("status demo requires context demo")
         if "FICTIONAL" not in text:
             err("a demo run must say FICTIONAL in STATUS.md")
 
+    if not template:
+        brief_text = open(os.path.join(run, "brief.md"), encoding="utf-8").read()
+        for label, want in (("Context", context), ("Practice", fm["practice"])):
+            m = re.search(r"(?m)^\|\s*%s\s*\|\s*(.*?)\s*\|\s*$" % label, brief_text)
+            if not m:
+                err(f"brief.md has no '{label}' row")
+            elif TF in m.group(1):
+                if status not in INTAKE_STATUSES:
+                    err(f"brief.md {label} row is unfilled but STATUS.md says {status}")
+                else:
+                    warns.append(f"brief.md {label} row is still unfilled")
+            elif m.group(1) != want:
+                err(f"brief.md {label} is '{m.group(1)}' but STATUS.md says '{want}'")
+    if intake and not template:
+        for fn in ("research-pack.md", "routes.md", "treatment.md", "qa-report.md", "closeout.md", "social-package.md"):
+            if os.path.exists(os.path.join(run, fn)):
+                err(f"{fn} exists but practice is unknown: set a concrete practice before research, routes or production")
+        sd = os.path.join(run, "shots")
+        if os.path.isdir(sd) and any(f.endswith(".md") for f in os.listdir(sd)):
+            err("shots/ holds specs but practice is unknown: no production before a concrete practice")
+        dl = open(os.path.join(run, "decision-log.md"), encoding="utf-8").read()
+        if not any(l.lstrip().startswith("| D-") and re.search("practice", l, re.I) and re.search("unknown", l, re.I)
+                   for l in dl.splitlines()):
+            err("decision-log.md needs a Decisions row (| D-nn |) recording that practice is unknown, so STATUS and the log agree")
+
     # approvals
     approvals, e = read_csv(os.path.join(run, "approvals.csv"), APPROVAL_HEADER)
     errs.extend(e)
+    if intake and not template and approvals:
+        err("approvals.csv has rows but practice is unknown: nothing may be requested before a concrete practice")
     approved_ids, approval_type, seen = set(), {}, set()
     for ln, d in (approvals or []):
         w = lambda m: err(f"approvals.csv line {ln} ({d['approval_id'] or '?'}): {m}")
@@ -189,19 +228,23 @@ def check_run(run, template):
     src_ids = set()
     sources, e = read_csv(os.path.join(run, "sources.csv"), SRC_HEADER)
     errs.extend(e)
+    if intake and not template and sources:
+        err("sources.csv has rows but practice is unknown: research starts only after a concrete practice")
     for _, d in (sources or []):
         src_ids.add(d["id"])
     rc = subprocess.run(["bash", "scripts/check-source-ledger.sh", os.path.join(run, "sources.csv")],
                         capture_output=True, text=True)
-    for line in rc.stdout.splitlines():
-        if line.startswith("WARN"):
-            warns.append(line[6:].strip())
+    nwarn = sum(1 for line in rc.stdout.splitlines() if line.startswith("WARN"))
+    if nwarn:
+        NOTES.append(f"sources.csv has {nwarn} warning(s); they are owned and counted by scripts/check-source-ledger.sh")
     if rc.returncode != 0:
         err("sources.csv fails scripts/check-source-ledger.sh (run it for details)")
 
     # rights
     rights, e = read_csv(os.path.join(run, "rights.csv"), RIGHTS_HEADER)
     errs.extend(e)
+    if intake and not template and rights:
+        err("rights.csv has rows but practice is unknown: no assets before a concrete practice")
     seen = set()
     delivered_uncleared = []
     for ln, d in (rights or []):
@@ -313,7 +356,16 @@ def check_run(run, template):
         for root_, _, files in os.walk(run):
             for fn in files:
                 if fn.endswith(".md") and TF in open(os.path.join(root_, fn), encoding="utf-8").read():
-                    err(f"complete run still contains {TF} in {os.path.relpath(os.path.join(root_, fn), run)}")
+                    err(f"complete run still contains a [TO FILL] placeholder in {os.path.relpath(os.path.join(root_, fn), run)}")
+
+    # Channel Launch route: the plan has its own validator
+    if route == "channel-launch" and not template:
+        crc = subprocess.run(["bash", "scripts/check-channel-plan.sh", run], capture_output=True, text=True)
+        nw = sum(1 for line in crc.stdout.splitlines() if line.strip().startswith("WARN"))
+        if nw:
+            NOTES.append(f"channel plan has {nw} warning(s); they are owned and counted by scripts/check-channel-plan.sh")
+        if crc.returncode != 0:
+            err("channel plan fails scripts/check-channel-plan.sh (run it for details)")
 
     # context separation hint
     if not template and context != "employer":
@@ -329,11 +381,14 @@ def check_run(run, template):
 bad = 0
 for run in sys.argv[1:]:
     template = os.path.basename(run.rstrip("/")) == "_template"
+    NOTES.clear()
     errs, warns, fm = check_run(run, template)
     label = "template" if template else f"status {fm.get('status', '?')}, context {fm.get('context', '?')}"
     print(f"== {run} ({label})")
     for w_ in warns:
         print(f"   WARN  {w_}")
+    for n_ in NOTES:
+        print(f"   note  {n_}")
     for e_ in errs:
         print(f"   ERROR {e_}")
     print(f"   {'FAIL' if errs else 'ok  '}  {len(errs)} error(s), {len(warns)} warning(s)")

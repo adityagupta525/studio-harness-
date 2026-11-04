@@ -34,6 +34,11 @@ Stage 0: `scripts/validate-harness.sh`, `scripts/check-source-ledger.sh`, `scrip
 ## Escalation conditions
 A veto (rights or technical); a failure that the producer disputes; evidence of a rule breach (unapproved spend, third-party input, wrong context): stop and follow [docs/11-incident-and-recovery.md](../docs/11-incident-and-recovery.md); a check that cannot be run.
 
+## Channel Launch
+In a run with `route: channel-launch` ([docs/12-channel-launch-and-growth.md](../docs/12-channel-launch-and-growth.md)): Reviews the channel plan and each post independently: runs `scripts/check-channel-plan.sh`, checks zero-post honesty (no audience data, tested hooks, observations or reviews), real post URLs, distinct pillars, lock rows, and that competitor material is not reused. The reviewer is never the maker of the plan or the post.
+
+Handoff additions (the block below does not change): `deliverables`: qa-report.md. `verification`: the exit code of scripts/check-channel-plan.sh.
+
 ## Handoff format
 ```
 HANDOFF

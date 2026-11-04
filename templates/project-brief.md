@@ -6,9 +6,11 @@
 |---|---|
 | Run | runs/[TO FILL: YYYY-MM-DD-slug]/ |
 | Context | [TO FILL: studio / client:<name> / employer / demo] |
-| Practice | [TO FILL: brand / product / web / motion / film / graphic / content / music / research] |
+| Practice | [TO FILL: unknown until the brief arrives, then brand / product / web / motion / film / graphic / content / music / research] |
 | Owner | Ashish |
 | Date | [TO FILL] |
+
+Practice stays `unknown` only during intake (STATUS status `draft` or `blocked`). It must become a concrete value before any research, routes or production, and it must match the front matter of STATUS.md. The validator enforces both.
 
 ## 1. Brief in his words
 > [TO FILL: exact words, unedited]

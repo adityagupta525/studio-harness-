@@ -38,6 +38,11 @@ contexts:
   values: [studio, "client:<name>", employer, demo]
   rule: a lesson learned in one context is applied in another only if promoted with evidence from that other context too
 
+channel_learning:
+  rule: what one channel teaches is a lesson candidate, never a studio-wide lesson, until two separate real projects confirm it
+  own_channel_metrics: belong to that channel run and its client or studio scope; they never enter another context
+  review_files: runs/<run-id>/reviews/ feed memory/lesson-candidates.md through the memory-curator
+
 external_stores:
   taste_ledger: ~/creative-os/taste/ashish.md   # read-only here; only a live reply from Ashish writes it, in creative-os
   lessons: ~/creative-os/lessons/LESSONS.md     # read-only here

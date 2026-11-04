@@ -29,6 +29,22 @@ Each card defines: mission, inputs it may read, outputs it must create, eventual
 | Linking an account, installing a tool | approves each | requests | none |
 | Technical choices inside an approved route | informed | decides | propose |
 
+## Channel Launch route: who does what
+For a run with `route: channel-launch` ([docs/12](12-channel-launch-and-growth.md)). Each agent card has a `## Channel Launch` section with its duties.
+
+| Steps | Agent | Hands off |
+|---|---|---|
+| C1 brief, C10 production system, every lock request | director | locks requested, never self-approved |
+| C2 research, C3 competitor evidence pack | trend-scout | `research-pack.md`, `channel-competitor-map.md`, `sources.csv` rows |
+| C4 competitor video and reel deconstruction | reference-forensics | `competitor-posts.csv` rows, each from a watched video or viewed frames |
+| C5 to C8 positioning, promise, voice, pillars, formats | creative-producer | positioning in `channel-brief.md`, `pillars/`, `formats/` |
+| C9 packaging system, C11 calendar and 90-day strategy | packaging-lead | `channel-style-system.md`, `hook-library.md`, `content-calendar.md` |
+| per-post making | ai-film-lead, motion-editor | post cards, shot specs, exports, rights rows |
+| plan and post QA | qa-rights-reviewer | `qa-report.md` with `scripts/check-channel-plan.sh` exit code |
+| C12 measurement and review | memory-curator | `channel-metrics.md` custody, `reviews/`, lesson candidates |
+
+Handoff additions for channel runs (the block itself does not change): `deliverables` lists the channel files by name; `evidence` gives counts (competitors, posts analysed, assumptions, pillars, calendar rows) and source or post ids; `verification` quotes the exit code of `scripts/check-channel-plan.sh`; `risks` names the assumptions still untested; `open_decisions` names the lock approval Ashish must give next.
+
 ## Independence rules
 - **The producer never signs off its own work.** `qa-rights-reviewer` must be a different agent run from the one that produced the artifact; the QA report names both.
 - **Critics are blind.** Each route is scored alone, without seeing the others; one contrarian pass tries to kill the front-runner.

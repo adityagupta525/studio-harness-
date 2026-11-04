@@ -15,7 +15,7 @@ references:
 trend_claim:
   requires: [date, platform, geography, format, source, measurable_signal, uncertainty]
   min_items_for_trend_signal: 5             # uncalibrated default; fewer items are an observation, not a trend
-  forbidden_wording: ["viral"]              # describe the measured signal instead
+  claim_wording: see performance_claims below
   one_post_is: observation
 
 youtube:
@@ -29,9 +29,29 @@ instagram:
   allowed_access: [public-web, yt-dlp-public, browser-readonly, user-supplied]
   note: bulk pulls are rate-limited; private accounts, stories and gated content are not accessed
 
+performance_claims:
+  applies_to: any statement that a post, video or channel went viral or performed well (cue words are viral, virality, outperform, top-performing, high-performing, best-performing, breakout, blew up; also "exploded" when said of a post or its numbers, for example "the post exploded"; an "exploded view" is a drawing term and is not a claim)
+  not_a_claim: the literal word inside a source title, a quoted caption or quotation, a creator or channel name column, or an evidence URL
+  accepted_format: 'CLAIM[<OBSERVED|INFERRED>; metric=<name>; basis=<numerator/denominator or ratio against a named baseline>; n=<sample size>; platform=<platform>; date=<YYYY-MM-DD or range>; source=<S-nnn or CP-nnn>]'
+  example: 'CLAIM[INFERRED; metric=views; basis=2.1x median of previous 20 posts; n=20; platform=youtube-shorts; date=2026-10-01..2026-10-28; source=CP-004]'
+  labels: [OBSERVED, INFERRED]
+  required_fields: [metric, basis, n, platform, date, source]
+  basis_forms: [numerator/denominator such as 1200/400, ratio against a named baseline such as 2.1x median of previous 20 posts]
+  placement: the tag sits on the same line, table row or CSV row as the claim
+  small_samples: n below 5 is accepted with a warning
+  rejected: an untagged cue word, or a tag missing any field, with a label other than OBSERVED or INFERRED, with a basis that is not a ratio, with n below 1, or with an unknown source id
+  enforced_by: scripts/check-source-ledger.sh and scripts/check-channel-plan.sh
+
 discovery_only_sources:
   hosts: [ads.tiktok.com/business/creativecenter, trends.pinterest.com]
   rule: these are discovery signals, not proof; sources.csv rows must say used_for discovery
+
+channel_competitor_evidence:
+  rule: a competitor is analysed from actual posts or videos that were watched or whose frames were viewed, never from a bio or title alone
+  ledger: competitor-posts.csv (templates/competitor-post-ledger.csv), each row linked to a sources.csv row with the same URL
+  keeps_apart: [OBSERVED, INFERRED, H, UNKNOWN]
+  outlier_claims: need a comparative signal (ratio against a named comparator with sample size) and a tagged claim; see performance_claims
+  details: policies/channel-launch.yaml
 
 paid_research:
   vidiq: never automatic; cost quote then approval row (paid_generation) per job

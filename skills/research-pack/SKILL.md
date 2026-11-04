@@ -7,7 +7,7 @@ description: Build a dated, evidence-led research pack with a validated source l
 **Owner:** trend-scout (signals) with reference-forensics (measured references) · **Gates:** G2, G3 · **Routes to:** creative-os `design-intel`, `video-reference-analyzer`, `pinterest-visual-research`, `design-forensics`.
 
 ## When to use
-After G1, for any brief. A new domain always gets its own pack: category, audience, competitors, conventions, regulation.
+After G1, for any brief. G1 includes a concrete `practice`; a run with `practice: unknown` cannot start research (the validator fails it). A new domain always gets its own pack: category, audience, competitors, conventions, regulation.
 
 ## Steps
 1. Open `templates/research-pack.md` as `runs/<run-id>/research-pack.md`; write the question, platforms, geography and date window.
@@ -26,4 +26,4 @@ After G1, for any brief. A new domain always gets its own pack: category, audien
 Ledger check exit 0; honest reference count "n of 8" with real / AI-made / unknown split.
 
 ## Never
-Call a post "viral", present packaging as retention, treat discovery-only sources as proof, bypass a login or paywall, use vidIQ without a quote and an approved row.
+Claim a post went viral or outperformed without a valid CLAIM tag, present packaging as retention, treat discovery-only sources as proof, bypass a login or paywall, use vidIQ without a quote and an approved row.

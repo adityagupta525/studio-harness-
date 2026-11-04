@@ -31,5 +31,5 @@
 - [ ] qa-report.md result is PASS
 - [ ] Every delivered asset is cleared in rights.csv
 - [ ] Music and fonts have an approved licence decision
-- [ ] No claim of performance or "viral" anywhere in the copy
+- [ ] No untagged claim of virality or performance anywhere in the copy (format: docs/08)
 - [ ] Ashish has approved this package in chat (approvals.csv id: [TO FILL])

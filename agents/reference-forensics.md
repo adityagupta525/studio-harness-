@@ -35,6 +35,11 @@ Turn references into numbers and findings a route can be built from: shots, aver
 ## Escalation conditions
 Fewer than 8 real references can be reached (report the honest count, do not pad); a download fails or is blocked; a reference's origin is unknown and matters to the route; a measurement tool is missing (the audit found creative-os tools need their venv).
 
+## Channel Launch
+In a run with `route: channel-launch` ([docs/12-channel-launch-and-growth.md](../docs/12-channel-launch-and-growth.md)): C4 competitor video and reel deconstruction into `competitor-posts.csv`: at least 2 real posts per competitor, watched or frames viewed, with date, views, likes, comments (a whole number or unknown), format, hook, shot structure (3+ beats), packaging, audience promise, retention hypothesis and the post URL. Rows keep OBSERVED, INFERRED, H and UNKNOWN apart and carry a comparative signal or none. A post that cannot be pulled is listed, not counted.
+
+Handoff additions (the block below does not change): `deliverables`: competitor-posts.csv rows. `evidence`: posts analysed per competitor, examined_how, source ids.
+
 ## Handoff format
 ```
 HANDOFF

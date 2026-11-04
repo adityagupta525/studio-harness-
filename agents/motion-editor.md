@@ -35,6 +35,11 @@ Stage 0: `ffmpeg`, `ffprobe`. Stage 1 with approval and a recorded verification:
 ## Escalation conditions
 A needed asset is uncleared; a target spec is unknown (`[TO VERIFY]`); Remotion or AE is unverified; a paid audio or render step is needed (quote it); the cut fails the loudness or technical check.
 
+## Channel Launch
+In a run with `route: channel-launch` ([docs/12-channel-launch-and-growth.md](../docs/12-channel-launch-and-growth.md)): For channel posts: the edit, captions, sound and exports for each post card, with every asset cleared in `rights.csv`, and measured technical delivery.
+
+Handoff additions (the block below does not change): `deliverables`: exports (git-ignored), captions, technical report, post-card make log.
+
 ## Handoff format
 ```
 HANDOFF

@@ -1,0 +1,158 @@
+# Studio Harness — Channel Launch route (v1). Human twins: docs/12, docs/13, docs/14.
+# Enforced by scripts/check-channel-plan.sh; scripts/validate-harness.sh cross-checks the thresholds below
+# against the constants in that script.
+version: 1
+route: channel-launch
+applies_when: a run's STATUS.md front matter says route channel-launch (practice content)
+
+principle: >
+  A channel with zero posts starts with hypotheses, not audience truth. The studio researches, positions,
+  plans, produces, packages, measures and improves it like a media team, without inventing performance data
+  and without publishing anything. Ashish publishes by hand.
+
+workflow:
+  - id: C1_channel_brief
+    step: Channel brief
+    owner: director
+    skill: channel-launch
+    outputs: channel-brief.md
+    human_approval: false
+  - id: C2_category_and_audience_research
+    step: Category and audience research
+    owner: trend-scout
+    skill: channel-strategy
+    outputs: research-pack.md, sources.csv
+    human_approval: false
+  - id: C3_competitor_evidence_pack
+    step: Competitor evidence pack
+    owner: trend-scout
+    skill: channel-strategy
+    outputs: channel-competitor-map.md, sources.csv
+    human_approval: false
+  - id: C4_competitor_deconstruction
+    step: Competitor video and reel deconstruction
+    owner: reference-forensics
+    skill: channel-strategy
+    outputs: competitor-posts.csv
+    human_approval: false
+  - id: C5_opportunity_and_positioning
+    step: Opportunity and positioning hypothesis
+    owner: creative-producer
+    skill: channel-strategy
+    outputs: channel-brief.md
+    human_approval: false
+  - id: C6_promise_and_voice
+    step: Channel promise and editorial voice
+    owner: creative-producer
+    skill: channel-strategy
+    outputs: channel-brief.md
+    human_approval: true
+    lock: lock_positioning
+  - id: C7_content_pillars
+    step: 3 to 5 content pillars
+    owner: creative-producer
+    skill: content-programming
+    outputs: pillars/*.md
+    human_approval: false
+  - id: C8_formats_and_series
+    step: Repeatable content formats and series
+    owner: creative-producer
+    skill: content-programming
+    outputs: formats/*.md
+    human_approval: true
+    lock: lock_pillars
+  - id: C9_packaging_system
+    step: Packaging system (title, hook, thumbnail or cover, caption, CTA)
+    owner: packaging-lead
+    skill: content-programming
+    outputs: channel-style-system.md, hook-library.md
+    human_approval: true
+    lock: lock_visual_direction
+  - id: C10_production_system
+    step: Production system (research, script, treatment, shot spec, make, QA)
+    owner: director
+    skill: content-programming
+    outputs: post-cards/*.md
+    human_approval: false
+  - id: C11_calendar_and_90_day_strategy
+    step: First 30-post calendar and 90-day strategy
+    owner: packaging-lead
+    skill: content-programming
+    outputs: content-calendar.md
+    human_approval: true
+    lock: lock_calendar
+  - id: C12_measurement_and_review
+    step: Measurement, review and iteration loop
+    owner: memory-curator
+    skill: channel-launch
+    outputs: channel-metrics.md, reviews/*.md
+    human_approval: false
+
+locks:
+  # An artifact is `locked` only after an approved row of the matching type exists in approvals.csv.
+  - lock: lock_positioning
+    artifact: channel-brief.md (front matter positioning_lock)
+    requires_first: competitor evidence thresholds met
+  - lock: lock_pillars
+    artifact: pillars/*.md and formats/*.md (front matter lock_state)
+    requires_first: lock_positioning
+  - lock: lock_visual_direction
+    artifact: channel-style-system.md (front matter lock_state)
+    requires_first: lock_positioning
+  - lock: lock_calendar
+    artifact: content-calendar.md (front matter lock_state)
+    requires_first: lock_positioning, lock_pillars, lock_visual_direction
+
+production_spend_rule: a paid_generation row executed in a channel run needs positioning and visual direction locked first
+
+thresholds:                         # uncalibrated defaults; the Director may lower one only with a written, logged reason
+  min_competitors: 3
+  min_posts_analysed: 8
+  min_posts_per_competitor: 2
+  required_competitor_role: outsider
+  min_assumptions: 3
+  min_pillars: 3
+  max_pillars: 5
+  min_formats: 2
+  min_calendar_posts: 30
+  min_hooks: 5
+  min_metrics: 4
+  min_decision_rules: 3
+  min_posts_for_verdict: 5
+  min_strategy_phases: 3
+  min_beats_per_structure: 3
+
+competitor_post_evidence:
+  ledger: competitor-posts.csv
+  template: templates/competitor-post-ledger.csv
+  must_be: an actual post or video URL, never a channel or profile page, never a bare handle
+  examined_how_allowed: [video-watched, frames-viewed, transcript-read, user-supplied-file]
+  metrics: views, likes and comments are whole numbers or the word unknown; counts are as of date_accessed
+  separation:
+    observed_facts: starts with OBSERVED
+    interpretation: starts with INFERRED
+    retention_hypothesis: starts with H
+    unknowns: starts with UNKNOWN
+  comparative_signal: none, or a ratio against a named comparator with its sample size (n)
+  reuse: structure and technique only; competitor footage, writing, music and visual identity are never reused
+
+zero_post_rules:
+  - audience_data stays none and posts_published stays 0 until the channel has real posts and analytics
+  - audience claims are assumptions with status hypothesis or unverified
+  - validated-own, hook status tested, calendar status published_by_ashish and reviews are impossible at zero posts
+  - own-channel observations stay empty at zero posts
+
+required_for_complete:
+  - real competitor and post URLs, each post examined from the post itself and linked to sources.csv
+  - stated assumptions, at least three, including one about the audience
+  - at least three distinct pillars (at most five) and at least two format cards
+  - approved lock_positioning, lock_visual_direction, lock_pillars and lock_calendar rows, with his words
+  - a measurement plan of at least four metrics (one packaging, one retention), a comparative-signal definition, at least three decision rules, a review cadence and honest limits
+  - a 30-post calendar where every idea carries the ten facts, and a 90-day strategy of three phases
+  - a QA report with result PASS and a closeout (the standard run rules)
+
+forbidden:
+  - an untagged claim of virality or performance (policy performance_claims in source-policy.yaml); the literal word inside a source title, quoted caption, creator name or evidence URL is allowed
+  - paid vidIQ, generation, publishing, account connection, email or any external message without an approved row
+  - inventing audience data, benchmarks or performance numbers
+  - reusing a competitor's footage, writing, music or visual identity

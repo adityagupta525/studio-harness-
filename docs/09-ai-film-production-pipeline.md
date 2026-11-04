@@ -5,7 +5,7 @@ Brief → research pack → treatment → story / character / world bible → sh
 → per-shot specification → approval to generate → continuity QA → edit
 → asset / rights ledger → delivery
 ```
-Owner: `ai-film-lead` under the Director. Builds on creative-os `ai-film-prompt-director` (story to finished cut), `model-intel` (model specs, verified before use) and `visual-library`. This page adds the contract; it does not replace their craft.
+Applies to runs whose `practice` is `film` (or film components of a larger run). A run with `practice: unknown` never enters it. Owner: `ai-film-lead` under the Director. Builds on creative-os `ai-film-prompt-director` (story to finished cut), `model-intel` (model specs, verified before use) and `visual-library`. This page adds the contract; it does not replace their craft.
 
 ## Stages
 | # | Stage | Output | Gate | Notes |

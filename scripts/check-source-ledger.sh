@@ -35,6 +35,69 @@ MIN_TREND_ITEMS = 5          # policies/source-policy.yaml: min_items_for_trend_
 RETENTION_WORDS = ("retention", "watch time", "watch_time", "average view duration", "avd")
 DISCOVERY_HOSTS = ("ads.tiktok.com/business/creativecenter", "trends.pinterest.com")
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+# ---- claims of virality or performance (policies/source-policy.yaml: performance_claims)
+CLAIM_LABELS = {"OBSERVED", "INFERRED"}
+CLAIM_FIELDS = ["metric", "basis", "n", "platform", "date", "source"]
+CLAIM_SMALL_N = 5            # below this a tagged claim is accepted with a warning
+URL_RE = re.compile(r"https?://\S+")
+QUOTE_RE = re.compile(r'"[^"\n]*"|“[^”\n]*”')
+TAG_RE = re.compile(r"CLAIM\[([^\]\n]*)\]")
+CUE_RE = re.compile(r"\b(viral(?:ity)?|outperform(?:s|ed|ing)?|(?:top|high|best)[- ]performing|breakout|blew up|blow(?:s|n)? up)\b", re.I)
+# "exploded" is a performance cue only when it is said of a post or its numbers; an "exploded view" is a drawing term.
+EXPLODED_RE = re.compile(r"\b(?:(?:posts?|videos?|shorts?|reels?|clips?|channels?|views?|numbers?|likes?|subscribers?|account|it|this|that|they)\s+exploded\b"
+                         r"|exploded\s+(?:in\s+(?:popularity|views|reach)|overnight|into\s+(?:the\s+)?(?:millions?|mainstream)|to\s+\d))", re.I)
+CLAIM_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}(\.\.\d{4}-\d{2}-\d{2})?$")
+
+def claim_tag_problems(body, known_ids):
+    parts = [p.strip() for p in body.split(";")]
+    probs = []
+    if parts[0] not in CLAIM_LABELS:
+        probs.append("label must be OBSERVED or INFERRED")
+    kv = {}
+    for p in parts[1:]:
+        if "=" in p:
+            k, v = p.split("=", 1)
+            kv[k.strip().lower()] = v.strip()
+    for k in CLAIM_FIELDS:
+        if not kv.get(k):
+            probs.append(f"missing {k}")
+    b = kv.get("basis", "")
+    if b and not (re.search(r"\d[\d,.]*\s*/\s*\d[\d,.]*", b) or re.search(r"\d+(\.\d+)?\s*[x×]\s*[A-Za-z]", b)):
+        probs.append("basis must be numerator/denominator (1200/400) or a ratio against a named baseline (2.1x median of previous 20 posts)")
+    n = kv.get("n", "")
+    if n and not (n.isdigit() and int(n) >= 1):
+        probs.append("n must be a whole number of at least 1")
+    d = kv.get("date", "")
+    if d and not CLAIM_DATE.match(d):
+        probs.append("date must be YYYY-MM-DD or YYYY-MM-DD..YYYY-MM-DD")
+    s = kv.get("source", "")
+    if s and (not re.match(r"^(S|CP)-\d{3,}$", s) or s not in known_ids):
+        probs.append(f"source '{s}' is not a known source or post id")
+    return probs, kv
+
+def claim_issues(text, known_ids):
+    """Return [(kind, message)] for one line, table row or CSV row. The literal word is not a claim inside
+    a URL, a quoted span, or an exempt field; a claim needs a valid CLAIM[...] tag on the same unit."""
+    out = []
+    plain = URL_RE.sub(" ", text)
+    tags = TAG_RE.findall(plain)
+    plain = QUOTE_RE.sub(" ", TAG_RE.sub(" ", plain))
+    valid = 0
+    for t in tags:
+        probs, kv = claim_tag_problems(t, known_ids)
+        if probs:
+            out.append(("E", "invalid claim tag: " + "; ".join(probs)))
+        else:
+            valid += 1
+            if int(kv["n"]) < CLAIM_SMALL_N:
+                out.append(("W", f"claim rests on n={kv['n']} (fewer than {CLAIM_SMALL_N}); treat it as an observation"))
+    cue = CUE_RE.search(plain) or EXPLODED_RE.search(plain)
+    if cue and not valid:
+        out.append(("E", f"unsupported claim of virality or performance ('{cue.group(0)}'): add a CLAIM[...] tag on the same line "
+                         "(OBSERVED or INFERRED, metric, basis, n, platform, date, source), or put the word in quotes if it is part of a title, caption, name or URL"))
+    return out
+CLAIM_EXEMPT_COLS = {"id", "url_or_path", "title"}   # a source title or URL may contain any word
 DATE_OR_RANGE = re.compile(r"^\d{4}-\d{2}-\d{2}(\.\.\d{4}-\d{2}-\d{2})?$")
 
 def check(path):
@@ -49,6 +112,7 @@ def check(path):
     if rows[0] != HEADER:
         return ["header does not match templates/source-ledger.csv"], warns, 0
     seen = set()
+    all_ids = {r[0].strip() for r in rows[1:] if r and r[0].strip()}
     for ln, r in enumerate(rows[1:], start=2):
         if not any(c.strip() for c in r):
             continue
@@ -86,9 +150,12 @@ def check(path):
             e(f"access_method must be one of {sorted(ACCESS)}")
         if d["signal_type"] not in SIGNALS:
             e(f"signal_type must be one of {sorted(SIGNALS - {''})} or empty")
-        blob = " ".join(d.values()).lower()
-        if re.search(r"\bviral\b", blob):
-            e('the word "viral" is banned: state the measured signal instead')
+        unit = " ".join(v for k, v in d.items() if k not in CLAIM_EXEMPT_COLS)
+        for kind, msg in claim_issues(unit, all_ids):
+            if kind == "E":
+                e(msg)
+            else:
+                warns.append(f"line {ln} ({d['id']}): {msg}")
         st = d["signal_type"]
         if st in CLAIM_SIGNALS:
             for k in ("platform", "geography", "format", "signal_value", "signal_unit", "uncertainty"):

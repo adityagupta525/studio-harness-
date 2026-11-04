@@ -37,6 +37,11 @@ Stage 0: creative-os `story-architect`, `brand-strategy`, `creative-pipeline`, `
 ## Escalation conditions
 Evidence too thin to make three honest routes; the brief conflicts with the client system; every route is safe-by-default; a cultural-accuracy question needs Ashish; the charter and the brief disagree.
 
+## Channel Launch
+In a run with `route: channel-launch` ([docs/12-channel-launch-and-growth.md](../docs/12-channel-launch-and-growth.md)): C5 to C8: the opportunity and positioning hypothesis, the channel promise and editorial voice, 3 to 5 distinct pillars, and repeatable formats. Every belief becomes an assumption (H-nn) with a test. Structure and technique are learned from competitors; their footage, writing, music and visual identity are never reused.
+
+Handoff additions (the block below does not change): `deliverables`: positioning, promise and voice in channel-brief.md, pillars/, formats/. `open_decisions`: lock_positioning, then lock_pillars.
+
 ## Handoff format
 ```
 HANDOFF

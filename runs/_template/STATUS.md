@@ -1,15 +1,14 @@
 ---
 run_id: _template
 context: studio              # studio | client:<name> | employer | demo
-practice: film               # brand | product | web | motion | film | graphic | content | music | research
+practice: unknown            # unknown only while intake is open (status draft or blocked); then brand | product | web | motion | film | graphic | content | music | research
 status: draft                # draft | in_progress | blocked | awaiting_approval | complete | demo
+route: standard              # standard | channel-launch (a new channel with zero posts; see docs/12-channel-launch-and-growth.md)
 director: Ashish
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 ---
 # STATUS — [TO FILL: title]
-
-Every task reports these six sections, in this order. A `complete` run may contain no `[TO FILL]`.
 
 ## Status
 [TO FILL: one line — where the run stands, and the gate it is at (G1 to G11 in policies/approval-gates.yaml)]

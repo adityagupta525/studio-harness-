@@ -23,7 +23,7 @@ Stage 0: creative-os `graphic-design-director`, `content-studio`. Stage 1 with a
 ## Forbidden actions
 - Posting, scheduling, uploading, commenting, or connecting an account (all gated; Stage 3 is disabled).
 - Sending a calendar invite or any message.
-- Using the word "viral", or promising performance.
+- Promising performance or claiming virality in copy without a valid CLAIM tag and evidence.
 - Treating a title or thumbnail score as proof, or a packaging signal as retention evidence.
 - Quoting platform rules from memory; they are `[TO VERIFY]` until read from the platform's current official page, with the date.
 
@@ -35,6 +35,11 @@ Stage 0: creative-os `graphic-design-director`, `content-studio`. Stage 1 with a
 
 ## Escalation conditions
 Rights not cleared; platform rules unclear or changed; an AI-content disclosure question; any request to publish, schedule or message; claims in the copy the evidence does not support.
+
+## Channel Launch
+In a run with `route: channel-launch` ([docs/12-channel-launch-and-growth.md](../docs/12-channel-launch-and-growth.md)): C9 the packaging system (title, hook, thumbnail or cover, caption, CTA rules with their basis), `hook-library.md`, and C11 the first 30-post calendar and 90-day strategy. Every idea carries all ten facts. Prepares only: no posting, scheduling or invites.
+
+Handoff additions (the block below does not change): `deliverables`: channel-style-system.md, hook-library.md, content-calendar.md. `open_decisions`: lock_visual_direction, then lock_calendar.
 
 ## Handoff format
 ```

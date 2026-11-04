@@ -21,6 +21,9 @@ Ten gated action types. Each needs a row in `runs/<run-id>/approvals.csv` **befo
 
 Read-only research is automatic (T0). Reversible draft creation is automatic with an audit-log line (T1).
 
+### Decision locks (Channel Launch route)
+Four more action types are **decision approvals**, not external actions. Each needs a row in `approvals.csv` with his words and `approved_on` before the matching artifact may be marked `locked`: `lock_positioning` (channel positioning, promise, voice), `lock_pillars` (pillars and formats), `lock_visual_direction` (style system and packaging rules), `lock_calendar` (the first 30-post calendar and 90-day strategy). Order: positioning first; pillars and visual direction need locked positioning; the calendar needs all three. A paid step in a channel run (`paid_generation`) additionally needs positioning and visual direction locked. Changing a locked item later needs a new row. See [12](12-channel-launch-and-growth.md) and `policies/channel-launch.yaml`.
+
 ## The approval record
 `approvals.csv` columns: `approval_id, requested_on, action_type, description, cost_quote, status, approved_on, approval_words, executed_on, result_ref`.
 

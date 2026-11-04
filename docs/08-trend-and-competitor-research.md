@@ -7,10 +7,32 @@ Goal: dated, measured, honestly-qualified evidence. Not mood, not hype. Machine 
 A row that makes a claim without all seven fails the check.
 
 Wording rules:
-- **One post is an observation, never a trend, and never "viral."** The word is rejected in the ledger. Write the measured signal: "views 3.1× channel median over 28 days, n=1".
+- **One post is an observation, never a trend.** Say what was measured ("views 3.1× channel median over 28 days, n=1"); a statement that a post went viral or outperformed is a claim and needs the tag below.
 - A `trend_signal` row needs at least **5 items** (uncalibrated default; the Director may lower it with a written reason). Fewer items are an `engagement_signal` or `packaging_signal` observation.
 - Every interpretation is `INFERRED` and names its strongest alternative explanation.
 - Dates are explicit: `YYYY-MM-DD` or a window `YYYY-MM-DD..YYYY-MM-DD`. "Recently" is not a date.
+
+## Claims of virality or performance
+The literal word "viral" is **not banned**. What is rejected is an **unsupported claim**: a statement that a post, video or channel went viral, outperformed, or is top-, high- or best-performing, a breakout, or blew up, without its evidence attached. "Exploded" counts only when said of a post or its numbers ("the post exploded", "views exploded overnight"); an "exploded view" or "exploded diagram" is a drawing term and is never a claim.
+
+**Not a claim:** the word inside a source title, a quoted caption or quotation (in double quotes), a creator or channel name column, or an evidence URL.
+
+**Accepted format:** a tag on the same line, table row or CSV row as the claim:
+
+```
+CLAIM[INFERRED; metric=views; basis=2.1x median of previous 20 posts; n=20; platform=youtube-shorts; date=2026-10-01..2026-10-28; source=CP-004]
+```
+
+| Part | Rule |
+|---|---|
+| Label | `OBSERVED` (seen in the post) or `INFERRED` (our reading); nothing else |
+| `metric` | the named measure (views, saves, likes per view, and so on) |
+| `basis` | numerator/denominator (for example 1200/400) or a ratio against a named baseline (for example 2.1x median of previous 20 posts) |
+| `n` | sample size, a whole number of at least 1; below 5 is accepted with a warning |
+| `platform`, `date` | where and when (YYYY-MM-DD or a range) |
+| `source` | an evidence id that exists: S-nnn in `sources.csv` or CP-nnn in `competitor-posts.csv` |
+
+Rejected: an untagged cue word; a tag missing a field; a basis that is not a ratio ("huge"); n of 0; an unknown source id; a tag on a different line from the claim. Policy: `performance_claims` in `policies/source-policy.yaml`. Enforced by `scripts/check-source-ledger.sh` and `scripts/check-channel-plan.sh`; tests in `scripts/test-validators.sh`.
 
 ## YouTube: packaging is not retention
 | Signal | Examples | What it shows | Evidence needed |
@@ -31,6 +53,9 @@ Never automatic. Quote the cost with its tag and date, write a pending `paid_gen
 
 ## Competitor and comparable research
 Follow the charter (§6.3): for the topic, find what **leading and small studios** made for comparable brands: the closest cases, parallel cases from other sectors, and **one outsider**. Read their rationale in three layers: what they published (quote with URL), our interpretation (`INFERRED`), and what is unknown. One card per subject: [`templates/competitor-card.md`](../templates/competitor-card.md).
+
+## Channel competitor research
+For a new channel, competitors are analysed post by post into `competitor-posts.csv`, with facts, interpretation, hypothesis and unknowns kept apart and any outlier claim backed by a comparative signal. Rules and fields: [12-channel-launch-and-growth.md](12-channel-launch-and-growth.md).
 
 ## Procedure
 1. Write the question, platforms, geography and date window in `research-pack.md`.

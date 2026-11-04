@@ -3,6 +3,7 @@
 # secrets, shell syntax, and the ledger / run checkers.
 # Usage: scripts/validate-harness.sh            run every check
 #        scripts/validate-harness.sh --regen-docs   rewrite the generated tool tables in docs/04 from policies/tool-manifest.yaml
+# Includes the Channel Launch route: scripts/check-channel-plan.sh and policies/channel-launch.yaml.
 # Needs: bash 3.2+, python3 (stdlib). ruby (system) enables the YAML checks. Exit 0 = pass, 1 = failures.
 set -u
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -85,6 +86,13 @@ agents/qa-rights-reviewer.md agents/memory-curator.md
 skills/studio-brief/SKILL.md skills/research-pack/SKILL.md skills/competitor-watch/SKILL.md
 skills/content-routes/SKILL.md skills/ai-film-treatment/SKILL.md skills/shot-spec/SKILL.md
 skills/packaging/SKILL.md skills/qa/SKILL.md skills/project-closeout/SKILL.md
+skills/channel-launch/SKILL.md skills/channel-strategy/SKILL.md skills/content-programming/SKILL.md
+templates/channel-brief.md templates/channel-competitor-map.md templates/competitor-post-ledger.csv
+templates/content-pillar.md templates/format-card.md templates/hook-library.md templates/channel-style-system.md
+templates/content-calendar.md templates/post-production-card.md templates/channel-metrics.md templates/channel-review.md
+docs/12-channel-launch-and-growth.md docs/13-content-production-system.md docs/14-channel-measurement-and-learning.md
+policies/channel-launch.yaml scripts/check-channel-plan.sh scripts/test-validators.sh scripts/tests/validator_tests.py
+policies/secret-scan-allowlist.yaml scripts/scan-secrets.sh scripts/sanitize-captures.sh
 templates/project-brief.md templates/research-pack.md templates/source-ledger.csv templates/competitor-card.md
 templates/creative-route.md templates/treatment.md templates/shot-spec.md templates/asset-rights-ledger.csv
 templates/social-package.md templates/qa-report.md templates/decision-log.md templates/project-closeout.md
@@ -147,7 +155,7 @@ for d in skills/*/; do
   grep -q '^## Steps' "$f" || fail "$f: no '## Steps' section"
   grep -q '^## Never' "$f" || fail "$f: no '## Never' section"
 done
-[ "$scount" -eq 9 ] && ok "9 skills, front matter and sections present" || fail "expected 9 skills, found $scount"
+[ "$scount" -eq 12 ] && ok "12 skills, front matter and sections present" || fail "expected 12 skills, found $scount"
 
 # ---------------------------------------------------------------- 5. templates and run template in sync
 section "5. templates and runs/_template stay in sync"
@@ -155,9 +163,23 @@ cmp -s templates/project-brief.md runs/_template/brief.md && ok "brief template 
 cmp -s templates/decision-log.md runs/_template/decision-log.md && ok "decision-log template matches" || fail "templates/decision-log.md differs from runs/_template/decision-log.md"
 cmp -s templates/source-ledger.csv runs/_template/sources.csv && ok "source ledger header matches" || fail "templates/source-ledger.csv differs from runs/_template/sources.csv"
 cmp -s templates/asset-rights-ledger.csv runs/_template/rights.csv && ok "rights ledger header matches" || fail "templates/asset-rights-ledger.csv differs from runs/_template/rights.csv"
+grep -q '^practice: unknown' runs/_template/STATUS.md && ok "runs/_template defaults to practice: unknown (no accidental workflow)" || fail "runs/_template/STATUS.md must default to practice: unknown"
 for k in story_purpose subject action place camera lens movement composition lighting colour_grade sound continuity_locks banned_cliches reference_evidence selected_tool qa_criteria approval_state; do
   grep -q "^$k:" templates/shot-spec.md || fail "templates/shot-spec.md missing field $k"
 done
+
+# ---------------------------------------------------------------- 5b. Channel Launch route is wired in
+section "5b. Channel Launch route is wired into the map, roles and policies"
+for f in README.md CLAUDE.md AGENTS.md docs/01-operating-model.md docs/02-agent-roles.md docs/07-publishing-and-approval-policy.md runs/README.md; do
+  grep -qi "channel launch" "$f" && ok "$f mentions the Channel Launch route" || fail "$f does not mention the Channel Launch route"
+done
+for f in agents/director.md agents/trend-scout.md agents/reference-forensics.md agents/creative-producer.md agents/packaging-lead.md agents/ai-film-lead.md agents/motion-editor.md agents/qa-rights-reviewer.md agents/memory-curator.md; do
+  grep -q "^## Channel Launch" "$f" && grep -q "^deliverables: .*" "$f" || fail "$f has no '## Channel Launch' section"
+done
+grep -q "^route: standard" runs/_template/STATUS.md && ok "runs/_template carries the optional route key" || fail "runs/_template/STATUS.md must carry route: standard"
+if out=$(bash scripts/check-channel-plan.sh --templates 2>&1); then rc=0; else rc=$?; fi
+printf '%s\n' "$out" | sed 's/^/      /'
+if [ "$rc" -eq 0 ]; then ok "channel templates match the channel validator"; else fail "channel templates and validator disagree"; fi
 
 # ---------------------------------------------------------------- 6. policies (YAML)
 section "6. policies"
@@ -209,7 +231,39 @@ min_trend = src.dig('trend_claim', 'min_items_for_trend_signal')
 unless File.read('scripts/check-source-ledger.sh').include?("MIN_TREND_ITEMS = #{min_trend}")
   errs << 'source-policy.yaml min_items_for_trend_signal differs from MIN_TREND_ITEMS in scripts/check-source-ledger.sh'
 end
-errs << 'source-policy.yaml: "viral" must be a forbidden word' unless (src.dig('trend_claim', 'forbidden_wording') || []).include?('viral')
+pc = src['performance_claims'] || {}
+errs << 'source-policy.yaml: performance_claims.labels must be OBSERVED and INFERRED' unless pc['labels'] == %w[OBSERVED INFERRED]
+errs << 'source-policy.yaml: performance_claims.required_fields must be metric, basis, n, platform, date, source' unless pc['required_fields'] == %w[metric basis n platform date source]
+errs << 'source-policy.yaml: the old blanket forbidden_wording rule must be gone (only unsupported claims are rejected)' if src.dig('trend_claim', 'forbidden_wording')
+%w[scripts/check-source-ledger.sh scripts/check-channel-plan.sh].each do |f|
+  t = File.read(f)
+  unless t.include?('CLAIM_FIELDS = ["metric", "basis", "n", "platform", "date", "source"]') && t.include?('CLAIM_LABELS = {"OBSERVED", "INFERRED"}')
+    errs << "#{f}: claim-tag parser does not match policies/source-policy.yaml performance_claims"
+  end
+  errs << "#{f}: still rejects the literal word viral outright" if t =~ /banned: state the/
+end
+cl = YAML.load_file('policies/channel-launch.yaml')
+errs << "channel-launch.yaml: expected 12 workflow steps, found #{(cl['workflow'] || []).size}" unless (cl['workflow'] || []).size == 12
+wf_locks = (cl['workflow'] || []).map { |w| w['lock'] }.compact.sort
+want_locks = %w[lock_calendar lock_pillars lock_positioning lock_visual_direction]
+errs << "channel-launch.yaml: workflow must carry exactly the four locks, found #{wf_locks.inspect}" unless wf_locks == want_locks
+ag = YAML.load_file('policies/approval-gates.yaml')
+want_locks.each { |l| errs << "approval-gates.yaml: action_types is missing #{l}" unless (ag.dig('action_gates', 'action_types') || []).include?(l) }
+pm = YAML.load_file('policies/permissions.yaml')
+want_locks.each { |l| errs << "permissions.yaml: decision_locks is missing #{l}" unless (pm['decision_locks'] || []).map { |d| d['id'] }.include?(l) }
+chk = File.read('scripts/check-channel-plan.sh')
+(cl['thresholds'] || {}).each do |k, v|
+  next unless v.is_a?(Integer)
+  const = k.upcase.sub('MIN_BEATS_PER_STRUCTURE', 'MIN_BEATS').sub('MIN_STRATEGY_PHASES', 'MIN_STRATEGY_PHASES')
+  m = chk.match(/^#{const} = (\d+)/)
+  errs << "channel-launch.yaml threshold #{k}=#{v} has no matching #{const} in scripts/check-channel-plan.sh" if m.nil?
+  errs << "channel-launch.yaml threshold #{k}=#{v} differs from #{const} = #{m[1]} in scripts/check-channel-plan.sh" if m && m[1].to_i != v
+end
+al = YAML.load_file('policies/secret-scan-allowlist.yaml')
+ids = (al['rules'] || []).map { |r| r['id'] }
+errs << "secret-scan-allowlist.yaml: rules must be exactly A1 and A2, found #{ids.inspect}" unless ids == %w[A1 A2]
+scan = File.read('scripts/scan-secrets.sh')
+ids.each { |i| errs << "scripts/scan-secrets.sh does not implement allowlist rule #{i}" unless scan.include?(%("#{i}")) }
 mr = YAML.load_file('policies/model-routing.yaml')
 errs << 'model-routing.yaml: generation.default_model must be none' unless mr.dig('generation', 'default_model').to_s == 'none'
 puts errs
@@ -252,14 +306,11 @@ ok "checked $links Markdown links and $paths backticked repo paths"
 
 # ---------------------------------------------------------------- 8. secrets and forbidden files
 section "8. secrets and forbidden files"
-SECRET_RE='(sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{30,}|xox[baprs]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|AIza[0-9A-Za-z_-]{35}|(api[_-]?key|secret|token|password)[[:space:]]*[:=][[:space:]]*["'"'"']?[A-Za-z0-9/+_=-]{16,})'
-if hits=$(grep -rEIn --exclude-dir=.git --exclude=validate-harness.sh -e "$SECRET_RE" . 2>/dev/null); then
-  while IFS= read -r l; do fail "possible secret (value not shown): ${l%%:*}"; done <<< "$(echo "$hits" | head -5)"
-else
-  ok "no secret-shaped strings found"
-fi
-bad=$(find . -not -path './.git/*' \( -name '.env' -o -name '.env.*' -o -name 'auth.json' -o -name '*.pem' -o -name '*.key' -o -name '*cookies*' -o -name '*.sqlite' \) 2>/dev/null)
-if [ -n "$bad" ]; then while IFS= read -r l; do fail "forbidden file present: $l"; done <<< "$bad"; else ok "no credential, cookie or database files"; fi
+# Full-repo content scan, INCLUDING runs/*/refs/ raw captures (no folder is excluded). A narrow documented allowlist
+# (policies/secret-scan-allowlist.yaml: A1, A2) is the only suppression; credential-like file names are checked everywhere.
+if out=$(bash scripts/scan-secrets.sh 2>&1); then rc=0; else rc=$?; fi
+printf '%s\n' "$out" | tail -n 12 | sed 's/^/      /'
+if [ "$rc" -eq 0 ]; then ok "no secrets, tokens, session artifacts, cookies or credential-like files anywhere (raw captures under refs/ included)"; else fail "secret scan found problems (run scripts/scan-secrets.sh; clean captures with scripts/sanitize-captures.sh)"; fi
 grep -q 'refs/' .gitignore && grep -q '\.env' .gitignore && ok ".gitignore covers refs, env and media" || fail ".gitignore is missing refs/ or .env rules"
 
 # ---------------------------------------------------------------- 9. shell scripts
@@ -271,16 +322,29 @@ done
 
 # ---------------------------------------------------------------- 10. ledger and run checkers
 section "10. ledgers and runs"
-if out=$(bash scripts/check-source-ledger.sh 2>&1); then
-  echo "$out" | sed 's/^/      /'; ok "source ledgers pass"
-else
-  echo "$out" | sed 's/^/      /'; fail "source ledger check failed"
-fi
-if out=$(bash scripts/check-run-completeness.sh 2>&1); then
-  echo "$out" | sed 's/^/      /'; ok "run folders pass"
-else
-  echo "$out" | sed 's/^/      /'; fail "run completeness check failed"
-fi
+# Every WARN line a checker prints is counted here, exactly once. check-run-completeness.sh does not
+# re-emit ledger warnings (it prints a "note" line), so nothing is counted twice.
+count_warns() { printf '%s\n' "$1" | grep -cE '^[[:space:]]*WARN '; }
+if out=$(bash scripts/check-source-ledger.sh 2>&1); then rc=0; else rc=$?; fi
+printf '%s\n' "$out" | sed 's/^/      /'
+n=$(count_warns "$out"); WARNS=$((WARNS + n))
+if [ "$rc" -eq 0 ]; then ok "source ledgers pass ($n warning(s) counted)"; else fail "source ledger check failed"; fi
+if out=$(bash scripts/check-run-completeness.sh 2>&1); then rc=0; else rc=$?; fi
+printf '%s\n' "$out" | sed 's/^/      /'
+n=$(count_warns "$out"); WARNS=$((WARNS + n))
+if [ "$rc" -eq 0 ]; then ok "run folders pass ($n warning(s) counted)"; else fail "run completeness check failed"; fi
+
+if out=$(bash scripts/check-channel-plan.sh 2>&1); then rc=0; else rc=$?; fi
+printf '%s\n' "$out" | sed 's/^/      /'
+n=$(count_warns "$out"); WARNS=$((WARNS + n))
+if [ "$rc" -eq 0 ]; then ok "channel plans pass ($n warning(s) counted)"; else fail "channel plan check failed"; fi
+
+# ---------------------------------------------------------------- 11. validator self-tests
+section "11. validator self-tests (accept and reject cases, claim-tag rule, Channel Launch gates)"
+if out=$(bash scripts/test-validators.sh 2>&1); then rc=0; else rc=$?; fi
+printf '%s\n' "$out" | sed 's/^/      /'
+n=$(count_warns "$out"); WARNS=$((WARNS + n))
+if [ "$rc" -eq 0 ]; then ok "validator self-tests pass"; else fail "validator self-tests failed"; fi
 
 # ---------------------------------------------------------------- summary
 echo

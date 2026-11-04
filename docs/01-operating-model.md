@@ -10,7 +10,7 @@ The loop is the charter's method (§6) made checkable. Gate ids (G1 to G11) live
 
 | Gate | Step | Owner | Exit criteria | Human approval | Key artifact |
 |---|---|---|---|---|---|
-| G1 | Brief | director | context declared, success measure stated, unknowns marked `[TO VERIFY]` | yes | `brief.md`, `STATUS.md` |
+| G1 | Brief | director | context declared; brief in his words; **concrete practice set**; success measure stated; unknowns marked `[TO VERIFY]` | yes | `brief.md`, `STATUS.md` |
 | G2 | Research and evidence | trend-scout | ledger rows carry date, platform, geography, format, signal, uncertainty | no | `research-pack.md`, `sources.csv` |
 | G3 | Real references examined | reference-forensics | 8+ real references viewed and measured; each tagged real / AI-made / unknown | no | DNA cards in the pack |
 | G4 | Three routes | creative-producer | safe / brave / wild; two routes share at most one axis position; scored blind | no | `routes.md` |
@@ -35,6 +35,12 @@ One Director thread owns decisions. Specialists run in parallel only for researc
 | one-off | a single asset | G1, G7, G8, G10 |
 
 The size is chosen by the Director, recorded in `STATUS.md`, and Ashish can overrule it. Gates G7 (approval before spend) and G9 (approval before delivery) are never skipped at any size.
+
+## Routes
+The standard loop above fits any brief. A **Channel Launch** route (`route: channel-launch`, `practice: content` in `STATUS.md`) fits a new channel with zero posts: twelve steps from channel brief to measurement loop, four human locks (positioning, pillars and formats, visual direction, calendar), no invented data, no publishing ([12-channel-launch-and-growth.md](12-channel-launch-and-growth.md)). It uses the same gates for evidence, approval, independent QA and closeout; its plan has its own validator, `scripts/check-channel-plan.sh`.
+
+## Intake state: `practice: unknown`
+Before the brief exists, a run is in intake: `status: draft` or `blocked`, `practice: unknown`. This is the only state where `unknown` is valid, and nothing may start in it: no research, routes, treatment, shot specs, QA, ledger rows or approvals. The validator fails a run that has any of those while the practice is `unknown`, and fails `unknown` on any other status. G1 closes only when the practice is a concrete value, and the practice decides the builder (for example `film` is the only practice that enters the AI-film pipeline). A value is never filled in just to satisfy the validator; `unknown` is the honest value.
 
 ## Run lifecycle and status
 `draft` → `in_progress` → (`blocked` | `awaiting_approval`) → `complete`. `demo` marks the fictional proof run. Status lives in the front matter of `STATUS.md` ([runs/README.md](../runs/README.md)).

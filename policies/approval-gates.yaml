@@ -5,7 +5,7 @@ version: 1
 loop_gates:
   - id: G1_brief
     owner: director
-    exit_criteria: context declared; success measure stated; what is unknown labelled [TO VERIFY]
+    exit_criteria: context declared; the brief captured in his words; a concrete practice set (unknown is allowed only during intake while status is draft or blocked); success measure stated; what is unknown labelled [TO VERIFY]
     artifacts: runs/<run-id>/brief.md, runs/<run-id>/STATUS.md
     human_approval: true
     check: scripts/check-run-completeness.sh
@@ -74,7 +74,8 @@ action_gates:
   record_file: runs/<run-id>/approvals.csv
   required_fields: [approval_id, requested_on, action_type, description, cost_quote, status, approved_on, approval_words, executed_on, result_ref]
   status_values: [pending, approved, rejected, expired]
-  action_types: [paid_generation, publishing, external_communication, login, account_connection, deletion, deployment, financial_or_legal_action, licence_decision, tool_install_or_update]
+  action_types: [paid_generation, publishing, external_communication, login, account_connection, deletion, deployment, financial_or_legal_action, licence_decision, tool_install_or_update, lock_positioning, lock_visual_direction, lock_pillars, lock_calendar]
+  decision_locks: [lock_positioning, lock_visual_direction, lock_pillars, lock_calendar]   # Channel Launch: policies/channel-launch.yaml
   rules:
     - a row is written as pending before the action is requested in chat
     - status becomes approved only after Ashish's yes in chat; approval_words holds his words
@@ -82,3 +83,4 @@ action_gates:
     - paid_generation and financial_or_legal_action rows carry a cost_quote
     - a rejected or expired row is never reused; a new row is written
     - the validator rejects any executed row that is not approved
+    - a lock_* row is a decision approval: it needs his words and approved_on, and the locked artifact (positioning, pillars and formats, visual direction, calendar) may be marked locked only after it
