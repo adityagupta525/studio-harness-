@@ -148,15 +148,15 @@ tools:
     install_status: installed-unverified
     connect_status: tools-visible-unverified
   - id: blender-lab-mcp
-    name: Official Blender Lab MCP (future)
+    name: Official Blender Lab MCP (server installed, official add-on not installed)
     stage: 1
     purpose: deterministic cameras, lenses, lights, materials and preview renders
     why_it_fits: camera and lens become data, not guesses (docs/10-blender-cinematography-pipeline.md)
-    alternative: Blender 5.1.2 scripted headless; the Blender MCP add-on tools already visible in the session (provenance UNKNOWN)
-    risk: executes Python with user privileges; not a security boundary; must stay on localhost
+    alternative: Blender 5.1.2 scripted headless; the community BlenderMCP add-on found in Blender's add-ons folder is not the official add-on and must not be enabled alongside it
+    risk: executes LLM-generated Python with user privileges and no guards; not a security boundary; must stay on localhost; two bridges would compete for port 9876
     required_permission: tool_install_or_update approval, then Stage 1 approval per scene
-    verification_method: "see docs/10-blender-cinematography-pipeline.md section 6; not performed in v1"
-    install_status: not-installed
+    verification_method: "the eight checks in docs/tool-install-policy.md (source, version, checksum, localhost only, no exposure, network permission, no stray bridge, safe first use); the bridge stays off until all are recorded"
+    install_status: installed-unverified
     connect_status: not-connected
   - id: remotion
     name: Remotion

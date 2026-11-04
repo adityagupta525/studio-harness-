@@ -30,6 +30,7 @@ Brief → research and evidence → real references examined → three genuinely
 | Memory and promotion | [docs/03-context-and-memory.md](docs/03-context-and-memory.md), `memory/` |
 | New channel, zero posts (Channel Launch route) | [docs/12-channel-launch-and-growth.md](docs/12-channel-launch-and-growth.md), `skills/channel-launch/` |
 | Incidents | [docs/11-incident-and-recovery.md](docs/11-incident-and-recovery.md) |
+| creative-os alignment, tool installs | [docs/creative-os-alignment.md](docs/creative-os-alignment.md), [docs/tool-install-policy.md](docs/tool-install-policy.md) |
 | Audit that shaped this | `docs/audits/` |
 
 ## Every task ends with

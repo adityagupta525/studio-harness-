@@ -93,6 +93,7 @@ templates/content-calendar.md templates/post-production-card.md templates/channe
 docs/12-channel-launch-and-growth.md docs/13-content-production-system.md docs/14-channel-measurement-and-learning.md
 policies/channel-launch.yaml scripts/check-channel-plan.sh scripts/test-validators.sh scripts/tests/validator_tests.py
 policies/secret-scan-allowlist.yaml scripts/scan-secrets.sh scripts/sanitize-captures.sh
+docs/creative-os-alignment.md docs/tool-install-policy.md
 templates/project-brief.md templates/research-pack.md templates/source-ledger.csv templates/competitor-card.md
 templates/creative-route.md templates/treatment.md templates/shot-spec.md templates/asset-rights-ledger.csv
 templates/social-package.md templates/qa-report.md templates/decision-log.md templates/project-closeout.md

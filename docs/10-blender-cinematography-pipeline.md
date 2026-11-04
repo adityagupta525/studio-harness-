@@ -4,7 +4,7 @@
 
 ## What is present today (audit, 2026-11-04)
 - Blender **5.1.2** app at `/Applications/Blender.app` (no CLI on PATH; the binary answers `--version`).
-- A Blender MCP tool set is **visible** in the Claude session (it needs the Blender app running with its add-on). Which project that server comes from is `UNKNOWN`; it was not called.
+- A Blender MCP tool set is visible in the Claude session. Follow-up audit (see [tool-install-policy.md](tool-install-policy.md)): the **server** is the official Blender Lab extension (v1.0.1, enabled in Claude Desktop), but the Blender-side add-on actually installed is the **community** BlenderMCP, not the official one. The bridge is therefore mismatched and is **not enabled**; nothing listens on port 9876.
 - creative-os `mac-native-control` can drive Blender; Blender is also in the creative-os build routes.
 
 ## Why Blender, why deterministic

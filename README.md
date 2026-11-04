@@ -17,7 +17,7 @@ Brief → research and evidence → real references examined → three genuinely
 | Path | What |
 |---|---|
 | [CLAUDE.md](CLAUDE.md), [AGENTS.md](AGENTS.md) | short root maps |
-| [docs/](docs/00-charter-and-scope.md) | rules (00–14) and [audits](docs/audits/2026-11-04-existing-capability-audit.md) |
+| [docs/](docs/00-charter-and-scope.md) | rules (00–14), [audits](docs/audits/2026-11-04-existing-capability-audit.md), [creative-os alignment](docs/creative-os-alignment.md) and [tool install policy](docs/tool-install-policy.md) |
 | `agents/` | ten role cards (mission, limits, handoff) |
 | `skills/` | twelve procedures: the standard nine (brief, research, competitor watch, routes, treatment, shot spec, packaging, QA, closeout) and three for [Channel Launch](docs/12-channel-launch-and-growth.md) (channel-launch, channel-strategy, content-programming) |
 | `templates/` | every artifact's fixed form |
