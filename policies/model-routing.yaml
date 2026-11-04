@@ -1,0 +1,59 @@
+# Studio Harness — model routing (v1)
+# Principle: route by job and risk. This file records NO generation-model specs, prices or limits — they rot.
+# Specs come from ~/creative-os model-intel and are re-checked by the spec-checker agent before any promise.
+version: 1
+
+claude_agents:
+  note: >
+    The session environment on 2026-11-04 names Fable 5.1, Opus 5.5, Sonnet 5.5 and Haiku 5.5 [W].
+    Availability, limits and price are [TO VERIFY] before relying on them. Ashish sets the model in Claude Code.
+  roles:
+    - agent: director
+      tier: highest reasoning available
+      why: owns decisions and approval requests
+    - agent: qa-rights-reviewer
+      tier: highest reasoning available
+      why: independent QA is only independent if it is not weaker than the producer
+    - agent: creative-producer
+      tier: balanced
+      why: routes, treatments, copy
+    - agent: ai-film-lead
+      tier: balanced
+      why: shot specs and prompt writing
+    - agent: trend-scout
+      tier: balanced
+      why: reading and judging sources
+    - agent: reference-forensics
+      tier: balanced
+      why: reading measurements honestly
+    - agent: blender-cinematographer
+      tier: balanced
+      why: scene scripts and lens maths
+    - agent: motion-editor
+      tier: balanced
+      why: edit plans and ffmpeg/Remotion commands
+    - agent: packaging-lead
+      tier: balanced
+      why: titles, thumbnails, calendars
+    - agent: memory-curator
+      tier: balanced
+      why: careful promotion decisions
+    - agent: mechanical-extraction
+      tier: fast
+      why: file listing, format conversion, link checks (no judgement)
+
+generation:
+  default_model: none          # no generation model is pre-selected
+  selection_procedure:
+    - Director states the shot or asset need and the budget in plain words
+    - model-intel proposes candidates; spec-checker re-verifies the specs used within 7 days
+    - Director picks one; the choice and its basis go in decision-log.md
+    - Ashish approves the quoted cost (paid_generation row) before any call
+  routes:
+    image: unrouted
+    video: unrouted
+    voice: unrouted
+    music: unrouted
+    three_d: local Blender first (deterministic, no credits); hosted 3D only with a quote
+    edit_and_encode: local ffmpeg first; Remotion or After Effects when compositing is needed
+  never_send_to_a_model: unlicensed third-party reference imagery or footage; secrets; employer or private-client data

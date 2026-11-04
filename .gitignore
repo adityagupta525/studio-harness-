@@ -1,0 +1,53 @@
+# Secrets and credentials: never commit
+.env
+.env.*
+*.pem
+*.key
+*.p12
+auth.json
+credentials*.json
+*cookies*
+*.cookies
+oauth*.json
+.npmrc
+.netrc
+
+# Local assistant state
+.claude/settings.local.json
+.claude/worktrees/
+.codex/
+.DS_Store
+
+# Dependencies and caches
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Heavy or third-party media: analysis-only references and renders stay local
+runs/*/refs/
+runs/*/renders/
+runs/*/media/
+*.mp4
+*.mov
+*.m4v
+*.mkv
+*.webm
+*.wav
+*.mp3
+*.aif
+*.aiff
+*.flac
+*.psd
+*.aep
+*.prproj
+*.exr
+*.blend1
+*.blend@
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Keep the empty template folders
+!runs/_template/**

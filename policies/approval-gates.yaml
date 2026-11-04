@@ -1,0 +1,84 @@
+# Studio Harness — approval gates (v1)
+# loop_gates = the operating loop (docs/01-operating-model.md). action_gates = per-action human approvals.
+version: 1
+
+loop_gates:
+  - id: G1_brief
+    owner: director
+    exit_criteria: context declared; success measure stated; what is unknown labelled [TO VERIFY]
+    artifacts: runs/<run-id>/brief.md, runs/<run-id>/STATUS.md
+    human_approval: true
+    check: scripts/check-run-completeness.sh
+  - id: G2_research_evidence
+    owner: trend-scout
+    exit_criteria: sources.csv rows carry date, platform, geography, format, signal, uncertainty; trend claims meet policies/source-policy.yaml
+    artifacts: runs/<run-id>/research-pack.md, runs/<run-id>/sources.csv
+    human_approval: false
+    check: scripts/check-source-ledger.sh
+  - id: G3_references_examined
+    owner: reference-forensics
+    exit_criteria: at least 8 real references viewed and measured, each tagged real / AI-made / unknown with a full URL (charter evidence rule); keep / swap / never listed
+    artifacts: reference DNA cards inside research-pack.md, measurement commands in the evidence section
+    human_approval: false
+    check: manual by qa-rights-reviewer
+  - id: G4_three_routes
+    owner: creative-producer
+    exit_criteria: three genuinely different routes (safe, brave, wild); any two share at most one axis position; each scored blind
+    artifacts: runs/<run-id>/routes.md
+    human_approval: false
+    check: axis table in routes.md read by qa-rights-reviewer
+  - id: G5_human_pick
+    owner: director
+    exit_criteria: Ashish picks in chat; his exact words and the rejects are logged in decision-log.md
+    artifacts: runs/<run-id>/decision-log.md
+    human_approval: true
+    check: manual
+  - id: G6_treatment_and_shot_specs
+    owner: ai-film-lead
+    exit_criteria: treatment, story/character/world bible and one complete shot spec per shot; no empty required field
+    artifacts: runs/<run-id>/treatment.md, runs/<run-id>/shots/*.md
+    human_approval: true
+    check: scripts/check-run-completeness.sh
+  - id: G7_production
+    owner: ai-film-lead
+    exit_criteria: every paid generation has an approved row in approvals.csv first; every generated asset has a rights-ledger row; continuity QA done per shot
+    artifacts: generated assets (git-ignored), runs/<run-id>/rights.csv, runs/<run-id>/approvals.csv
+    human_approval: true
+    check: scripts/check-run-completeness.sh
+  - id: G8_independent_qa
+    owner: qa-rights-reviewer
+    exit_criteria: QA done by an agent that did not produce the work; measured where measurable; result PASS or FAIL stated; anything not verified is named
+    artifacts: runs/<run-id>/qa-report.md
+    human_approval: false
+    check: scripts/check-run-completeness.sh
+  - id: G9_approval
+    owner: director
+    exit_criteria: Ashish approves delivery in chat; approval recorded; rights rows for delivered assets are cleared by his licence decision
+    artifacts: runs/<run-id>/approvals.csv, runs/<run-id>/rights.csv
+    human_approval: true
+    check: scripts/check-run-completeness.sh
+  - id: G10_closeout
+    owner: director
+    exit_criteria: closeout written (what shipped, what was learned, what was not done); status set to complete
+    artifacts: runs/<run-id>/closeout.md, runs/<run-id>/STATUS.md
+    human_approval: false
+    check: scripts/check-run-completeness.sh
+  - id: G11_validated_memory
+    owner: memory-curator
+    exit_criteria: lesson candidates logged; promotion only with evidence from two separate real projects and Ashish's yes
+    artifacts: memory/lesson-candidates.md, memory/approved-lessons.md
+    human_approval: true
+    check: manual by memory-curator
+
+action_gates:
+  record_file: runs/<run-id>/approvals.csv
+  required_fields: [approval_id, requested_on, action_type, description, cost_quote, status, approved_on, approval_words, executed_on, result_ref]
+  status_values: [pending, approved, rejected, expired]
+  action_types: [paid_generation, publishing, external_communication, login, account_connection, deletion, deployment, financial_or_legal_action, licence_decision, tool_install_or_update]
+  rules:
+    - a row is written as pending before the action is requested in chat
+    - status becomes approved only after Ashish's yes in chat; approval_words holds his words
+    - executed_on may be filled only on an approved row, on or after approved_on
+    - paid_generation and financial_or_legal_action rows carry a cost_quote
+    - a rejected or expired row is never reused; a new row is written
+    - the validator rejects any executed row that is not approved

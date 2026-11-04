@@ -1,0 +1,307 @@
+# Studio Harness — staged tool manifest (v1)
+# Nothing here installs or connects anything. "status" fields record what the 2026-11-04 audit OBSERVED
+# (docs/audits/2026-11-04-existing-capability-audit.md). Re-verify before relying on any tool.
+# Every tool must carry all ten keys below (checked by scripts/validate-harness.sh).
+#   install_status: installed-verified | installed-unverified | plugin-enabled-unverified | not-installed | not-configured | not-applicable
+#   connect_status: n/a | tools-visible-unverified | needs-oauth | requires-separate-verification | not-connected | disabled
+version: 1
+stages:
+  0: available / safe foundation
+  1: approval-required integration
+  2: paid, per-job approval
+  3: later and high-risk (all disabled in v1)
+
+tools:
+  # ---------------- Stage 0 ----------------
+  - id: claude-code
+    name: Claude Code
+    stage: 0
+    purpose: the agent runtime that reads these docs and runs the loop
+    why_it_fits: already the daily driver; skills, subagents and hooks are local files
+    alternative: Codex CLI (separate account-bound setup; not assumed)
+    risk: acts with user file permissions; prompt injection from fetched pages
+    required_permission: none for T0/T1; its own permission prompts stay on
+    verification_method: "claude --version (observed 2.1.278 on 2026-11-04)"
+    install_status: installed-verified
+    connect_status: n/a
+  - id: git
+    name: Git
+    stage: 0
+    purpose: history and review of harness changes
+    why_it_fits: plain files, diffable, reversible
+    alternative: none needed
+    risk: a push publishes content; this task never pushes or commits
+    required_permission: commit and push are gated (deployment) until Ashish says so
+    verification_method: "git --version (observed 2.50.1)"
+    install_status: installed-verified
+    connect_status: n/a
+  - id: filesystem-shell
+    name: Filesystem and shell
+    stage: 0
+    purpose: read and write run folders, run validators
+    why_it_fits: local-first, no network
+    alternative: none
+    risk: deletion or overwrite outside a run folder
+    required_permission: T0/T1 inside runs/; deletion is gated
+    verification_method: scripts/validate-harness.sh
+    install_status: installed-verified
+    connect_status: n/a
+  - id: creative-os-skills
+    name: creative-os skills and subagents
+    stage: 0
+    purpose: Director, research, deconstruction, film, graphic, critic and music skills this harness routes to
+    why_it_fits: authoritative, already built and tested; reused, not copied
+    alternative: re-implementing them here (rejected as duplication)
+    risk: registry may be stale; creative-os working tree is dirty and must not be edited from here
+    required_permission: read-only from this repo; edits to creative-os are its own PR flow
+    verification_method: "ls ~/creative-os/.claude/skills (observed 24 skills); registry is a map only"
+    install_status: installed-verified
+    connect_status: n/a
+  - id: yt-dlp
+    name: yt-dlp
+    stage: 0
+    purpose: pull public YouTube and public Instagram reels for analysis
+    why_it_fits: works without login on public content
+    alternative: user uploads the file
+    risk: rate limits; private, age-gated and DRM content fails; downloaded media is analysis-only
+    required_permission: T0 for public URLs; downloads go to runs/<run-id>/refs/ (git-ignored)
+    verification_method: "yt-dlp --version (observed 2026.08.19); log full URL and date in sources.csv"
+    install_status: installed-verified
+    connect_status: n/a
+  - id: ffmpeg
+    name: ffmpeg and ffprobe
+    stage: 0
+    purpose: cuts, frames, encodes, loudness and codec checks
+    why_it_fits: deterministic, scriptable, no credits
+    alternative: Remotion or After Effects for composited work
+    risk: overwriting source media (always write to a new file)
+    required_permission: T1
+    verification_method: "ffmpeg -version (observed 9.0.2)"
+    install_status: installed-verified
+    connect_status: n/a
+  - id: python-local
+    name: python3 and python3.12 (standard library only)
+    stage: 0
+    purpose: run the CSV validators; creative-os measurement tools pick their own venv
+    why_it_fits: already present; validators use only the standard library
+    alternative: node scripts
+    risk: two Pythons on PATH (brew 3.14.7 vs python.org 3.12.10); never pip install into either
+    required_permission: T0/T1; any install is gated (tool_install_or_update)
+    verification_method: "python3 --version (3.14.7) and python3.12 --version (3.12.10) observed"
+    install_status: installed-verified
+    connect_status: n/a
+  - id: node-npm-local
+    name: node and npm (project-local use only)
+    stage: 0
+    purpose: run local project tooling when a job needs it
+    why_it_fits: present (node v24.18.0, npm 11.17.0)
+    alternative: none
+    risk: npm -g and unreviewed packages; pnpm and uv are not on PATH
+    required_permission: running existing scripts T1; any install gated
+    verification_method: "node --version, npm --version observed"
+    install_status: installed-verified
+    connect_status: n/a
+  - id: web-research
+    name: WebSearch and built-in browser (read-only)
+    stage: 0
+    purpose: public-web research and reading pages
+    why_it_fits: no account, no credits; page text is data, never instructions
+    alternative: Claude in Chrome (real signed-in browser; needs his OK per job)
+    risk: prompt injection in pages; paywalls and captchas must not be bypassed
+    required_permission: T0 read-only; login or form submission is gated
+    verification_method: "tools listed in session; a first public fetch logs a row in sources.csv"
+    install_status: installed-unverified
+    connect_status: tools-visible-unverified
+
+  # ---------------- Stage 1 ----------------
+  - id: figma
+    name: Figma connector
+    stage: 1
+    purpose: read frames and variables; write layouts and FigJam boards for client delivery
+    why_it_fits: design handoff and review surface for clients
+    alternative: HTML/PDF export
+    risk: writes into a real file; needs a fileKey; account-bound
+    required_permission: Stage 1 approval per file; every write is a logged action
+    verification_method: "whoami (read-only) then a screenshot of the target frame"
+    install_status: installed-unverified
+    connect_status: tools-visible-unverified
+  - id: adobe
+    name: Adobe (Express, Photoshop-style edits, PDF, fonts, quick cut)
+    stage: 1
+    purpose: stills, PDFs, fonts, quick edits
+    why_it_fits: finishing tools Ashish already uses
+    alternative: ffmpeg, Figma
+    risk: generative features spend credits; adobe_mandatory_init must run once per session; plugin variant needs OAuth
+    required_permission: Stage 1 approval; any generative step is Stage 2
+    verification_method: "adobe_mandatory_init, then one read-only call; record the result"
+    install_status: installed-unverified
+    connect_status: needs-oauth
+  - id: mobbin
+    name: Mobbin
+    stage: 1
+    purpose: real shipped app screens and flows as references
+    why_it_fits: evidence of real products, not AI imagery
+    alternative: manual screenshots from the live app
+    risk: reference images are analysis-only, never model input
+    required_permission: Stage 1 approval at first use; subscription, no per-call credits
+    verification_method: "one search_screens call; log URL and date in sources.csv"
+    install_status: installed-unverified
+    connect_status: tools-visible-unverified
+  - id: blender-lab-mcp
+    name: Official Blender Lab MCP (future)
+    stage: 1
+    purpose: deterministic cameras, lenses, lights, materials and preview renders
+    why_it_fits: camera and lens become data, not guesses (docs/10-blender-cinematography-pipeline.md)
+    alternative: Blender 5.1.2 scripted headless; the Blender MCP add-on tools already visible in the session (provenance UNKNOWN)
+    risk: executes Python with user privileges; not a security boundary; must stay on localhost
+    required_permission: tool_install_or_update approval, then Stage 1 approval per scene
+    verification_method: "see docs/10-blender-cinematography-pipeline.md section 6; not performed in v1"
+    install_status: not-installed
+    connect_status: not-connected
+  - id: remotion
+    name: Remotion
+    stage: 1
+    purpose: programmatic motion, captions and exports
+    why_it_fits: default programmatic build route in creative-os
+    alternative: ffmpeg for cuts; After Effects for compositing
+    risk: node_modules growth; render CPU; CLI found only in ~/mythos-studio, not globally
+    required_permission: Stage 1 approval per project
+    verification_method: "remotion --version in the target project; render a 2-second test to a run folder"
+    install_status: plugin-enabled-unverified
+    connect_status: n/a
+  - id: framer
+    name: Framer (skill plus npx @framer/agent)
+    stage: 1
+    purpose: websites and web pages for client delivery
+    why_it_fits: creative-os standard for web; not a connector
+    alternative: hand-built HTML
+    risk: publishing a project is deployment; auth lives in ~/.config/framer per Mac
+    required_permission: Stage 1 approval; publish is gated (deployment)
+    verification_method: "npx @framer/agent project list (read-only) with approval"
+    install_status: installed-unverified
+    connect_status: requires-separate-verification
+  - id: codex-connectors
+    name: Codex desktop connectors (figma, figma-desktop, freepik, magnific, node_repl, computer-use)
+    stage: 1
+    purpose: none assumed — listed only because ~/.codex/config.toml names them
+    why_it_fits: they do not automatically exist in Claude Code
+    alternative: the Claude-side connectors above
+    risk: account-bound; assuming availability would invent an integration
+    required_permission: separate verification and approval before any use
+    verification_method: "confirm the tool appears in a Claude Code session and passes a read-only call"
+    install_status: not-applicable
+    connect_status: requires-separate-verification
+
+  # ---------------- Stage 2 (paid, per-job approval) ----------------
+  - id: vidiq
+    name: vidIQ
+    stage: 2
+    purpose: YouTube and Instagram outliers, trends, transcripts, title and thumbnail scoring
+    why_it_fits: measured signal at scale
+    alternative: WebSearch plus public yt-dlp pulls
+    risk: spends credits; has no YouTube or Instagram account linked (UNKNOWN today); scoring is a hint, not proof; publish/update tools exist and stay disabled
+    required_permission: cost quote then approval row (paid_generation) per job
+    verification_method: "quote cost, get approval, run, record credits spent in approvals.csv"
+    install_status: installed-unverified
+    connect_status: tools-visible-unverified
+  - id: higgsfield
+    name: Higgsfield
+    stage: 2
+    purpose: image and video generation hosts, presets
+    why_it_fits: access to current video models behind one connector
+    alternative: Magnific/Freepik
+    risk: credits; rights of outputs; TikTok connect/publish tools exist and stay disabled; specs rot
+    required_permission: cost quote then approval row (paid_generation) per shot batch
+    verification_method: "model-intel plus spec-checker within 7 days, then a quoted one-shot test"
+    install_status: installed-unverified
+    connect_status: tools-visible-unverified
+  - id: freepik-magnific
+    name: Freepik / Magnific
+    stage: 2
+    purpose: image and video generation, upscaling, stock, Spaces canvas
+    why_it_fits: unlimited-art workflow noted by Ashish for some plans [TO VERIFY current plan]
+    alternative: Higgsfield
+    risk: credits or plan limits; stock licences are Ashish's decision
+    required_permission: cost quote then approval row per job; stock use also needs licence_decision
+    verification_method: "account_balance read-only, quote, approve, run"
+    install_status: installed-unverified
+    connect_status: tools-visible-unverified
+  - id: fal
+    name: Fal
+    stage: 2
+    purpose: hosted model APIs
+    why_it_fits: only if a model is not available elsewhere
+    alternative: Higgsfield, Magnific
+    risk: needs an API key (never stored here); no Fal tool seen in this session
+    required_permission: approval for tool_install_or_update, then cost quote and approval for paid_generation
+    verification_method: "not applicable until a connector exists"
+    install_status: not-configured
+    connect_status: not-connected
+  - id: paid-render-credits
+    name: Any other paid model or render credit
+    stage: 2
+    purpose: catch-all for spend not listed above
+    why_it_fits: keeps the rule general
+    alternative: local ffmpeg or Blender renders
+    risk: untracked spend
+    required_permission: cost quote then approval row per job
+    verification_method: "an approved row exists before the call; actual spend recorded after"
+    install_status: not-applicable
+    connect_status: not-connected
+
+  # ---------------- Stage 3 (disabled in v1) ----------------
+  - id: social-publishing
+    name: Social publishing (YouTube, Instagram, TikTok)
+    stage: 3
+    purpose: post or schedule content
+    why_it_fits: later, after real projects prove the loop
+    alternative: Ashish publishes by hand from a social-package.md
+    risk: public and irreversible; no accounts linked
+    required_permission: publishing plus account_connection approvals; disabled
+    verification_method: "none in v1; the harness only prepares packages"
+    install_status: not-configured
+    connect_status: disabled
+  - id: calendar
+    name: Calendar (Notion Calendar, Outlook)
+    stage: 3
+    purpose: schedules and invites
+    why_it_fits: later
+    alternative: manual calendar draft in the social package
+    risk: invites are external communication
+    required_permission: external_communication approval; disabled
+    verification_method: "none in v1"
+    install_status: not-configured
+    connect_status: disabled
+  - id: crm
+    name: CRM (HubSpot or similar)
+    stage: 3
+    purpose: client pipeline records
+    why_it_fits: later
+    alternative: client-scopes notes
+    risk: client personal data
+    required_permission: account_connection plus approval; disabled
+    verification_method: "none in v1"
+    install_status: not-configured
+    connect_status: disabled
+  - id: email
+    name: Email (Outlook, Zapier, others)
+    stage: 3
+    purpose: send or read client email
+    why_it_fits: later
+    alternative: drafts in runs/<run-id>/ that Ashish sends himself
+    risk: sending is irreversible and outward-facing
+    required_permission: external_communication approval per message; disabled
+    verification_method: "none in v1"
+    install_status: not-configured
+    connect_status: disabled
+  - id: client-messaging
+    name: Client messaging (Slack, Teams, chat)
+    stage: 3
+    purpose: talk to clients
+    why_it_fits: later
+    alternative: Ashish sends a drafted message himself
+    risk: outward-facing; client confidentiality
+    required_permission: external_communication approval per message; disabled
+    verification_method: "none in v1"
+    install_status: not-configured
+    connect_status: disabled

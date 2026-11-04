@@ -1,0 +1,46 @@
+# Studio Harness — memory policy (v1). Human twin: docs/03-context-and-memory.md
+version: 1
+
+classes:
+  - id: task_state
+    holds: where one run stands right now
+    location: runs/<run-id>/STATUS.md and decision-log.md
+    writer: the agent working the run
+    lifetime: until closeout, then frozen as the record
+  - id: approved_canon
+    holds: studio or client facts Ashish has approved (positioning, locked looks, bibles)
+    location: memory/studio-scopes/ and memory/client-scopes/
+    writer: memory-curator, after Ashish's yes
+    lifetime: until superseded; superseded items move to rejected_or_expired
+  - id: client_preferences
+    holds: preferences of one client or project
+    location: memory/client-scopes/<client>.md
+    writer: memory-curator, after Ashish's yes
+    scope_rule: never applied to another client or to studio work
+  - id: validated_lessons
+    holds: craft or process rules proven on two separate real projects
+    location: memory/approved-lessons.md
+    writer: memory-curator, after Ashish's yes
+    promotion: see promotion
+  - id: rejected_or_expired
+    holds: assumptions that were wrong, superseded or past their review date
+    location: memory/rejected-or-expired.md
+    writer: memory-curator
+    purpose: stop a dead assumption from coming back
+
+promotion:
+  min_independent_real_projects: 2          # separate projects, separate briefs
+  excluded_from_count: [demo, fictional, same-client-repeat, employer-context-for-studio-lessons]
+  needs: evidence pointers in each project's closeout.md plus Ashish's yes in chat
+  until_then: the item stays in memory/lesson-candidates.md, labelled single-observation
+
+contexts:
+  values: [studio, "client:<name>", employer, demo]
+  rule: a lesson learned in one context is applied in another only if promoted with evidence from that other context too
+
+external_stores:
+  taste_ledger: ~/creative-os/taste/ashish.md   # read-only here; only a live reply from Ashish writes it, in creative-os
+  lessons: ~/creative-os/lessons/LESSONS.md     # read-only here
+
+never_store: [secrets, tokens, cookies, env values, employer-only data, private client data in studio scopes, unverified claims presented as facts]
+review_cadence: each scope file carries a review_by date; the curator moves overdue items to rejected_or_expired or asks Ashish

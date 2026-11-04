@@ -1,0 +1,47 @@
+# Studio Harness — source and evidence policy (v1)
+# Vocabulary is adopted from ~/creative-os/standards/evidence-protocol.md. Human twin: docs/06 and docs/08.
+version: 1
+
+claim_classes: [OBSERVED, MEASURED, SOURCE-VERIFIED, PUBLICLY-DOCUMENTED, OWNER-STATED, INFERRED, RECOMMENDED, UNKNOWN]
+origin_tags: [real, AI-made, unknown]
+rights_classes: [own, licensed, public-domain, analysis-only, unknown]
+fact_tags: {V: official page, W: widely reported, U: unverified}   # always with the date seen
+
+references:
+  min_real_references_before_routes: 8      # charter evidence rule; demo projects are exempt and must say so
+  every_source_has_full_url: true           # never a bare ID or handle
+  ai_made_references_are_labelled: true
+
+trend_claim:
+  requires: [date, platform, geography, format, source, measurable_signal, uncertainty]
+  min_items_for_trend_signal: 5             # uncalibrated default; fewer items are an observation, not a trend
+  forbidden_wording: ["viral"]              # describe the measured signal instead
+  one_post_is: observation
+
+youtube:
+  separate_signals: [packaging_signal, retention_signal]
+  packaging_signal: title, thumbnail, views, likes, comments, upload date, outlier ratio — shows what attracted a click
+  retention_signal: watch time, average view duration, audience retention — needs the channel owner's analytics
+  rule: a packaging signal is never presented as watch-time or retention evidence
+
+instagram:
+  must_state: [public_or_private, rate_limit_or_access_constraint]
+  allowed_access: [public-web, yt-dlp-public, browser-readonly, user-supplied]
+  note: bulk pulls are rate-limited; private accounts, stories and gated content are not accessed
+
+discovery_only_sources:
+  hosts: [ads.tiktok.com/business/creativecenter, trends.pinterest.com]
+  rule: these are discovery signals, not proof; sources.csv rows must say used_for discovery
+
+paid_research:
+  vidiq: never automatic; cost quote then approval row (paid_generation) per job
+
+reference_use:
+  analyse_for: technique, structure, grade, pacing
+  never: copy footage or a creator's signature look; feed unlicensed third-party imagery or footage to any model
+  downloaded_media: analysis-only, stored in git-ignored runs/<run-id>/refs/, source URL logged
+
+licensing:
+  decision_owner: Ashish
+  agents_may_say: 'unknown or pending; never "cleared" without a licence_decision approval'
+  music: reuse of a specific track is flagged and left to him
