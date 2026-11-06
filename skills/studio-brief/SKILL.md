@@ -4,18 +4,18 @@ description: Start a project. Declares the context, captures the brief in the ow
 ---
 # studio-brief
 
-**Owner:** director · **Gate:** G1 · **Routes to:** creative-os `creative-pipeline` / `autopilot` when the medium or look is still open.
+**Owner:** director · **Gate:** G1 · **Routes to:** a director or planner skill from a private pack listed in the workspace profile.md (if any) when the medium or look is still open.
 
 ## When to use
 A new brief arrives ("is style me banana hai", "reel banao", a client request, a content idea). Not for a quick question or a follow-up inside a running job.
 
 ## Steps
-1. Read `~/creative-os/CHARTER.md`, then `memory/` scopes for the context. Ask at most five intake questions, each with a default; never ask "kaisa look chahiye".
-2. Create the run: `cp -R runs/_template runs/$(date +%F)-<slug>`; set `run_id`, `context`, dates in `STATUS.md`. If the brief is not in his words yet (empty, or placeholder text like "[...]"), keep `practice: unknown`, set `status: blocked`, log a decision row saying practice is unknown, and ask him for one line. Do nothing else.
-3. Once the brief exists, set a **concrete practice** (it picks the builder; `unknown` never routes anywhere) and `status: in_progress`, in both `STATUS.md` and the Practice row of `brief.md`. Fill `brief.md` from `templates/project-brief.md`: his words verbatim, business logic, success measure, style source (the client system outranks taste), constraints with a credit ceiling, rights, unknowns as `[TO VERIFY]`, approvals needed.
+1. Read the workspace `profile.md` and any charter from a private pack listed in the workspace profile.md (if any), then `memory/` scopes for the context. Ask at most five intake questions, each with a default; never ask "what look do you want?".
+2. Create the run: `studio-harness new <slug>` (creates it in the workspace's `runs/`); set `run_id`, `context`, dates in `STATUS.md`. If the brief is not in the owner's exact words yet (empty, or placeholder text like "[...]"), keep `practice: unknown`, set `status: blocked`, log a decision row saying practice is unknown, and ask the owner for one line. Do nothing else.
+3. Once the brief exists, set a **concrete practice** (it picks the builder; `unknown` never routes anywhere) and `status: in_progress`, in both `STATUS.md` and the Practice row of `brief.md`. Fill `brief.md` from `templates/project-brief.md`: the owner's exact words verbatim, business logic, success measure, style source (the client system outranks taste), constraints with a credit ceiling, rights, unknowns as `[TO VERIFY]`, approvals needed.
 4. Choose the run size (full / sprint / one-off) and record it with the reason in `decision-log.md`.
 5. Write `STATUS.md` sections honestly (Deliverables: brief.md; Verification: not yet checked).
-6. Show the owner the brief in one short block and ask him to confirm G1.
+6. Show the owner the brief in one short block and ask the owner to confirm G1.
 
 ## Outputs
 `brief.md`, `STATUS.md`, `decision-log.md` (D-01 context and size).

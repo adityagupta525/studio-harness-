@@ -1,7 +1,7 @@
 ---
 channel_name: [TO FILL]
 platforms: [TO FILL]            # for example youtube-shorts, instagram-reels
-handle_status: [TO FILL]        # unregistered | registered-by-ashish | unknown
+handle_status: [TO FILL]        # unregistered | registered-by-owner | unknown
 posts_published: 0              # a whole number; 0 for a new channel
 audience_data: none             # none until the channel has real analytics, then own-analytics
 positioning_lock: draft         # draft | locked (locked needs an approved lock_positioning row in approvals.csv)
@@ -12,11 +12,11 @@ A new channel has **zero posts**, so it starts with hypotheses, not audience tru
 
 ## Starting state
 - Posts published: 0. Followers, views and retention: none exist.
-- Accounts linked to any tool: none (publishing is prepared by the studio and done by Ashish).
+- Accounts linked to any tool: none (publishing is prepared by the studio and done by the owner).
 - What exists already (name, handle ideas, assets), each with a rights note:
 
 ## Goal and success
-- Why this channel exists (business logic) and for whom, in his words:
+- Why this channel exists (business logic) and for whom, in the owner's exact words:
 - Success in 90 days, stated as hypotheses to test and never as promised numbers:
 
 ## Audience and category
@@ -50,5 +50,5 @@ How the channel sounds and writes, with three do and three do-not examples (orig
 ## What we will not do
 -
 
-## Locks needed from Ashish
-Positioning, visual direction, pillars and formats, first calendar: each is locked only after his approval row (lock_positioning, lock_visual_direction, lock_pillars, lock_calendar). Production spend is a separate paid_generation approval.
+## Locks needed from the owner
+Positioning, visual direction, pillars and formats, first calendar: each is locked only after the owner's approval row (lock_positioning, lock_visual_direction, lock_pillars, lock_calendar). Production spend is a separate paid_generation approval.

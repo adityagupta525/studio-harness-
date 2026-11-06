@@ -5,7 +5,7 @@ version: 1
 loop_gates:
   - id: G1_brief
     owner: director
-    exit_criteria: context declared; the brief captured in his words; a concrete practice set (unknown is allowed only during intake while status is draft or blocked); success measure stated; what is unknown labelled [TO VERIFY]
+    exit_criteria: context declared; the brief captured in the owner's exact words; a concrete practice set (unknown is allowed only during intake while status is draft or blocked); success measure stated; what is unknown labelled [TO VERIFY]
     artifacts: runs/<run-id>/brief.md, runs/<run-id>/STATUS.md
     human_approval: true
     check: scripts/check-run-completeness.sh
@@ -29,7 +29,7 @@ loop_gates:
     check: axis table in routes.md read by qa-rights-reviewer
   - id: G5_human_pick
     owner: director
-    exit_criteria: Ashish picks in chat; his exact words and the rejects are logged in decision-log.md
+    exit_criteria: the owner picks in chat; the owner's exact words and the rejects are logged in decision-log.md
     artifacts: runs/<run-id>/decision-log.md
     human_approval: true
     check: manual
@@ -53,7 +53,7 @@ loop_gates:
     check: scripts/check-run-completeness.sh
   - id: G9_approval
     owner: director
-    exit_criteria: Ashish approves delivery in chat; approval recorded; rights rows for delivered assets are cleared by his licence decision
+    exit_criteria: the owner approves delivery in chat; approval recorded; rights rows for delivered assets are cleared by the owner's licence decision
     artifacts: runs/<run-id>/approvals.csv, runs/<run-id>/rights.csv
     human_approval: true
     check: scripts/check-run-completeness.sh
@@ -65,7 +65,7 @@ loop_gates:
     check: scripts/check-run-completeness.sh
   - id: G11_validated_memory
     owner: memory-curator
-    exit_criteria: lesson candidates logged; promotion only with evidence from two separate real projects and Ashish's yes
+    exit_criteria: lesson candidates logged; promotion only with evidence from two separate real projects and the owner's yes
     artifacts: memory/lesson-candidates.md, memory/approved-lessons.md
     human_approval: true
     check: manual by memory-curator
@@ -78,9 +78,9 @@ action_gates:
   decision_locks: [lock_positioning, lock_visual_direction, lock_pillars, lock_calendar]   # Channel Launch: policies/channel-launch.yaml
   rules:
     - a row is written as pending before the action is requested in chat
-    - status becomes approved only after Ashish's yes in chat; approval_words holds his words
+    - status becomes approved only after the owner's yes in chat; approval_words holds the owner's exact words
     - executed_on may be filled only on an approved row, on or after approved_on
     - paid_generation and financial_or_legal_action rows carry a cost_quote
     - a rejected or expired row is never reused; a new row is written
     - the validator rejects any executed row that is not approved
-    - a lock_* row is a decision approval: it needs his words and approved_on, and the locked artifact (positioning, pillars and formats, visual direction, calendar) may be marked locked only after it
+    - a lock_* row is a decision approval: it needs the owner's exact words and approved_on, and the locked artifact (positioning, pillars and formats, visual direction, calendar) may be marked locked only after it

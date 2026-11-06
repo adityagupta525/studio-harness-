@@ -54,7 +54,7 @@ ASSUMP_STATUS = {"hypothesis", "unverified", "validated-external", "validated-ow
 EXAMINED = {"video-watched", "frames-viewed", "transcript-read", "user-supplied-file"}
 METRIC_TYPES = {"packaging", "retention", "growth", "engagement", "production"}
 EFFORT = {"S", "M", "L"}
-CAL_STATUS = {"idea", "planned", "in_production", "ready", "published_by_ashish", "hold"}
+CAL_STATUS = {"idea", "planned", "in_production", "ready", "published_by_owner", "hold"}
 HOOK_STATUS = {"hypothesis", "tested"}
 VERDICTS = {"supported", "refuted", "inconclusive"}
 PACK_ELEMENTS = ["Title", "Hook", "Thumbnail or cover", "Caption", "CTA"]
@@ -397,7 +397,7 @@ def check_run(run):
     # ---- lock consistency (human approval gates)
     def need(lock_type, what):
         if lock_type not in approved:
-            E("approvals.csv", f"{what} is locked but there is no approved {lock_type} row with his words")
+            E("approvals.csv", f"{what} is locked but there is no approved {lock_type} row with the owner's words")
     if L_pos:
         need("lock_positioning", "positioning")
     if L_vis:
@@ -418,7 +418,7 @@ def check_run(run):
     if complete:
         for lt in LOCK_TYPES:
             if lt not in approved:
-                E("approvals.csv", f"a complete plan needs an approved {lt} row with his words")
+                E("approvals.csv", f"a complete plan needs an approved {lt} row with the owner's words")
         if not (L_pos and L_vis and all_pillars_locked and L_cal):
             E("STATUS.md", "complete needs positioning, visual direction, pillars, formats and calendar all locked")
 
@@ -767,8 +767,8 @@ def check_run(run):
                     e("Effort must be S, M or L")
                 if d["Status"] not in CAL_STATUS:
                     e(f"Status must be one of {sorted(CAL_STATUS)}")
-                if d["Status"] == "published_by_ashish" and (posts_pub or 0) == 0:
-                    e("published_by_ashish is impossible while posts_published is 0")
+                if d["Status"] == "published_by_owner" and (posts_pub or 0) == 0:
+                    e("published_by_owner is impossible while posts_published is 0")
                 if d["Planned date"] != "TBD" and not DATE.match(d["Planned date"]):
                     e("Planned date must be YYYY-MM-DD or TBD")
                 for k in CAL_HEADER:

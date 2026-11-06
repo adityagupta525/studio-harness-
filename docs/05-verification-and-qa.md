@@ -3,7 +3,7 @@
 **Evidence over assertion.** Never describe media you have not examined. "Fast cutting" is a guess; "7 shots in 11.35 s, average 1.62 s" is a finding. Summarising from a title, URL or metadata is not analysis. If an artifact cannot be pulled, say so instead of guessing.
 
 ## Claim classes
-Adopted from `~/creative-os/standards/evidence-protocol.md`; full table in [06](06-source-rights-and-licensing.md).
+Adopted from the evidence protocol of a private pack listed in the workspace profile.md (if any); full table in [06](06-source-rights-and-licensing.md).
 `OBSERVED` · `MEASURED` · `SOURCE-VERIFIED` · `PUBLICLY-DOCUMENTED` · `OWNER-STATED` · `INFERRED` · `RECOMMENDED` · `UNKNOWN`. One class per claim. Eyeballed numbers are estimates, never `MEASURED`. Confidence is High / Medium / Low, never a percentage without a statistical basis.
 
 ## Verification ladder (strongest first)
@@ -18,11 +18,11 @@ Adopted from `~/creative-os/standards/evidence-protocol.md`; full table in [06](
 | Harness integrity | `scripts/validate-harness.sh` | before closing any harness change |
 | Source ledger | `scripts/check-source-ledger.sh` | G2; every time `sources.csv` changes |
 | Run completeness, approvals, rights, shot specs | `scripts/check-run-completeness.sh` | every gate |
-| References really examined | frames viewed, measurement command logged (`~/creative-os/tools/run.sh palette.py`, `dna_measure.py`, `grid.py`) | G3 |
+| References really examined | frames viewed, measurement command logged (`ffprobe`, `ffmpeg`, or a palette, DNA or grid measuring tool from a private pack listed in the workspace profile.md (if any)) | G3 |
 | Route divergence | axis table in `routes.md`: any two routes share at most one position | G4 |
 | Continuity | per-shot checklist in each `shots/Sxx.md` | G7 |
 | Technical delivery | commands below | G8 |
-| Craft against the charter bar | blind read plus AI-tell list (creative-os `creative-critic`, `critic-judge`) | G8 |
+| Craft against the charter bar | blind read plus AI-tell list (the QA panel, or critic skills from a private pack listed in the workspace profile.md (if any)) | G8 |
 | Rights | every asset has a row; nothing `analysis-only` is delivered or fed to a model | G7, G8, G9 |
 
 ## Technical delivery checks (documented, run when media exists)
@@ -43,7 +43,7 @@ Targets (loudness, ratio, length) come from the platform's current official page
 ## Independence
 - The QA reviewer is a different agent run from the producer. `qa-report.md` names both.
 - A producer's own check is recorded under Verification but never satisfies G8.
-- QA may veto delivery on rights or technical failure. It does not decide creative direction; that stays with Ashish.
+- QA may veto delivery on rights or technical failure. It does not decide creative direction; that stays with the owner.
 
 ## Pass / fail
 `qa-report.md` starts with one line: `result: PASS`, `result: FAIL` or `result: NOT RUN`. A run cannot be `complete` without `PASS`. A FAIL lists each failure with the shot or file, and the run returns to the gate that can fix it.

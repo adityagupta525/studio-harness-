@@ -267,6 +267,11 @@
    "file": "skills/content-routes/SKILL.md"
   },
   {
+   "name": "explainer-short",
+   "description": "Recipe for a narrated 30-60 s vertical explainer short (3D, AI image-to-video or motion graphics) - script lane (how-it-works, true story, what-if / POV), words-per-second budget, a hook that lands in 2 s with sound off, shots per 10 s, character and location sheets for consistency, production route per shot, a retry ladder for bad takes, captions in the edit, then QC with scripts/video-measure.py and the short-video rubric. Use for \"explainer short banao\", \"how it works video\", \"what if short\", \"3D explainer\", \"faceless narrated short\", \"Shorts / Reels explainer series\", or any VO-led vertical short.",
+   "file": "skills/explainer-short/SKILL.md"
+  },
+  {
    "name": "learning-loop",
    "description": "Keep the studio learning - read registered sources (platform blogs, model makers, creators, analysts, publications, manuals) on a cadence, open and read the new items, write dated knowledge cards with evidence tags and expiry, index them, expire stale ones, and promote a card into a rule, check or skill change once two runs relied on it. Also deep-learns one topic on request (a model, tool, creator, platform change). Use for \"naya kya aaya\", \"weekly learning\", \"ye model/tool/creator deeply padho\", \"algorithm change hua kya\", \"knowledge update karo\".",
    "file": "skills/learning-loop/SKILL.md"
@@ -295,6 +300,11 @@
    "name": "qa",
    "description": "Run independent QA and rights review on a run and write the qa-report with a PASS, FAIL or NOT RUN verdict. The reviewer must not be the agent that produced the work.",
    "file": "skills/qa/SKILL.md"
+  },
+  {
+   "name": "reference-research",
+   "description": "The evidence gate before any look, style, STYLE_ANCHOR or generation - at least 8 real references (stills and video) actually examined, saved with full URLs, tagged real / AI-made / unknown with a rights class, measured (video with scripts/video-measure.py, stills with a contact sheet and a measured palette), then a references index, a DNA card (keep / swap / never) and a draft style anchor that passes the \"500 others\" test. Use before routes, before any image or video prompt, for \"references dhundho\", \"moodboard\", \"iska look decode karo\", \"is style me banana hai\", \"iska DNA nikalo\", or whenever someone describes a look nobody has measured.",
+   "file": "skills/reference-research/SKILL.md"
   },
   {
    "name": "research-pack",
@@ -336,7 +346,7 @@
     "voice-producer",
     "qa-rights-reviewer"
    ],
-   "can": "frames, contact sheets, cuts, loudness (ebur128), encodes"
+   "can": "frames, contact sheets, cuts, loudness (ebur128), encodes; scripts/video-measure.py: cuts at two thresholds, shot length, first-3 s cuts, loudness, words per second, contact sheet"
   },
   {
    "id": "python3",

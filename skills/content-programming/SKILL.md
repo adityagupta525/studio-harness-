@@ -4,7 +4,7 @@ description: Turn a locked positioning into a programme: 3 to 5 distinct pillars
 ---
 # content-programming
 
-**Owners:** creative-producer (pillars, formats), packaging-lead (packaging system, calendar), ai-film-lead and motion-editor (production methods), director (production system) · **Steps:** C7 to C11 · **Routes to:** creative-os `content-studio`, `story-architect`, `graphic-design-director`, `ai-film-prompt-director`, `creative-critic`. Rules: [docs/12-channel-launch-and-growth.md](../../docs/12-channel-launch-and-growth.md), [docs/13-content-production-system.md](../../docs/13-content-production-system.md).
+**Owners:** creative-producer (pillars, formats), packaging-lead (packaging system, calendar), ai-film-lead and motion-editor (production methods), director (production system) · **Steps:** C7 to C11 · **Routes to:** content, story, graphic, film-prompt and critic skills from a private pack listed in the workspace profile.md (if any). Rules: [docs/12-channel-launch-and-growth.md](../../docs/12-channel-launch-and-growth.md), [docs/13-content-production-system.md](../../docs/13-content-production-system.md).
 
 ## When to use
 After `lock_positioning` is approved. Pillars, packaging and the calendar are built on a locked position, never before.

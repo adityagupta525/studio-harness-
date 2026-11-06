@@ -14,7 +14,7 @@ Owner: qa-chief (QA & Standards). Monitor: consistency-auditor. The maker never 
 5. **Re-judge when told.** Verdict REJUDGE (a criterion spread > 1, or judge totals spread > 0.75) → three fresh blind judges score again; keep both rounds; the second round's panel decides; if it still disagrees, qa-chief writes the reason and shows the spread to the owner.
 6. **Vetoes stand.** Any veto with evidence blocks the item. qa-chief may overturn only in writing, with evidence, in `decision-log.md`.
 7. **Report** the verdict, score (x/5 and x/100), the spread and the anchor evidence in one table. Show the owner only items that PASS the bar, or say plainly that none did and why.
-8. **Owner precedence.** The owner's pick outranks the panel. When the owner caps a criterion by choice (for example a layout he chose), log it as "capped by owner choice", not as a failure.
+8. **Owner precedence.** The owner's pick outranks the panel. When the owner caps a criterion by choice (for example a layout the owner chose), log it as "capped by owner choice", not as a failure.
 
 ## Why this is consistent
 Same rubric version, same anchors, three judges and a median, a measured spread, re-judging on disagreement, and a calibration set that proves the panel still scores like the gold before any real score is trusted. A score always carries its rubric id and version, so scores from different days are comparable or visibly not.

@@ -4,7 +4,7 @@ description: Run independent QA and rights review on a run and write the qa-repo
 ---
 # qa
 
-**Owner:** qa-rights-reviewer · **Gate:** G8 · **Routes to:** creative-os `creative-critic`, `critic-judge` (blind), `product-qa` (UI).
+**Owner:** qa-rights-reviewer · **Gate:** G8 · **Routes to:** `qa-panel`, plus critic, blind-critic and UI QA skills from a private pack listed in the workspace profile.md (if any).
 
 ## Steps
 1. Confirm independence: name the reviewer and the producer; they must differ.

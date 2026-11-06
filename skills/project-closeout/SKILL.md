@@ -4,7 +4,7 @@ description: Close a run. Writes the closeout record, sets the status honestly, 
 ---
 # project-closeout
 
-**Owner:** director (with memory-curator for G11) · **Gates:** G10, G11 · **Routes to:** creative-os `lessons/` (read-only here).
+**Owner:** director (with memory-curator for G11) · **Gates:** G10, G11 · **Routes to:** the lessons store of a private pack listed in the workspace profile.md, if any (read-only here).
 
 ## Steps
 1. Confirm G8 (`qa-report.md` result PASS) and G9 (the owner approved delivery; licence decisions made and recorded).

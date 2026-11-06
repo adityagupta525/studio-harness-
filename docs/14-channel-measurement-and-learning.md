@@ -23,13 +23,13 @@ Every pillar, format and calendar idea names a metric id (M1, M2, …) as its su
 | Engagement | likes, comments, saves, shares | public page or owner analytics |
 | Production | effort against estimate, throughput, QA fail rate | the make logs |
 
-No account is linked, so retention and growth numbers arrive as analytics screenshots or exports that Ashish supplies. Each observation records its source and date.
+No account is linked, so retention and growth numbers arrive as analytics screenshots or exports that the owner supplies. Each observation records its source and date.
 
 ## Comparative signal and "outlier"
 Before any post is called an outlier, the plan defines the comparison, for example: views at least 2 times the median of this channel's previous 10 posts, with n of 10 or more. Until that many posts exist, no post is an outlier. For competitors the same rule applies (a ratio against that channel's own median with its sample size). Any statement in a channel plan that a post went viral or outperformed needs a tagged claim (OBSERVED or INFERRED, metric, ratio basis, sample size, platform, date, source id; format in [08](08-trend-and-competitor-research.md)). Without the tag it is rejected; the literal word inside a source title, quoted caption, creator name or URL is allowed.
 
 ## Honest numbers
-- Zero posts: no audience data, no tested hooks, no observations, no reviews, no `published_by_ashish` rows. The validator rejects each.
+- Zero posts: no audience data, no tested hooks, no observations, no reviews, no `published_by_owner` rows. The validator rejects each.
 - Metrics are as of an access date; they change.
 - `unknown` is written for a number that cannot be found. It is never estimated or back-filled.
 - Platform rules and algorithm claims are `[TO VERIFY]` against the official page, with the date seen.
@@ -45,7 +45,7 @@ Before any post is called an outlier, the plan defines the comparison, for examp
 Review files carry `posts_in_scope` (at most the posts published), the period, a hypothesis table with n and verdict, what changes, and approvals needed. The validator rejects a review for a channel with zero posts, a verdict of supported or refuted below 5 posts, and a scope larger than the posts published.
 
 ## Learning and memory
-What one channel teaches is a **lesson candidate**, not a studio lesson ([03](03-context-and-memory.md)). It reaches `memory/approved-lessons.md` only after two separate real projects confirm it and Ashish says yes. A channel's own metrics belong to that channel's run and its client or studio scope and never enter another context.
+What one channel teaches is a **lesson candidate**, not a studio lesson ([03](03-context-and-memory.md)). It reaches `memory/approved-lessons.md` only after two separate real projects confirm it and the owner says yes. A channel's own metrics belong to that channel's run and its client or studio scope and never enter another context.
 
 ## Paid and automated measurement
 vidIQ and similar tools are paid and never automatic: a quote, then an approved `paid_generation` row, then a recorded result. Their scores are hints, not proof. Connecting an analytics account is an `account_connection` approval and is disabled in v1.

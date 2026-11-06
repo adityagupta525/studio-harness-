@@ -32,7 +32,7 @@ A trend claim needs date, platform, geography, format, source, a measurable sign
 |---|---|---|---|---|---|
 
 ## 5. Reference DNA (measured, technique only)
-For each reference: measured numbers with the command used, then keep / swap / never. Use ~/creative-os/tools/run.sh (`palette.py`, `dna_measure.py`, `grid.py`) and ffprobe/ffmpeg. "Fast cutting" is a guess; "7 shots in 11.35 s" is a finding.
+For each reference: measured numbers with the command used, then keep / swap / never. Use ffprobe/ffmpeg and any palette, DNA or grid measuring tools from a private pack listed in the workspace profile.md (if any). "Fast cutting" is a guess; "7 shots in 11.35 s" is a finding.
 
 ## 6. Findings
 | # | Finding | Claim class | Source ids | Confidence (High / Medium / Low) |

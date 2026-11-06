@@ -2,13 +2,13 @@
 
 For any coding or creative agent working in this repo. Same rules as `CLAUDE.md`; this file is the neutral copy. Keep both short; detail lives in linked docs.
 
-**Read first:** `~/creative-os/CHARTER.md` if it exists (highest priority), then [docs/00-charter-and-scope.md](docs/00-charter-and-scope.md).
+**Read first:** the workspace `profile.md` and any charter (for example a `CHARTER.md`) from a private pack listed in the workspace profile.md, if any (highest priority), then [docs/00-charter-and-scope.md](docs/00-charter-and-scope.md).
 
 ## Loop
 Brief → research and evidence → real references examined → three different routes → human pick → treatment and shot specs → production → independent QA → approval → closeout → validated memory ([docs/01-operating-model.md](docs/01-operating-model.md)).
 
 ## Rules
-1. One Director decides. Specialists never decide brand, client, publishing, licensing, legal, financial or account matters; Ashish does.
+1. One Director decides. Specialists never decide brand, client, publishing, licensing, legal, financial or account matters; the owner does.
 2. The client or project system outranks generic taste and tool defaults. No house style.
 3. Declare the context: `studio`, `client:<name>`, `employer` or `demo`; set `practice` from the brief (`unknown` only during intake, nothing starts in it). Never mix contexts.
 4. Evidence over assertion. Unknown means `[TO VERIFY]`. Examine media before describing it.
@@ -28,7 +28,7 @@ Brief → research and evidence → real references examined → three different
 | Memory | [docs/03-context-and-memory.md](docs/03-context-and-memory.md), `memory/` |
 | New channel, zero posts (Channel Launch route) | [docs/12-channel-launch-and-growth.md](docs/12-channel-launch-and-growth.md), `skills/channel-launch/` |
 | Incidents | [docs/11-incident-and-recovery.md](docs/11-incident-and-recovery.md) |
-| creative-os alignment, tool installs | [docs/creative-os-alignment.md](docs/creative-os-alignment.md), [docs/tool-install-policy.md](docs/tool-install-policy.md) |
+| Private packs, tool installs | [docs/16-private-packs.md](docs/16-private-packs.md), [docs/tool-install-policy.md](docs/tool-install-policy.md) |
 
 ## Codex and other runtimes
 Connectors configured for a different runtime (for example `~/.codex/config.toml`) are account-bound. They **require separate verification** here; never assume they exist.

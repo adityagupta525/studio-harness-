@@ -4,7 +4,7 @@ description: Prepare titles, thumbnails, captions, platform requirements and a c
 ---
 # packaging
 
-**Owner:** packaging-lead · **Gate:** pre-G9 · **Routes to:** creative-os `graphic-design-director`, `content-studio`.
+**Owner:** packaging-lead · **Gate:** pre-G9 · **Routes to:** graphic-design and content-planning skills from a private pack listed in the workspace profile.md (if any).
 
 ## When to use
 After the cut or asset passes G8 and its rights are cleared.

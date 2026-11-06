@@ -3,12 +3,12 @@
 | Field | Value |
 |---|---|
 | Context | client:[TO FILL] |
-| Owner of the relationship | Ashish |
+| Owner of the relationship | owner (see the workspace profile.md) |
 | Created | [TO FILL] |
 | review_by | [TO FILL: YYYY-MM-DD] |
 
-## Approved canon (his yes, with date and words)
-| Item | Approved on | His words | Evidence (run id) |
+## Approved canon (the owner's yes, with date and exact words)
+| Item | Approved on | The owner's exact words | Evidence (run id) |
 |---|---|---|---|
 
 ## Client preferences (this client only)
@@ -19,7 +19,7 @@
 - The client's own guidelines or design system (path or URL). These outrank generic taste.
 
 ## Rights notes
-- Assets and licences the client supplied, with rights.csv ids. Licence decisions belong to Ashish.
+- Assets and licences the client supplied, with rights.csv ids. Licence decisions belong to the owner.
 
 ## Do not
 - Do not copy anything here into another client's scope or into studio scopes.

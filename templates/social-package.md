@@ -1,6 +1,6 @@
 # Social package — [TO FILL: title]
 
-**PREPARED, NOT POSTED.** Publishing needs a `publishing` approval row and a linked account; none is connected in v1. Ashish publishes by hand from this file.
+**PREPARED, NOT POSTED.** Publishing needs a `publishing` approval row and a linked account; none is connected in v1. The owner publishes by hand from this file.
 
 | Field | Value |
 |---|---|
@@ -21,7 +21,7 @@
 - Final file:
 
 ## Timing and calendar
-- Proposed slot and the evidence for it (source ids), or "no evidence: Ashish decides":
+- Proposed slot and the evidence for it (source ids), or "no evidence: the owner decides":
 - Calendar entry is a draft only; sending an invite is external communication.
 
 ## Platform requirements
@@ -32,4 +32,4 @@
 - [ ] Every delivered asset is cleared in rights.csv
 - [ ] Music and fonts have an approved licence decision
 - [ ] No untagged claim of virality or performance anywhere in the copy (format: docs/08)
-- [ ] Ashish has approved this package in chat (approvals.csv id: [TO FILL])
+- [ ] The owner has approved this package in chat (approvals.csv id: [TO FILL])

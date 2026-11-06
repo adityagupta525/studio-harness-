@@ -8,7 +8,7 @@ applies_when: a run's STATUS.md front matter says route channel-launch (practice
 principle: >
   A channel with zero posts starts with hypotheses, not audience truth. The studio researches, positions,
   plans, produces, packages, measures and improves it like a media team, without inventing performance data
-  and without publishing anything. Ashish publishes by hand.
+  and without publishing anything. The owner publishes by hand.
 
 workflow:
   - id: C1_channel_brief
@@ -139,14 +139,14 @@ competitor_post_evidence:
 zero_post_rules:
   - audience_data stays none and posts_published stays 0 until the channel has real posts and analytics
   - audience claims are assumptions with status hypothesis or unverified
-  - validated-own, hook status tested, calendar status published_by_ashish and reviews are impossible at zero posts
+  - validated-own, hook status tested, calendar status published_by_owner and reviews are impossible at zero posts
   - own-channel observations stay empty at zero posts
 
 required_for_complete:
   - real competitor and post URLs, each post examined from the post itself and linked to sources.csv
   - stated assumptions, at least three, including one about the audience
   - at least three distinct pillars (at most five) and at least two format cards
-  - approved lock_positioning, lock_visual_direction, lock_pillars and lock_calendar rows, with his words
+  - approved lock_positioning, lock_visual_direction, lock_pillars and lock_calendar rows, with the owner's exact words
   - a measurement plan of at least four metrics (one packaging, one retention), a comparative-signal definition, at least three decision rules, a review cadence and honest limits
   - a 30-post calendar where every idea carries the ten facts, and a 90-day strategy of three phases
   - a QA report with result PASS and a closeout (the standard run rules)

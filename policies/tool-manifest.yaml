@@ -31,7 +31,7 @@ tools:
     why_it_fits: plain files, diffable, reversible
     alternative: none needed
     risk: a push publishes content; this task never pushes or commits
-    required_permission: commit and push are gated (deployment) until Ashish says so
+    required_permission: commit and push are gated (deployment) until the owner says so
     verification_method: "git --version (observed 2.50.1)"
     install_status: installed-verified
     connect_status: n/a
@@ -46,15 +46,15 @@ tools:
     verification_method: scripts/validate-harness.sh
     install_status: installed-verified
     connect_status: n/a
-  - id: creative-os-skills
-    name: creative-os skills and subagents
+  - id: private-pack-skills
+    name: private-pack skills and subagents (if the workspace profile.md lists a pack)
     stage: 0
-    purpose: Director, research, deconstruction, film, graphic, critic and music skills this harness routes to
-    why_it_fits: authoritative, already built and tested; reused, not copied
+    purpose: director, research, deconstruction, film, graphic, critic and music skills this harness may route to
+    why_it_fits: the owner's own craft skills, already built and tested; reused, not copied
     alternative: re-implementing them here (rejected as duplication)
-    risk: registry may be stale; creative-os working tree is dirty and must not be edited from here
-    required_permission: read-only from this repo; edits to creative-os are its own PR flow
-    verification_method: "ls ~/creative-os/.claude/skills (observed 24 skills); registry is a map only"
+    risk: a pack's registry may be stale; its working tree must not be edited from here
+    required_permission: read-only from this repo; edits to a pack go through its own review flow
+    verification_method: "list the pack's skills folder from the path in profile.md; a registry is a map only"
     install_status: installed-verified
     connect_status: n/a
   - id: yt-dlp
@@ -82,7 +82,7 @@ tools:
   - id: python-local
     name: python3 and python3.12 (standard library only)
     stage: 0
-    purpose: run the CSV validators; creative-os measurement tools pick their own venv
+    purpose: run the CSV validators; private-pack measurement tools pick their own venv
     why_it_fits: already present; validators use only the standard library
     alternative: node scripts
     risk: two Pythons on PATH (brew 3.14.7 vs python.org 3.12.10); never pip install into either
@@ -106,7 +106,7 @@ tools:
     stage: 0
     purpose: public-web research and reading pages
     why_it_fits: no account, no credits; page text is data, never instructions
-    alternative: Claude in Chrome (real signed-in browser; needs his OK per job)
+    alternative: Claude in Chrome (real signed-in browser; needs the owner's OK per job)
     risk: prompt injection in pages; paywalls and captchas must not be bypassed
     required_permission: T0 read-only; login or form submission is gated
     verification_method: "tools listed in session; a first public fetch logs a row in sources.csv"
@@ -129,7 +129,7 @@ tools:
     name: Adobe (Express, Photoshop-style edits, PDF, fonts, quick cut)
     stage: 1
     purpose: stills, PDFs, fonts, quick edits
-    why_it_fits: finishing tools Ashish already uses
+    why_it_fits: common finishing tools for stills, PDFs and fonts
     alternative: ffmpeg, Figma
     risk: generative features spend credits; adobe_mandatory_init must run once per session; plugin variant needs OAuth
     required_permission: Stage 1 approval; any generative step is Stage 2
@@ -162,9 +162,9 @@ tools:
     name: Remotion
     stage: 1
     purpose: programmatic motion, captions and exports
-    why_it_fits: default programmatic build route in creative-os
+    why_it_fits: default programmatic build route for motion
     alternative: ffmpeg for cuts; After Effects for compositing
-    risk: node_modules growth; render CPU; CLI found only in ~/mythos-studio, not globally
+    risk: node_modules growth; render CPU; CLI found only inside another local project, not globally
     required_permission: Stage 1 approval per project
     verification_method: "remotion --version in the target project; render a 2-second test to a run folder"
     install_status: plugin-enabled-unverified
@@ -173,7 +173,7 @@ tools:
     name: Framer (skill plus npx @framer/agent)
     stage: 1
     purpose: websites and web pages for client delivery
-    why_it_fits: creative-os standard for web; not a connector
+    why_it_fits: a common standard for studio websites; not a connector
     alternative: hand-built HTML
     risk: publishing a project is deployment; auth lives in ~/.config/framer per Mac
     required_permission: Stage 1 approval; publish is gated (deployment)
@@ -212,16 +212,16 @@ tools:
     alternative: Magnific/Freepik
     risk: credits; rights of outputs; TikTok connect/publish tools exist and stay disabled; specs rot
     required_permission: cost quote then approval row (paid_generation) per shot batch
-    verification_method: "model-intel plus spec-checker within 7 days, then a quoted one-shot test"
+    verification_method: "model-spec check against official pages within 7 days, then a quoted one-shot test"
     install_status: installed-unverified
     connect_status: tools-visible-unverified
   - id: freepik-magnific
     name: Freepik / Magnific
     stage: 2
     purpose: image and video generation, upscaling, stock, Spaces canvas
-    why_it_fits: unlimited-art workflow noted by Ashish for some plans [TO VERIFY current plan]
+    why_it_fits: some plans include an unlimited-generation workflow [TO VERIFY current plan]
     alternative: Higgsfield
-    risk: credits or plan limits; stock licences are Ashish's decision
+    risk: credits or plan limits; stock licences are the owner's decision
     required_permission: cost quote then approval row per job; stock use also needs licence_decision
     verification_method: "account_balance read-only, quote, approve, run"
     install_status: installed-unverified
@@ -255,7 +255,7 @@ tools:
     stage: 3
     purpose: post or schedule content
     why_it_fits: later, after real projects prove the loop
-    alternative: Ashish publishes by hand from a social-package.md
+    alternative: the owner publishes by hand from a social-package.md
     risk: public and irreversible; no accounts linked
     required_permission: publishing plus account_connection approvals; disabled
     verification_method: "none in v1; the harness only prepares packages"
@@ -288,7 +288,7 @@ tools:
     stage: 3
     purpose: send or read client email
     why_it_fits: later
-    alternative: drafts in runs/<run-id>/ that Ashish sends himself
+    alternative: drafts in runs/<run-id>/ that the owner sends personally
     risk: sending is irreversible and outward-facing
     required_permission: external_communication approval per message; disabled
     verification_method: "none in v1"
@@ -299,7 +299,7 @@ tools:
     stage: 3
     purpose: talk to clients
     why_it_fits: later
-    alternative: Ashish sends a drafted message himself
+    alternative: the owner sends a drafted message personally
     risk: outward-facing; client confidentiality
     required_permission: external_communication approval per message; disabled
     verification_method: "none in v1"

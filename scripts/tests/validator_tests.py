@@ -22,13 +22,13 @@ def build_fixture(root):
             fh.write(text)
 
     w("STATUS.md", "---\nrun_id: 2026-11-04-channel-fixture\ncontext: studio\npractice: content\nstatus: complete\n"
-                   "route: channel-launch\ndirector: Ashish\ncreated: 2026-11-04\nupdated: 2026-11-04\n---\n# STATUS\n\n"
+                   "route: channel-launch\ndirector: owner\ncreated: 2026-11-04\nupdated: 2026-11-04\n---\n# STATUS\n\n"
                    "## Status\nComplete (test fixture).\n\n## Deliverables\nAll channel files.\n\n## Evidence\n9 posts, 3 competitors.\n\n"
                    "## Verification\nchecker run.\n\n## Risks\nAssumptions untested.\n\n## Next action\nNone.\n")
     w("brief.md", "# Project brief\n\n| Field | Value |\n|---|---|\n| Run | runs/2026-11-04-channel-fixture/ |\n| Context | studio |\n"
-                  "| Practice | content |\n| Owner | Ashish |\n| Date | 2026-11-04 |\n\n## 1. Brief in his words\n> fixture\n")
+                  "| Practice | content |\n| Owner | owner |\n| Date | 2026-11-04 |\n\n## 1. Brief in the owner's words\n> fixture\n")
     w("decision-log.md", "# Decision log\n\n## Decisions\n| Id | Date | Decision | Decided by | Basis | Affects |\n|---|---|---|---|---|---|\n"
-                         "| D-01 | 2026-11-04 | fixture | Ashish | test | all |\n")
+                         "| D-01 | 2026-11-04 | fixture | owner | test | all |\n")
     w("qa-report.md", "# QA report\n\nresult: PASS\n\nreviewer differs from producer (fixture).\n")
     w("closeout.md", "# Closeout\n\nfixture\n")
 
@@ -124,7 +124,7 @@ Plain, dry, never smug. Do: say what failed. Do-not: promise miracles.
 ## What we will not do
 - Reuse any creator's footage.
 
-## Locks needed from Ashish
+## Locks needed from the owner
 All four granted in this fixture.
 """)
     for i, (pid, nm, prom, mom) in enumerate([("P1", "Failure first", "See what goes wrong before the fix", "after a bad attempt"),
@@ -191,7 +191,7 @@ Contrast above 4.5, captions on every post.
 ## Metric definitions
 | Metric id | Name | Definition | Source | Cadence | Type | Decision it informs |
 |---|---|---|---|---|---|---|
-| M1 | Views vs own median | views divided by median of previous 10 posts | platform analytics supplied by Ashish | per post | packaging | which hooks to keep |
+| M1 | Views vs own median | views divided by median of previous 10 posts | platform analytics supplied by the owner | per post | packaging | which hooks to keep |
 | M2 | Average view duration | seconds watched divided by length | owner analytics | weekly | retention | which formats to repeat |
 | M3 | Follower change | net followers per week | owner analytics | weekly | growth | whether the promise lands |
 | M4 | Effort per post | hours logged against S, M, L | make log | per post | production | calendar capacity |
@@ -375,7 +375,7 @@ def _(r): note(r, "The post exploded " + tag(n="0"))
 def _(r): drop_lines(r, "approvals.csv", "AP-004")
 @reject("lock_positioning approval only pending", "no approved lock_positioning")
 def _(r): sub(r, "approvals.csv", "AP-001,2026-11-04,lock_positioning,lock request,,approved,2026-11-04,yes lock it,,", "AP-001,2026-11-04,lock_positioning,lock request,,pending,,,,")
-@reject("lock approval without his words", "no approved lock_positioning")
+@reject("lock approval without the owner's words", "no approved lock_positioning")
 def _(r): sub(r, "approvals.csv", "approved,2026-11-04,yes lock it,,\nAP-002", "approved,2026-11-04,,,\nAP-002")
 @reject("only two pillars", "need at least 3 distinct pillars")
 def _(r): os.remove(os.path.join(r, RUN, "pillars", "P3.md"))

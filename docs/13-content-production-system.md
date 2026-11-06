@@ -1,6 +1,6 @@
 # 13 — Content production system
 
-How a post goes from calendar idea to something Ashish can publish, repeatedly and with quality control. Applies to every channel post; the AI-film pipeline ([09](09-ai-film-production-pipeline.md)) is used when a post is a generated film or a film component.
+How a post goes from calendar idea to something the owner can publish, repeatedly and with quality control. Applies to every channel post; the AI-film pipeline ([09](09-ai-film-production-pipeline.md)) is used when a post is a generated film or a film component.
 
 ## The six stages
 ```
@@ -27,16 +27,16 @@ A format card fixes the structure, hook pattern, proof, making method and packag
 Title, hook, thumbnail or cover, caption and CTA are designed with the post, using the packaging rules in `channel-style-system.md`. Each rule states its basis. A title or thumbnail score from a tool is a hint, never proof, and a paid scorer needs a quote and an approved row. Platform requirements (ratio, length, captions, AI-content disclosure) are read from the platform's current official page and dated; until then they are `[TO VERIFY]`.
 
 ## Making: tools by stage
-Stage 0 first: `ffmpeg`, Remotion and After Effects (once verified), Blender previz (once integrated), creative-os builders (`graphic-design-director`, `ai-film-prompt-director`, `music-studio`). Stage 2 tools (Higgsfield, Freepik/Magnific, Fal, paid music or voice) only with a quote and an approved `paid_generation` row per batch; the post card records `spend_approval_id`. See [04](04-tool-and-permission-policy.md).
+Stage 0 first: `ffmpeg`, Remotion and After Effects (once verified), Blender previz (once integrated), graphic, film and music builder skills from a private pack listed in the workspace profile.md (if any). Stage 2 tools (Higgsfield, Freepik/Magnific, Fal, paid music or voice) only with a quote and an approved `paid_generation` row per batch; the post card records `spend_approval_id`. See [04](04-tool-and-permission-policy.md).
 
 ## Rights, every post
-Each asset, track and font has a row in `rights.csv`. Competitor posts are analysis-only: their footage, writing, music and visual identity are not reused, not fed to a model and not delivered; the validator rejects a rights row that does. Music reuse of a specific track is flagged for Ashish's licensing decision.
+Each asset, track and font has a row in `rights.csv`. Competitor posts are analysis-only: their footage, writing, music and visual identity are not reused, not fed to a model and not delivered; the validator rejects a rights row that does. Music reuse of a specific track is flagged for the owner's licensing decision.
 
 ## QA gate
 The reviewer is not the maker (`made_by` and `qa_by` differ). QA checks: the one-line promise is delivered, the hook matches the post, packaging matches the rules, technical delivery (codec, duration, loudness) is measured with commands ([05](05-verification-and-qa.md)), rights are in order, no banned wording. A failed QA returns the post to the stage that can fix it.
 
-## Handoff to Ashish
-A ready post is delivered as a package ([social-package template](../templates/social-package.md)): files, title options, caption, thumbnail or cover, timing with its basis, rights rows, checklist. It is stamped **PREPARED, NOT POSTED**. He publishes by hand and records `published_by_ashish` in the calendar and the real numbers in `channel-metrics.md` ([14](14-channel-measurement-and-learning.md)).
+## Handoff to the owner
+A ready post is delivered as a package ([social-package template](../templates/social-package.md)): files, title options, caption, thumbnail or cover, timing with its basis, rights rows, checklist. It is stamped **PREPARED, NOT POSTED**. The owner publishes by hand and records `published_by_owner` in the calendar and the real numbers in `channel-metrics.md` ([14](14-channel-measurement-and-learning.md)).
 
 ## Throughput and honesty
 Record actual effort against the S/M/L estimate in the make log; the review uses it to adjust the calendar. Never back-fill. A missed date is recorded as missed, and the calendar is revised through a review, not silently.

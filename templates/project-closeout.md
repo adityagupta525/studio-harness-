@@ -7,7 +7,7 @@
 | Final status | complete / stopped / partial — [TO FILL] |
 
 ## 1. What shipped
-(file paths, formats, where Ashish keeps the finals)
+(file paths, formats, where the owner keeps the finals)
 
 ## 2. Against the brief
 - Success measure and what happened:
@@ -24,7 +24,7 @@
 
 ## 5. Rights
 - Delivered assets and their licence decisions (rights.csv ids):
-- Open licensing questions for Ashish:
+- Open licensing questions for the owner:
 
 ## 6. What went wrong and what we learned
 - Failures, with the shot or file:

@@ -3,7 +3,7 @@
 Competitors are analysed from **actual posts or videos that were watched or whose frames were viewed**, never from a bio or title alone. Post-level evidence lives in `competitor-posts.csv` (columns in `templates/competitor-post-ledger.csv`); this page is the map across them. Every statement is labelled: OBSERVED (seen in a post), INFERRED (our reading), UNKNOWN (not established).
 
 ## Method and access
-- How each post was examined (video watched, frames viewed, transcript read, file supplied by Ashish) and with which tool:
+- How each post was examined (video watched, frames viewed, transcript read, file supplied by the owner) and with which tool:
 - Access limits: public only, Instagram public/private and rate limits stated, anything blocked listed under Unknowns and limits:
 - Paid research used (vidIQ and similar): none unless an approved paid_generation row exists.
 

@@ -8,8 +8,8 @@ A new channel has **zero posts**. This route builds the system that researches, 
 - **Facts, interpretation and unknowns stay separate** (OBSERVED, INFERRED, H, UNKNOWN).
 - **No performance claim without a comparative signal.** A statement that a post went viral or outperformed is a claim: it needs a `CLAIM[...]` tag (label OBSERVED or INFERRED, metric, ratio basis, sample size, platform, date, source id) on the same line, or it is rejected. The literal word inside a source title, quoted caption, creator name or URL is not a claim. Format and rules: [08](08-trend-and-competitor-research.md).
 - **Style, not theft.** Structure and technique are learned. A creator's footage, writing, music and visual identity are never reused.
-- **Humans lock, agents prepare.** Positioning, visual direction, pillars and formats, the first calendar and any production spend each need Ashish's approval row.
-- **Prepared, not posted.** No account is linked. Ashish publishes by hand from a prepared package.
+- **Humans lock, agents prepare.** Positioning, visual direction, pillars and formats, the first calendar and any production spend each need the owner's approval row.
+- **Prepared, not posted.** No account is linked. The owner publishes by hand from a prepared package.
 
 ## The route
 Opened as a run with `route: channel-launch` and `practice: content` ([runs/README.md](../runs/README.md)). Twelve steps:
@@ -51,7 +51,7 @@ A post that cannot be pulled (private, rate-limited, blocked) is named under Unk
 1. Read across the posts and write patterns (INFERRED, citing post ids).
 2. Find whitespace: what the audience moments need that the patterns do not give.
 3. State the positioning as one hypothesis: for this audience moment, this channel promises this, unlike these patterns, because of this evidence, and we will know it is working when this metric moves. Each part becomes an assumption with a test.
-4. Pressure-test with a blind critic and a contrarian pass. Show Ashish the best option, the evidence and the strongest case against it, then request `lock_positioning`.
+4. Pressure-test with a blind critic and a contrarian pass. Show the owner the best option, the evidence and the strongest case against it, then request `lock_positioning`.
 
 ## Programme
 - **Pillars (3 to 5):** distinct promises and audience moments, each tied to evidence and a metric. Two pillars that promise the same thing are one pillar.
@@ -71,7 +71,7 @@ Growth levers are **hypotheses to test**, one at a time: hook pattern, packaging
 ## Approvals and limits
 | Action | Rule |
 |---|---|
-| Lock positioning, pillars and formats, visual direction, calendar | an approved `lock_*` row with his words before the artifact is marked locked |
+| Lock positioning, pillars and formats, visual direction, calendar | an approved `lock_*` row with the owner's exact words before the artifact is marked locked |
 | Production spend (generation, stock, paid tools) | quote, then an approved `paid_generation` row per batch |
 | vidIQ or any paid research | never automatic; quote first |
 | Publishing, account connection, email, any message | not part of v1; each needs its own approval and is disabled |
@@ -79,4 +79,4 @@ Growth levers are **hypotheses to test**, one at a time: hook pattern, packaging
 Rows live in `runs/<run-id>/approvals.csv` ([07](07-publishing-and-approval-policy.md)).
 
 ## What "complete" means
-`scripts/check-channel-plan.sh` fails a plan marked `complete` without: real competitor and post URLs, stated assumptions (at least three, one about the audience), at least three distinct pillars, the four lock approvals with his words, a measurement plan, a 30-post calendar with all ten facts per idea, and a three-phase strategy. The standard rules still apply (independent QA PASS, closeout). See [13](13-content-production-system.md) for making the posts and [14](14-channel-measurement-and-learning.md) for measuring and improving.
+`scripts/check-channel-plan.sh` fails a plan marked `complete` without: real competitor and post URLs, stated assumptions (at least three, one about the audience), at least three distinct pillars, the four lock approvals with the owner's exact words, a measurement plan, a 30-post calendar with all ten facts per idea, and a three-phase strategy. The standard rules still apply (independent QA PASS, closeout). See [13](13-content-production-system.md) for making the posts and [14](14-channel-measurement-and-learning.md) for measuring and improving.

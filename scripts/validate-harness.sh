@@ -79,7 +79,6 @@ docs/03-context-and-memory.md docs/04-tool-and-permission-policy.md docs/05-veri
 docs/06-source-rights-and-licensing.md docs/07-publishing-and-approval-policy.md
 docs/08-trend-and-competitor-research.md docs/09-ai-film-production-pipeline.md
 docs/10-blender-cinematography-pipeline.md docs/11-incident-and-recovery.md
-docs/audits/2026-11-04-existing-capability-audit.md docs/audits/2026-11-04-studio-harness-gap-analysis.md
 agents/director.md agents/trend-scout.md agents/reference-forensics.md agents/creative-producer.md
 agents/ai-film-lead.md agents/blender-cinematographer.md agents/motion-editor.md agents/packaging-lead.md
 agents/qa-rights-reviewer.md agents/memory-curator.md
@@ -93,7 +92,7 @@ templates/content-calendar.md templates/post-production-card.md templates/channe
 docs/12-channel-launch-and-growth.md docs/13-content-production-system.md docs/14-channel-measurement-and-learning.md
 policies/channel-launch.yaml scripts/check-channel-plan.sh scripts/test-validators.sh scripts/tests/validator_tests.py
 policies/secret-scan-allowlist.yaml scripts/scan-secrets.sh scripts/sanitize-captures.sh
-docs/creative-os-alignment.md docs/tool-install-policy.md
+docs/16-private-packs.md docs/tool-install-policy.md
 templates/project-brief.md templates/research-pack.md templates/source-ledger.csv templates/competitor-card.md
 templates/creative-route.md templates/treatment.md templates/shot-spec.md templates/asset-rights-ledger.csv
 templates/social-package.md templates/qa-report.md templates/decision-log.md templates/project-closeout.md
@@ -156,7 +155,7 @@ for d in skills/*/; do
   grep -q '^## Steps' "$f" || fail "$f: no '## Steps' section"
   grep -q '^## Never' "$f" || fail "$f: no '## Never' section"
 done
-[ "$scount" -eq 17 ] && ok "17 skills, front matter and sections present" || fail "expected 17 skills, found $scount"
+[ "$scount" -eq 19 ] && ok "19 skills, front matter and sections present" || fail "expected 19 skills, found $scount"
 
 # ---------------------------------------------------------------- 5. templates and run template in sync
 section "4b. plugin packaging (Claude Code adapter)"
@@ -188,6 +187,28 @@ for c in evals/*/; do [ "$c" = "evals/results/" ] && continue; [ -f "$c/prompt.m
 
 python3 -c "import json;d=json.load(open('sources/registry.json'));assert all(s['url'].startswith('http') and s['tier'] in (1,2,3) and s['cadence'] in ('daily','weekly','monthly','quarterly') for s in d['sources'])" && ok "sources/registry.json: every source has a URL, tier 1-3 and a cadence" || fail "sources/registry.json has a source without URL, tier or cadence"
 [ -f templates/knowledge-card.md ] && ok "knowledge card template present" || fail "templates/knowledge-card.md missing"
+
+section "4d. publish lint (no personal data in the product)"
+WSD="${CLAUDE_PLUGIN_OPTION_WORKSPACE_DIR:-${STUDIO_HARNESS_WORKSPACE:-$HOME/StudioHarness}}"
+if out=$(python3 - "$WSD" <<'PY'
+import os, re, subprocess, sys
+ws = os.path.expanduser(sys.argv[1])
+terms = [r'~/creative-os', r'/Users/[A-Za-z0-9._-]+/', r'/home/[A-Za-z0-9._-]+/']
+bl = os.path.join(ws, 'publish-blocklist.txt')  # private, per owner: names, employers, channels that must never ship
+if os.path.exists(bl):
+    terms += [re.escape(t.strip()) for t in open(bl, encoding='utf-8') if t.strip() and not t.startswith('#')]
+files = subprocess.run(['git', 'ls-files'], capture_output=True, text=True).stdout.split()
+skip = re.compile(r'^(runs/20|calibration/[^/]+/runs/|\.claude-plugin/|scripts/validate-harness\.sh$)')  # the lint's own patterns live in this file
+hits = []
+for f in files:
+    if skip.match(f) or not f.endswith(('.md', '.yaml', '.yml', '.json', '.py', '.sh', '.csv', '.txt')): continue
+    t = open(f, encoding='utf-8', errors='ignore').read()
+    for rx in terms:
+        m = re.search(rx, t, re.I)
+        if m: hits.append(f'{f}: "{m.group(0)}"'); break
+print('\n'.join(hits)); sys.exit(1 if hits else 0)
+PY
+); then ok "no private paths or blocklisted terms in tracked files (blocklist: \$WORKSPACE/publish-blocklist.txt)"; else printf '%s\n' "$out" | sed 's/^/      /'; fail "personal or private content in tracked files: generalise it (see docs/16-private-packs.md)"; fi
 
 section "5. templates and runs/_template stay in sync"
 cmp -s templates/project-brief.md runs/_template/brief.md && ok "brief template matches runs/_template/brief.md" || fail "templates/project-brief.md differs from runs/_template/brief.md"
@@ -242,7 +263,7 @@ ids = []
   ids << t['id']
 end
 ids.select { |i| ids.count(i) > 1 }.uniq.each { |i| errs << "tool-manifest.yaml: duplicate id #{i}" }
-{ 0 => %w[claude-code git filesystem-shell creative-os-skills yt-dlp ffmpeg],
+{ 0 => %w[claude-code git filesystem-shell private-pack-skills yt-dlp ffmpeg],
   1 => %w[figma adobe mobbin blender-lab-mcp remotion framer],
   2 => %w[vidiq higgsfield freepik-magnific fal],
   3 => %w[social-publishing calendar crm email client-messaging] }.each do |stage, want|

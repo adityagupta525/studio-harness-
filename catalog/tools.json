@@ -24,7 +24,7 @@
     "voice-producer",
     "qa-rights-reviewer"
    ],
-   "can": "frames, contact sheets, cuts, loudness (ebur128), encodes"
+   "can": "frames, contact sheets, cuts, loudness (ebur128), encodes; scripts/video-measure.py: cuts at two thresholds, shot length, first-3 s cuts, loudness, words per second, contact sheet"
   },
   {
    "id": "python3",

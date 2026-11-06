@@ -10,7 +10,7 @@ reviewer: [TO FILL]
 A review compares what the plan predicted with what was observed. It cannot exist before the channel has posts. A verdict of supported or refuted needs at least 5 posts of evidence; otherwise the verdict is inconclusive.
 
 ## Data used
-Where each number came from (platform analytics supplied by Ashish, public pages), with dates. Nothing is estimated and nothing is back-filled:
+Where each number came from (platform analytics supplied by the owner, public pages), with dates. Nothing is estimated and nothing is back-filled:
 
 ## Hypothesis check
 | Assumption or rule id | Prediction | Observed | n | Verdict | Next step |

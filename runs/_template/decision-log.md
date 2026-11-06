@@ -3,12 +3,12 @@
 Append only; never edit a past row. One Director owns decisions. A specialist may propose, never decide brand, client, publishing, licensing, legal, financial or account matters.
 
 ## Decisions
-| Id | Date | Decision | Decided by | Basis (source ids, his exact words, measurements) | Affects |
+| Id | Date | Decision | Decided by | Basis (source ids, the owner's exact words, measurements) | Affects |
 |---|---|---|---|---|---|
 | D-01 | | | | | |
 
 ## Options rejected
-| Id | Option | Why rejected | His words (if any) |
+| Id | Option | Why rejected | The owner's exact words (if any) |
 |---|---|---|---|
 
 ## Accepted risks

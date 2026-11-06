@@ -1,24 +1,24 @@
 # 02 — Agent roles
 
-Ten role cards in `agents/`. They are **cards, not auto-registered subagents**: nothing here changes `~/.claude/agents`. To use one as a Claude Code subagent, review it and copy or symlink it into `.claude/agents/` yourself (that is a `tool_install_or_update`-class change and needs Ashish's yes).
+Ten role cards in `agents/`. They are **cards, not auto-registered subagents**: nothing here changes `~/.claude/agents`. To use one as a Claude Code subagent, review it and copy or symlink it into `.claude/agents/` yourself (that is a `tool_install_or_update`-class change and needs the owner's yes).
 
 Each card defines: mission, inputs it may read, outputs it must create, eventual tools, forbidden actions, verification required, escalation conditions, exact handoff format.
 
-| Agent | Mission in one line | Closest creative-os capability (reused, not copied) |
+| Agent | Mission in one line | Closest private-pack capability, if a private pack listed in the workspace profile.md provides one (reused, not copied) |
 |---|---|---|
-| [director](../agents/director.md) | owns decisions, runs the loop, records approvals | `creative-pipeline`, `autopilot`, `studio-manager` |
-| [trend-scout](../agents/trend-scout.md) | dated, measured trend and competitor evidence | `design-intel`, `scout` |
-| [reference-forensics](../agents/reference-forensics.md) | measured DNA of real references | `video-reference-analyzer`, `pinterest-visual-research`, `deconstructor`, `design-forensics` |
-| [creative-producer](../agents/creative-producer.md) | three routes, treatment, story bible, content routes | `story-architect`, `brand-strategy`, `creative-pipeline` |
-| [ai-film-lead](../agents/ai-film-lead.md) | shot list, shot specs, generation plan | `ai-film-prompt-director`, `model-intel`, `visual-library` |
-| [blender-cinematographer](../agents/blender-cinematographer.md) | deterministic cameras, lenses, light, previews | `mac-native-control`; future official Blender Lab MCP |
-| [motion-editor](../agents/motion-editor.md) | edit, captions, sound, exports | `ffmpeg`, Remotion, `music-studio`, `mac-native-control` |
-| [packaging-lead](../agents/packaging-lead.md) | thumbnails, titles, social package, calendar draft | `graphic-design-director`, `content-studio` |
-| [qa-rights-reviewer](../agents/qa-rights-reviewer.md) | independent QA, source and rights review | `creative-critic`, `critic-judge`, `product-qa` |
-| [memory-curator](../agents/memory-curator.md) | candidate lessons, validated promotion, expiry | `lessons/`, `taste-judge` (read-only) |
+| [director](../agents/director.md) | owns decisions, runs the loop, records approvals | a director, planner or studio-manager skill |
+| [trend-scout](../agents/trend-scout.md) | dated, measured trend and competitor evidence | a scouting skill or scout agent |
+| [reference-forensics](../agents/reference-forensics.md) | measured DNA of real references | video and still deconstruction skills, a deconstructor agent, a design-forensics skill |
+| [creative-producer](../agents/creative-producer.md) | three routes, treatment, story bible, content routes | story, brand-strategy and director skills |
+| [ai-film-lead](../agents/ai-film-lead.md) | shot list, shot specs, generation plan | film-prompt, model-spec and visual-library skills |
+| [blender-cinematographer](../agents/blender-cinematographer.md) | deterministic cameras, lenses, light, previews | a native-app automation skill; future official Blender Lab MCP |
+| [motion-editor](../agents/motion-editor.md) | edit, captions, sound, exports | `ffmpeg`, Remotion, a music skill, a native-app automation skill |
+| [packaging-lead](../agents/packaging-lead.md) | thumbnails, titles, social package, calendar draft | graphic-design and content-planning skills |
+| [qa-rights-reviewer](../agents/qa-rights-reviewer.md) | independent QA, source and rights review | a critic skill, a blind critic agent, a UI QA skill |
+| [memory-curator](../agents/memory-curator.md) | candidate lessons, validated promotion, expiry | a lessons store, a taste judge (read-only) |
 
 ## Decision rights
-| Decision | Ashish | Director | Specialists |
+| Decision | Owner | Director | Specialists |
 |---|---|---|---|
 | Brand, positioning, studio name | decides | prepares options | may propose, never decide |
 | Which route to build | picks | presents best two | score and critique |
@@ -43,7 +43,7 @@ For a run with `route: channel-launch` ([docs/12](12-channel-launch-and-growth.m
 | plan and post QA | qa-rights-reviewer | `qa-report.md` with `scripts/check-channel-plan.sh` exit code |
 | C12 measurement and review | memory-curator | `channel-metrics.md` custody, `reviews/`, lesson candidates |
 
-Handoff additions for channel runs (the block itself does not change): `deliverables` lists the channel files by name; `evidence` gives counts (competitors, posts analysed, assumptions, pillars, calendar rows) and source or post ids; `verification` quotes the exit code of `scripts/check-channel-plan.sh`; `risks` names the assumptions still untested; `open_decisions` names the lock approval Ashish must give next.
+Handoff additions for channel runs (the block itself does not change): `deliverables` lists the channel files by name; `evidence` gives counts (competitors, posts analysed, assumptions, pillars, calendar rows) and source or post ids; `verification` quotes the exit code of `scripts/check-channel-plan.sh`; `risks` names the assumptions still untested; `open_decisions` names the lock approval the owner must give next.
 
 ## Independence rules
 - **The producer never signs off its own work.** `qa-rights-reviewer` must be a different agent run from the one that produced the artifact; the QA report names both.
@@ -65,7 +65,7 @@ deliverables: <file paths created or changed>
 evidence: <source ids, measurement commands, reference counts>
 verification: <what was checked and how; what was NOT checked>
 risks: <list, [TO VERIFY] items included>
-open_decisions: <questions only the Director or Ashish can answer>
+open_decisions: <questions only the Director or the owner can answer>
 next_action: <one line and its owner>
 ```
 

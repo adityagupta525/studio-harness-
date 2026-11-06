@@ -1,6 +1,6 @@
 # 06 — Source, rights and licensing
 
-Vocabulary is adopted from `~/creative-os/standards/evidence-protocol.md`. Four tags answer four different questions; do not merge them.
+Vocabulary is adopted from the evidence protocol of a private pack listed in the workspace profile.md (if any). Four tags answer four different questions; do not merge them.
 
 | Question | Tag set | Written in |
 |---|---|---|
@@ -12,11 +12,11 @@ Vocabulary is adopted from `~/creative-os/standards/evidence-protocol.md`. Four 
 ## Claim classes
 | Class | Means | Minimum pointer |
 |---|---|---|
-| `OBSERVED` | seen in an artefact we captured or he supplied | file and region, frame or timecode |
+| `OBSERVED` | seen in an artefact we captured or the owner supplied | file and region, frame or timecode |
 | `MEASURED` | a number from a tool | tool, input, settings |
 | `SOURCE-VERIFIED` | found in source, config, docs we can read | path and line, or selector |
 | `PUBLICLY-DOCUMENTED` | stated by an attributable public source | full URL and date read |
-| `OWNER-STATED` | Ashish or the client said it | date and exact words |
+| `OWNER-STATED` | the owner or the client said it | date and exact words |
 | `INFERRED` | reasoned from several signals | the signals and the strongest alternative |
 | `RECOMMENDED` | our proposal | none; says nothing about the target |
 | `UNKNOWN` | not established | what would establish it |
@@ -34,11 +34,11 @@ One row per asset the project touches: references, client supplies, generated ou
 ## Style, not theft
 Take technique, structure, grade and pacing from references; build something new. Never reproduce a creator's footage, frames or signature look, and never present their work as ours. A reference is analysed; it is not copied. Downloaded references live in git-ignored `runs/<run-id>/refs/`; their full URLs live in `sources.csv`.
 
-## Licensing is Ashish's call
-Agents write `unknown` or `pending`, never `cleared`, until he records a licence decision. This includes music tracks (reuse of a specific track is flagged, not assumed), fonts, stock, talent, locations and generated-output terms of any tool. The studio does not add credit lines on its own initiative; credits and licence wording are decisions for him and his legal or compliance advisors. This harness gives no legal advice.
+## Licensing is the owner's call
+Agents write `unknown` or `pending`, never `cleared`, until the owner records a licence decision. This includes music tracks (reuse of a specific track is flagged, not assumed), fonts, stock, talent, locations and generated-output terms of any tool. The studio does not add credit lines on its own initiative; credits and licence wording are decisions for the owner and their legal or compliance advisors. This harness gives no legal advice.
 
 ## AI-made references and outputs
-An AI-made reference is labelled `AI-made` and is never counted as primary evidence of how real work looks. An AI-generated asset the studio produced is `own` only if the generating tool's terms allow it, which is a licence decision for Ashish; until then it is `unknown`.
+An AI-made reference is labelled `AI-made` and is never counted as primary evidence of how real work looks. An AI-generated asset the studio produced is `own` only if the generating tool's terms allow it, which is a licence decision for the owner; until then it is `unknown`.
 
 ## Public vs private
-Only public content is accessed. Private accounts, stories, gated or DRM content are not accessed, and paywalls, captchas and member walls are never bypassed. If a source is blocked, the report says so and, per Ashish's standing OK in creative-os (19 Oct 2026), the live session may use his Chrome **read-only**, without following, posting or buying; this is not available to subagents or unattended runs.
+Only public content is accessed. Private accounts, stories, gated or DRM content are not accessed, and paywalls, captchas and member walls are never bypassed. If a source is blocked, the report says so and, only if the owner has recorded a standing OK in the workspace profile.md, the live session may use the owner's Chrome **read-only**, without following, posting or buying; this is not available to subagents or unattended runs.

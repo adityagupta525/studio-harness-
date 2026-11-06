@@ -8,19 +8,19 @@ classes:
     writer: the agent working the run
     lifetime: until closeout, then frozen as the record
   - id: approved_canon
-    holds: studio or client facts Ashish has approved (positioning, locked looks, bibles)
+    holds: studio or client facts the owner has approved (positioning, locked looks, bibles)
     location: memory/studio-scopes/ and memory/client-scopes/
-    writer: memory-curator, after Ashish's yes
+    writer: memory-curator, after the owner's yes
     lifetime: until superseded; superseded items move to rejected_or_expired
   - id: client_preferences
     holds: preferences of one client or project
     location: memory/client-scopes/<client>.md
-    writer: memory-curator, after Ashish's yes
+    writer: memory-curator, after the owner's yes
     scope_rule: never applied to another client or to studio work
   - id: validated_lessons
     holds: craft or process rules proven on two separate real projects
     location: memory/approved-lessons.md
-    writer: memory-curator, after Ashish's yes
+    writer: memory-curator, after the owner's yes
     promotion: see promotion
   - id: rejected_or_expired
     holds: assumptions that were wrong, superseded or past their review date
@@ -31,7 +31,7 @@ classes:
 promotion:
   min_independent_real_projects: 2          # separate projects, separate briefs
   excluded_from_count: [demo, fictional, same-client-repeat, employer-context-for-studio-lessons]
-  needs: evidence pointers in each project's closeout.md plus Ashish's yes in chat
+  needs: evidence pointers in each project's closeout.md plus the owner's yes in chat
   until_then: the item stays in memory/lesson-candidates.md, labelled single-observation
 
 contexts:
@@ -44,8 +44,8 @@ channel_learning:
   review_files: runs/<run-id>/reviews/ feed memory/lesson-candidates.md through the memory-curator
 
 external_stores:
-  taste_ledger: ~/creative-os/taste/ashish.md   # read-only here; only a live reply from Ashish writes it, in creative-os
-  lessons: ~/creative-os/lessons/LESSONS.md     # read-only here
+  taste_ledger: workspace taste/ or a private pack listed in the workspace profile.md (if any)   # read-only here; only a live reply from the owner writes it
+  lessons: a private pack's lessons file, if the profile lists one     # read-only here
 
 never_store: [secrets, tokens, cookies, env values, employer-only data, private client data in studio scopes, unverified claims presented as facts]
-review_cadence: each scope file carries a review_by date; the curator moves overdue items to rejected_or_expired or asks Ashish
+review_cadence: each scope file carries a review_by date; the curator moves overdue items to rejected_or_expired or asks the owner

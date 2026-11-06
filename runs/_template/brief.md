@@ -7,12 +7,12 @@
 | Run | runs/[TO FILL: YYYY-MM-DD-slug]/ |
 | Context | [TO FILL: studio / client:<name> / employer / demo] |
 | Practice | [TO FILL: unknown until the brief arrives, then brand / product / web / motion / film / graphic / content / music / research] |
-| Owner | Ashish |
+| Owner | owner (see the workspace profile.md) |
 | Date | [TO FILL] |
 
 Practice stays `unknown` only during intake (STATUS status `draft` or `blocked`). It must become a concrete value before any research, routes or production, and it must match the front matter of STATUS.md. The validator enforces both.
 
-## 1. Brief in his words
+## 1. Brief in the owner's exact words
 > [TO FILL: exact words, unedited]
 
 ## 2. Business logic
@@ -24,7 +24,7 @@ Practice stays `unknown` only during intake (STATUS status `draft` or `blocked`)
 ## 3. Style source
 The client or project system outranks generic taste and tool defaults. Name it here:
 - Brand / system / guidelines: [TO FILL, or "none yet: derive from the client's idea, product, audience and moment"]
-- Studio taste ledger consulted (read-only, ~/creative-os/taste/ashish.md): [TO FILL: yes/no, which entries]
+- Studio taste ledger consulted (read-only, workspace taste/ or a private pack listed in profile.md): [TO FILL: yes/no, which entries]
 
 ## 4. Constraints
 - Format, ratio, length, platform:
@@ -33,9 +33,9 @@ The client or project system outranks generic taste and tool defaults. Name it h
 - Must use / must avoid:
 
 ## 5. Rights and licensing
-- Assets supplied by the client or Ashish (each needs a row in rights.csv):
+- Assets supplied by the client or the owner (each needs a row in rights.csv):
 - Music, fonts, stock, talent, locations: [TO VERIFY]
-- Licensing decisions belong to Ashish; agents write "unknown" or "pending".
+- Licensing decisions belong to the owner; agents write "unknown" or "pending".
 
 ## 6. Known unknowns
 - [TO VERIFY]

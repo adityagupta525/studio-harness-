@@ -1,11 +1,11 @@
 # Tool install policy and plans — 2026-11-04
 
-Companion to [creative-os-alignment.md](creative-os-alignment.md) and to the staged tool policy in [04](04-tool-and-permission-policy.md) (`policies/tool-manifest.yaml`). **Nothing was installed, enabled, connected or modified while writing this page.** Only dry-runs and read-only inspection were run.
+Companion to [16-private-packs.md](16-private-packs.md) and to the staged tool policy in [04](04-tool-and-permission-policy.md) (`policies/tool-manifest.yaml`). **Nothing was installed, enabled, connected or modified while writing this page.** Only dry-runs and read-only inspection were run.
 
 ## Rules for every install
-1. **No blind installs.** Every install is a `tool_install_or_update` approval row from Ashish first ([07](07-publishing-and-approval-policy.md)).
+1. **No blind installs.** Every install is a `tool_install_or_update` approval row from the owner first ([07](07-publishing-and-approval-policy.md)).
 2. **Dry-run first.** Record what would be installed, upgraded or downgraded; stop on any downgrade or conflict.
-3. **Scope.** Project scope or a standalone environment. Never `npm -g`, system `pip`, or a global skill installer. Never touch the existing creative-os environment (its analyzer venv, `node_modules`, plugins) without his approval.
+3. **Scope.** Project scope or a standalone environment. Never `npm -g`, system `pip`, or a global skill installer. Never touch the environment of a private pack listed in the workspace profile.md (its venvs, `node_modules`, plugins) without the owner's approval.
 4. **Read before running.** Read the package's install hooks or scripts (npm lifecycle scripts, a formula's source) and any plugin hook before it runs.
 5. **Verify after.** One read-only call, recorded in the run or the manifest ([04](04-tool-and-permission-policy.md), "Moving a tool up a stage").
 
@@ -13,7 +13,7 @@ Companion to [creative-os-alignment.md](creative-os-alignment.md) and to the sta
 | Tool | Detail | Note |
 |---|---|---|
 | Claude Code | 2.1.278 | |
-| git, gh | 2.50.1, 2.102.0 | `gh` and an osxkeychain credential helper exist; any push still needs his go-ahead |
+| git, gh | 2.50.1, 2.102.0 | `gh` and an osxkeychain credential helper exist; any push still needs the owner's go-ahead |
 | node, npm, npx | v24.18.0, 11.17.0 | `pnpm`, `yarn`, `bun` absent and not needed |
 | python3, python3.12, pip3 | 3.14.7, 3.12.10 | validators use the standard library only; never `pip install` into either |
 | ffmpeg, ffprobe, yt-dlp | 9.0.2, 2026.08.19 | public content only; downloaded media is analysis-only |
@@ -21,11 +21,11 @@ Companion to [creative-os-alignment.md](creative-os-alignment.md) and to the sta
 | Blender app | 5.1.2 at `/Applications/Blender.app` (no CLI on PATH) | use the full binary path; do not download another Blender |
 | Google Chrome | 151.0.7922.137 | profile folder exists and was **not** opened, read or copied |
 | After Effects 2026, Premiere Pro 2026, Figma | installed apps | automation via ExtendScript or connectors only after Stage 1 approval |
-| Playwright 1.64.1 + cached Chromium builds | `~/creative-os/tools` | isolated browser contexts; reuse, do not reinstall |
-| Remotion plugin | enabled; CLI only in `~/mythos-studio` | needs verification per project |
+| Playwright 1.64.1 + cached Chromium builds | a private pack's tools folder | isolated browser contexts; reuse, do not reinstall |
+| Remotion plugin | enabled; CLI only inside another local project | needs verification per project |
 | Official Blender Lab MCP **server** | Claude Desktop extension v1.0.1, enabled | the Blender-side add-on is not the official one (see the Blender plan) |
 | Browser tools in the session | built-in pane, Claude in Chrome, Control Chrome | read-only by default |
-| creative-os skills, agents and standards | 24 skills, 9 agents | referenced, never copied |
+| Private-pack skills, agents and standards (if the profile lists a pack) | 24 skills, 9 agents observed | referenced, never copied |
 
 ## B. Safe and required now
 **None.** Everything the harness needs today is already present (the validators, the ledgers, the scanner, `ffmpeg`, `yt-dlp`, a local PDF reader through `swift`). Nothing has to be installed to continue.
@@ -48,12 +48,12 @@ Companion to [creative-os-alignment.md](creative-os-alignment.md) and to the sta
 |---|---|
 | DeepSeek Harness, `dsh-superagent` | unrequested orchestration layers that would duplicate the Director and the gates |
 | Cordis as a separate dependency | not needed; would add a second control plane |
-| Kimi K3 locally | local models have no value here (he is never offline); large and unreviewed |
+| Kimi K3 locally | local models have no value here (the owner always works online); large and unreviewed |
 | Agent-Reach | unreviewed access layer for external platforms; outside the approval model |
 | Random Chrome MCP packages | arbitrary code with browser reach; the existing browser tools already cover read-only research |
 | A second Blender download | one Blender 5.1.2 is installed |
 | A second Blender MCP stack | two bridges on one port conflict; decide one stack first |
-| Duplicate plugins or skill families (`designer-skills`, a second `studio-os` route, `anthropic-skills:*` copies) | double-loading; see the alignment page |
+| Duplicate plugins or skill families (`designer-skills`, a second `studio-os` route, `anthropic-skills:*` copies) | double-loading; see [16-private-packs.md](16-private-packs.md) |
 | Any global package (`npm -g`, system `pip`, skill installers with `-y`) | standing rule |
 | OmniRoute, `open-interpreter`, `mac_computer_use` | OmniRoute reroutes subscription credentials; the other two were removed on purpose |
 | `pnpm`, `yarn`, `bun`, `pipx`, `tesseract`, `magick`, `exiftool`, `sox` | no job needs them; add only with a named job |
@@ -61,7 +61,7 @@ Companion to [creative-os-alignment.md](creative-os-alignment.md) and to the sta
 ## Blender: official Blender Lab MCP integration plan (not enabled)
 **Status: stopped before enabling the bridge. The security review is incomplete.** Port 9876 was checked read-only: nothing is listening on it, and nothing was exposed.
 
-### What is on this Mac
+### What was found on the reference Mac (example; re-probe yours)
 | Piece | Finding | Provenance |
 |---|---|---|
 | Blender | 5.1.2, build 2026-05-19 | the official app; the official MCP requires Blender 5.1 or newer, so the version fits |
@@ -84,21 +84,21 @@ Companion to [creative-os-alignment.md](creative-os-alignment.md) and to the sta
 | 4 | **Localhost only** | read the add-on source for its bind host: it must be `127.0.0.1` or `localhost`, never `0.0.0.0`; after starting it in a scratch session, `lsof -nP -iTCP:9876 -sTCP:LISTEN` must show the loopback address only; a connection attempt to the Mac's LAN address on 9876 must fail |
 | 5 | **No exposure** | no port forwarding, tunnel or reverse proxy; the macOS firewall stays on; stop the server (quit Blender) when not in use |
 | 6 | **Network permission** | decide whether Allow Online Access is truly required; keep it off if the bridge works without it |
-| 7 | **No stray bridge** | the community add-on is disabled or removed (Ashish's approval) so only one bridge can bind 9876 |
+| 7 | **No stray bridge** | the community add-on is disabled or removed (the owner's approval) so only one bridge can bind 9876 |
 | 8 | **Safe first use** | a scratch scene, no secrets or client files, a script read before it runs, one read-only call (list objects) recorded in a run |
 
 ### Approvals needed
 `tool_install_or_update` for the official add-on; a decision on the community add-on (OD-style: keep, disable or remove); then a Stage 1 approval per scene. The bridge stays **off** until all eight checks are recorded.
 
 ## Chrome and browser automation: project-scoped plan (nothing installed)
-**Detected:** Google Chrome 151.0.7922.137 (running). Browser automation already available without any install: the built-in browser pane (isolated, no personal profile), the Claude in Chrome tools (his real, signed-in Chrome), Control Chrome (needs verification), and Playwright 1.64.1 with cached Chromium builds in `~/creative-os/tools` (isolated contexts). REA covers web capture for targets with no source.
+**Detected:** Google Chrome 151.0.7922.137 (running). Browser automation already available without any install: the built-in browser pane (isolated, no personal profile), the Claude in Chrome tools (the owner's real, signed-in Chrome), Control Chrome (needs verification), and Playwright 1.64.1 with cached Chromium builds in a private pack's tools folder (isolated contexts). REA covers web capture for targets with no source.
 
 **Plan**
 | Need | Tool | Rule |
 |---|---|---|
 | Read-only research, page text, frames | the built-in pane or Playwright in a **fresh, empty context** | no cookies, no profile, no extensions; every page read is logged in `sources.csv` with `access_method: browser-readonly` |
-| A page blocked to plain fetch (403, JS wall) | Claude in Chrome, read-only | only in a live session under his standing OK (creative-os rule 11), never in a subagent or unattended run; never follow, post or buy; report afterwards |
-| Anything signed in | Ashish logs in himself in his own browser | the harness never types credentials, never reads, copies or exports cookies, tokens or profile data; any signed-in step beyond read-only is a `login` approval |
+| A page blocked to plain fetch (403, JS wall) | Claude in Chrome, read-only | only in a live session under a standing OK the owner recorded in the workspace profile.md, never in a subagent or unattended run; never follow, post or buy; report afterwards |
+| Anything signed in | the owner logs in personally in their own browser | the harness never types credentials, never reads, copies or exports cookies, tokens or profile data; any signed-in step beyond read-only is a `login` approval |
 | Posting, scheduling, sending, connecting | not part of v1 | `publishing`, `external_communication` and `account_connection` approvals, each its own row; Stage 3 is disabled |
 | Scraping at volume | not allowed | rate limits stop the work and are reported; no bypass |
 
@@ -106,12 +106,12 @@ Companion to [creative-os-alignment.md](creative-os-alignment.md) and to the sta
 
 ## Install procedure for the first approved package (template)
 1. Write a pending `tool_install_or_update` row naming the package, source and scope.
-2. Re-run the dry-run and paste the result. Stop on any downgrade, conflict or upgrade of an existing formula that he has not accepted.
+2. Re-run the dry-run and paste the result. Stop on any downgrade, conflict or upgrade of an existing formula that the owner has not accepted.
 3. Read the install scripts (`brew cat <formula>`, or the package's lifecycle scripts) and any hook it adds.
-4. Install into project scope or a standalone environment, never the creative-os environment.
+4. Install into project scope or a standalone environment, never a private pack's environment.
 5. Run one read-only verification, then update `policies/tool-manifest.yaml` in a reviewed change.
 
-## Safe next installs (all need his yes)
+## Safe next installs (all need the owner's yes)
 `shellcheck` and `uv` (clean dry-runs, no upgrades), Remotion in a project folder, then the official Blender add-on after the eight checks. Everything else waits for a named job.
 
 ## Remaining approvals

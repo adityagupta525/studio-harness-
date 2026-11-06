@@ -4,7 +4,7 @@ description: Build a dated, evidence-led research pack with a validated source l
 ---
 # research-pack
 
-**Owner:** trend-scout (signals) with reference-forensics (measured references) · **Gates:** G2, G3 · **Routes to:** creative-os `design-intel`, `video-reference-analyzer`, `pinterest-visual-research`, `design-forensics`.
+**Owner:** trend-scout (signals) with reference-forensics (measured references) · **Gates:** G2, G3 · **Routes to:** scouting, video and still analysis and design-forensics skills from a private pack listed in the workspace profile.md (if any).
 
 ## When to use
 After G1, for any brief. G1 includes a concrete `practice`; a run with `practice: unknown` cannot start research (the validator fails it). A new domain always gets its own pack: category, audience, competitors, conventions, regulation.
@@ -14,7 +14,7 @@ After G1, for any brief. G1 includes a concrete `practice`; a run with `practice
 2. Search public sources only. For each source: open it, log a row in `sources.csv` with the full URL, date accessed, access method and tags (class, real / AI-made / unknown, rights class).
 3. For each signal: platform, geography, format, date or window, value, unit, `n_items`, uncertainty. Separate YouTube packaging from retention. State Instagram constraints.
 4. Find comparables: the closest cases, parallel cases from other sectors, one outsider; read each rationale in three layers (published, our interpretation, unknown).
-5. Examine at least 8 real references: view the frames, measure (`~/creative-os/tools/run.sh`, `ffprobe`), record keep / swap / never. Never describe media you have not examined.
+5. Examine at least 8 real references: view the frames, measure (`ffprobe`, or a pack's measuring tools), record keep / swap / never. Never describe media you have not examined.
 6. Run `scripts/check-source-ledger.sh runs/<run-id>/sources.csv`; fix every error.
 7. Write findings with claim class, source ids, confidence; list what could not be examined; add implications for three routes.
 8. Hand off with the standard block.

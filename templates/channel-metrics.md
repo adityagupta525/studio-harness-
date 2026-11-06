@@ -23,7 +23,7 @@ Each rule states its minimum number of posts before it may be applied (at least 
 When reviews happen (dates or post counts), who attends, and what each review may change. Changing a locked positioning, pillar set, visual direction or calendar needs a new approval row:
 
 ## Own-channel observations
-Empty while posts_published is 0. Each row: date, post ref, metric id, value, source (for example "platform analytics screenshot supplied by Ashish"), note.
+Empty while posts_published is 0. Each row: date, post ref, metric id, value, source (for example "platform analytics screenshot supplied by the owner"), note.
 
 | Date | Post ref | Metric id | Value | Source | Note |
 |---|---|---|---|---|---|

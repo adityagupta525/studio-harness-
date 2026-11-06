@@ -5,7 +5,7 @@
 ## What is present today (audit, 2026-11-04)
 - Blender **5.1.2** app at `/Applications/Blender.app` (no CLI on PATH; the binary answers `--version`).
 - A Blender MCP tool set is visible in the Claude session. Follow-up audit (see [tool-install-policy.md](tool-install-policy.md)): the **server** is the official Blender Lab extension (v1.0.1, enabled in Claude Desktop), but the Blender-side add-on actually installed is the **community** BlenderMCP, not the official one. The bridge is therefore mismatched and is **not enabled**; nothing listens on port 9876.
-- creative-os `mac-native-control` can drive Blender; Blender is also in the creative-os build routes.
+- A native-app automation skill from a private pack listed in the workspace profile.md (if any) may drive Blender; Blender is also a standard 3D build route.
 
 ## Why Blender, why deterministic
 Camera, lens and light become **data** instead of prompt guesses: position, focal length, depth of field, lighting setups and materials are reproducible, reviewable and diffable. This is the route for any shot where continuity of camera language matters more than novelty, and it spends no credits.
@@ -36,7 +36,7 @@ Key, fill, rim, practical lights named and positioned; colour temperature and in
 ## 5. Preview before final
 1. **Preview renders** at low resolution and low samples for each shot's key frame.
 2. A **contact sheet** (all shots, one image) for continuity review by `qa-rights-reviewer`.
-3. Only after review and Ashish's approval is the **final render** started (local compute; if a paid render farm is ever used, it is `paid_generation`).
+3. Only after review and the owner's approval is the **final render** started (local compute; if a paid render farm is ever used, it is `paid_generation`).
 
 ## 6. Verification before first use
 Done once, in a run folder, and recorded in `decision-log.md`:

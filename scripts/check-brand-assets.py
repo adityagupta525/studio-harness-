@@ -4,7 +4,7 @@
 usage: check-brand-assets.py RUN_DIR
 Reads RUN_DIR/ban-list.txt (one term per line; '#' comments; 'term => reason' allowed) and scans every prompt,
 route and spec text in the run (*.md, *.txt, *.json, *.html, file names), except brand-core.md, ban-list.txt,
-decision-log.md, brief.md and research/ (where his words and evidence may quote banned terms).
+decision-log.md, brief.md and research/ (where the owner's words and evidence may quote banned terms).
 Exit 1 with a fix message per hit. Stdlib only.
 """
 import os, re, sys

@@ -211,7 +211,7 @@ def check_run(run, template):
             if not DATE.match(d["approved_on"]):
                 w("approved rows need approved_on as YYYY-MM-DD")
             if not d["approval_words"] or TV in d["approval_words"] or TF in d["approval_words"]:
-                w("approved rows need Ashish's actual words in approval_words")
+                w("approved rows need the owner's exact words in approval_words")
             if d["action_type"] in {"paid_generation", "financial_or_legal_action"} and not d["cost_quote"]:
                 w("paid_generation and financial_or_legal_action rows need a cost_quote")
         if d["executed_on"]:
@@ -374,8 +374,11 @@ def check_run(run, template):
                 continue
             for fn in files:
                 if fn.endswith((".md", ".csv")):
-                    if re.search(r"\bCentricity\b", open(os.path.join(root_, fn), encoding="utf-8").read()):
-                        warns.append(f"{os.path.relpath(os.path.join(root_, fn), run)} mentions Centricity in a non-employer context: check context separation")
+                    emp = [x.strip() for x in os.environ.get("STUDIO_HARNESS_EMPLOYER_TERMS", "").split(",") if x.strip()]
+                    txt = open(os.path.join(root_, fn), encoding="utf-8").read()
+                    hit = next((t for t in emp if re.search(r"\b" + re.escape(t) + r"\b", txt)), None)
+                    if hit:
+                        warns.append(f"{os.path.relpath(os.path.join(root_, fn), run)} mentions employer term '{hit}' in a non-employer context: check context separation")
     return errs, warns, fm
 
 bad = 0

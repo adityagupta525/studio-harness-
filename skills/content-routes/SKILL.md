@@ -4,7 +4,7 @@ description: Produce three genuinely different routes (safe, brave, wild) with a
 ---
 # content-routes
 
-**Owner:** creative-producer · **Gates:** G4, G5 · **Routes to:** creative-os `story-architect`, `brand-strategy`, `creative-pipeline`, `creative-critic` / `critic-judge` (blind), `taste-judge` (read-only).
+**Owner:** creative-producer · **Gates:** G4, G5 · **Routes to:** story, brand-strategy and director skills, a blind critic and a read-only taste judge from a private pack listed in the workspace profile.md (if any).
 
 ## When to use
 Any brief that needs a creative direction: film, motion, graphic, content series, brand. For content briefs the route also names the format, pillar and cadence idea (no posting).
@@ -16,14 +16,14 @@ Any brief that needs a creative direction: film, motion, graphic, content series
 4. Each route cites reference ids (technique only) and says what is invented. Style comes from the client system, never a house style.
 5. Score each route **alone** (blind): one critic run per route. Vetoes cannot be averaged away.
 6. Run one contrarian pass trying to kill the front-runner; write the result.
-7. Present the best two to the owner with scores, costs `[TO VERIFY]` and rights risks. Ask him to pick.
-8. On his reply, log his exact words, the pick and the rejects in `decision-log.md` (G5). Fusions of routes are explored on purpose and built before they are judged.
+7. Present the best two to the owner with scores, costs `[TO VERIFY]` and rights risks. Ask the owner to pick.
+8. On the owner's reply, log the owner's exact words, the pick and the rejects in `decision-log.md` (G5). Fusions of routes are explored on purpose and built before they are judged.
 
 ## Outputs
 `routes.md`, a D-nn row for the pick.
 
 ## Verification
-Pairwise axis comparison written out; contrarian result present; his words logged.
+Pairwise axis comparison written out; contrarian result present; the owner's exact words logged.
 
 ## Never
-Write the treatment before the pick, hide a veto behind a high average, or decide the route for him.
+Write the treatment before the pick, hide a veto behind a high average, or decide the route for the owner.

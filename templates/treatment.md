@@ -31,7 +31,7 @@ Derived from the client or project system, not from a house style.
 
 ## 6. Sound and music
 - Direction:
-- Any reuse of a specific track is flagged for Ashish's licensing decision: [TO VERIFY]
+- Any reuse of a specific track is flagged for the owner's licensing decision: [TO VERIFY]
 
 ## 7. Deliverables
 - Formats, ratios, lengths, platform specs [TO VERIFY against the platform's current page]:

@@ -14,11 +14,11 @@ The harness is the process; skills and tools do the craft. One director thread (
 5. **Route to the department.** Write the Job Plan from `templates/job-plan.md`: per task one doer, the department chief, and a monitor from another department ([docs/15](../../docs/15-departments-and-orchestration.md)). Route by `docs/CATALOG.md` (`studio-harness catalog` shows what works on this machine).
    | Department (chief) | Specialists | Typical procedures |
    |---|---|---|
-   | Intelligence (intel-chief) | channel-analyst, audience-analyst, trend-scout, reference-forensics | channel-dossier, research-pack, competitor-watch, channel-strategy |
+   | Intelligence (intel-chief) | channel-analyst, audience-analyst, trend-scout, reference-forensics | channel-dossier, reference-research, research-pack, competitor-watch, channel-strategy |
    | Strategy (strategy-chief) | — | channel-strategy, content-programming |
    | Growth & Platforms (growth-chief) | youtube-strategist, instagram-strategist, analytics-analyst, channel-setup-lead, packaging-lead | channel-launch, packaging |
    | Creative (creative-producer) | script-writer, art-director | content-routes, brand-identity, ai-film-treatment |
-   | Production (production-chief) | ai-generation-artist, voice-producer, animation-3d-lead, ai-film-lead, blender-cinematographer, motion-editor | shot-spec |
+   | Production (production-chief) | ai-generation-artist, voice-producer, animation-3d-lead, ai-film-lead, blender-cinematographer, motion-editor | explainer-short, shot-spec |
    | QA & Standards (qa-chief) | fact-checker, consistency-auditor, qa-rights-reviewer | qa-panel, qa |
    | Learning & Engineering (chief-engineer) | eval-engineer, knowledge-ingester, memory-curator | project-closeout, learning-loop |
    Private packs listed in `profile.md` may add stronger craft skills; the harness gates still apply. Platform facts come from `knowledge/platforms/` and are re-read at the official page when older than 30 days.

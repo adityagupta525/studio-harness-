@@ -4,7 +4,7 @@ context: studio              # studio | client:<name> | employer | demo
 practice: unknown            # unknown only while intake is open (status draft or blocked); then brand | product | web | motion | film | graphic | content | music | research
 status: draft                # draft | in_progress | blocked | awaiting_approval | complete | demo
 route: standard              # standard | channel-launch (a new channel with zero posts; see docs/12-channel-launch-and-growth.md)
-director: Ashish
+director: owner
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 ---

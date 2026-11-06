@@ -12,13 +12,13 @@ Which positioning statement, promise and audience moment this direction serves (
 Look, subject treatment, composition devices, camera or layout language, in words and in measured terms where possible:
 
 ## Colour and type
-Palette in hex with each colour's role, type families with their licence status (a licence decision is Ashish's):
+Palette in hex with each colour's role, type families with their licence status (a licence decision is the owner's):
 
 ## Thumbnail and cover system
 Grid, safe areas for each platform [TO VERIFY against each platform's current page], text rules, one example layout described in words:
 
 ## Motion, captions and sound
-Pacing, caption style and accessibility, music and sound direction (any reuse of a specific track is flagged for Ashish's licensing decision):
+Pacing, caption style and accessibility, music and sound direction (any reuse of a specific track is flagged for the owner's licensing decision):
 
 ## Packaging rules
 One row per element. Every rule states its basis (competitor post ids, or the hypothesis it tests) and an original example.

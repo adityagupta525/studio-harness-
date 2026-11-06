@@ -1,5 +1,5 @@
 # Studio Harness — source and evidence policy (v1)
-# Vocabulary is adopted from ~/creative-os/standards/evidence-protocol.md. Human twin: docs/06 and docs/08.
+# Vocabulary is adopted from the evidence protocol of a private pack listed in the workspace profile.md (if any). Human twin: docs/06 and docs/08.
 version: 1
 
 claim_classes: [OBSERVED, MEASURED, SOURCE-VERIFIED, PUBLICLY-DOCUMENTED, OWNER-STATED, INFERRED, RECOMMENDED, UNKNOWN]
@@ -62,6 +62,6 @@ reference_use:
   downloaded_media: analysis-only, stored in git-ignored runs/<run-id>/refs/, source URL logged
 
 licensing:
-  decision_owner: Ashish
+  decision_owner: owner
   agents_may_say: 'unknown or pending; never "cleared" without a licence_decision approval'
-  music: reuse of a specific track is flagged and left to him
+  music: reuse of a specific track is flagged and left to the owner
