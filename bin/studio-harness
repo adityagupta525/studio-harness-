@@ -6,6 +6,7 @@
 #   studio-harness show               active run and its status line
 #   studio-harness check [run]        run completeness + source ledger checks on a run
 #   studio-harness doctor             workspace, plugin root, tools
+#   studio-harness catalog            agents, skills and tools, with this machine's tool status
 set -euo pipefail
 SRC="${BASH_SOURCE[0]}"; while [ -L "$SRC" ]; do SRC="$(readlink "$SRC")"; done
 ROOT="$(cd "$(dirname "$SRC")/.." && pwd)"
@@ -35,5 +36,6 @@ case "${1:-show}" in
   doctor)
     echo "plugin root: $ROOT"; echo "workspace:   $WS $( [ -f "$WS/profile.md" ] && echo '(ok)' || echo '(missing: run init)')"
     for t in python3 yt-dlp ffmpeg node blender git gh; do printf '  %-8s %s\n' "$t" "$(command -v $t || echo missing)"; done ;;
-  *) sed -n '2,9p' "$SRC"; exit 1 ;;
+  catalog) python3 "$ROOT/scripts/build-catalog.py" --probe ;;
+  *) sed -n '2,10p' "$SRC"; exit 1 ;;
 esac

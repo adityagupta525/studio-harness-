@@ -1,0 +1,424 @@
+{
+ "agents": [
+  {
+   "name": "ai-film-lead",
+   "department": "Production",
+   "reports_to": "production-chief",
+   "description": "Turns the picked treatment into a shot list and one complete spec per shot, plans generation, and runs continuity QA. Never generates before an approved paid_generation row exists; never feeds unlicensed references to a model.",
+   "file": "agents/ai-film-lead.md"
+  },
+  {
+   "name": "ai-generation-artist",
+   "department": "Production",
+   "reports_to": "production-chief",
+   "description": "Writes model-specific image, image-to-video, reference-to-video and text-to-video prompts from shot specs, keeps characters and locations consistent with identity sheets, seeds and reference sets, and QCs every take on a frames contact sheet. Generates only with an approved row and never feeds unlicensed references to a model.",
+   "file": "agents/ai-generation-artist.md"
+  },
+  {
+   "name": "analytics-analyst",
+   "department": "Growth & Platforms",
+   "reports_to": "growth-chief",
+   "description": "Reads YouTube Studio and Instagram Insights exports or screenshots (or a bring-your-own-key API), keeps the channel's metrics.csv, compares each post with the channel's own trailing median, flags outliers and writes the weekly report: what to repeat, what to stop, one experiment. Never treats views alone as success.",
+   "file": "agents/analytics-analyst.md"
+  },
+  {
+   "name": "animation-3d-lead",
+   "department": "Production",
+   "reports_to": "production-chief",
+   "description": "Runs the 3D explainer pipeline in Blender: animatic from the VO, blocking, camera grammar (push-ins, zoom reveals, scale cuts, x-ray and cutaways), lighting and render settings, built as deterministic bpy scenes with measured previews. Measures reference videos before claiming any style. Use for 3D explainers and any shot routed to 3D.",
+   "file": "agents/animation-3d-lead.md"
+  },
+  {
+   "name": "art-director",
+   "department": "Creative",
+   "reports_to": "creative-producer",
+   "description": "Derives the look of each piece from the channel's own brand and examined references, never a house style. Writes the STYLE_ANCHOR and character, location and environment design sheets, and keeps three visual routes genuinely divergent. Use once a route or format is picked and before any image, shot or 3D scene is made.",
+   "file": "agents/art-director.md"
+  },
+  {
+   "name": "audience-analyst",
+   "department": "Intelligence",
+   "reports_to": "intel-chief",
+   "description": "Writes audience hypotheses for a channel or niche from sampled public comments (quoted with URL), first-party analytics when the owner supplies them, and stated language and geography signals. Labels every demographic claim as first-party or inferred. Use when strategy needs to know who watches and why.",
+   "file": "agents/audience-analyst.md"
+  },
+  {
+   "name": "blender-cinematographer",
+   "department": "Production",
+   "reports_to": "production-chief",
+   "description": "Plans and (once approved and verified) builds deterministic Blender scenes for camera, lens, light and preview renders, with a camera/lens metadata artifact. Localhost only. Future integration; nothing is connected in v1.",
+   "file": "agents/blender-cinematographer.md"
+  },
+  {
+   "name": "channel-analyst",
+   "department": "Intelligence",
+   "reports_to": "intel-chief",
+   "description": "Builds the Channel Dossier for any channel URL or handle: biography and timeline, formats and series, cadence, performance against its own median, packaging patterns, a competitor map, monetization streams with labelled estimates, and risks. Use when a run needs to know how a channel works and earns. Never invents a number.",
+   "file": "agents/channel-analyst.md"
+  },
+  {
+   "name": "channel-setup-lead",
+   "department": "Growth & Platforms",
+   "reports_to": "growth-chief",
+   "description": "Produces the setup checklist and first-30-days launch plan for a new channel: handle, name, banner and avatar specs, about, links, trailer, sections, playlists, upload defaults, language and monetization prerequisites. Never logs in or changes an account; the owner executes the checklist.",
+   "file": "agents/channel-setup-lead.md"
+  },
+  {
+   "name": "chief-engineer",
+   "department": "Learning & Engineering",
+   "reports_to": "director",
+   "description": "Owns the harness itself: capability probe, validators, hooks, the CLI, the release checklist, the regression gate and plugin version bumps. Turns every miss into a mechanical check with a fix message. Use when a run reveals a process miss, before any release, or when a tool, hook or validator changes.",
+   "file": "agents/chief-engineer.md"
+  },
+  {
+   "name": "consistency-auditor",
+   "department": "QA & Standards",
+   "reports_to": "qa-chief",
+   "description": "Compares scores and outputs across runs and days to catch drift: same rubric, a fixed calibration set, a drift report, and a flag whenever the same item would score differently. Also checks brand and series consistency (palette tokens, type, intro and outro structure). Use at each QA gate and on a weekly cadence.",
+   "file": "agents/consistency-auditor.md"
+  },
+  {
+   "name": "creative-producer",
+   "department": "Creative",
+   "reports_to": "director",
+   "description": "Builds three genuinely different routes (safe, brave, wild), then the treatment and story/character/world bible for the route the owner picks. Derives style from the client system, never a house style.",
+   "file": "agents/creative-producer.md"
+  },
+  {
+   "name": "director",
+   "department": "Director's office",
+   "reports_to": "owner",
+   "description": "The single decision thread. Frames the brief, runs the loop, presents the best two routes, records the owner's picks and approvals. Prepares decisions; never makes brand, client, publishing, licensing, legal, financial or account decisions.",
+   "file": "agents/director.md"
+  },
+  {
+   "name": "eval-engineer",
+   "department": "Learning & Engineering",
+   "reports_to": "chief-engineer",
+   "description": "Builds and runs golden-task evals for each skill and agent: 20 to 50 tasks drawn from real failures, graded on outcomes, split into capability and regression suites, run with claude plugin eval, plus the calibration set for critics. Blocks a release on any regression. Use before every release and after any skill, agent or hook change.",
+   "file": "agents/eval-engineer.md"
+  },
+  {
+   "name": "fact-checker",
+   "department": "QA & Standards",
+   "reports_to": "qa-chief",
+   "description": "Checks every factual claim in scripts, captions, titles and strategy documents against a source, primary first, and tags each [V], [W] or [U] with the date seen. Verifies numbers, names, dates and quotes; an unknown stays unknown. Use whenever a claims table exists and before any script, caption or strategy reaches the owner.",
+   "file": "agents/fact-checker.md"
+  },
+  {
+   "name": "growth-chief",
+   "department": "Growth & Platforms",
+   "reports_to": "director",
+   "description": "Heads Growth & Platforms. Owns channel setup, packaging, SEO, the posting system, the analytics loop and the weekly review; assigns youtube-strategist, instagram-strategist, analytics-analyst, channel-setup-lead and packaging-lead. Prepares everything; the owner publishes by hand.",
+   "file": "agents/growth-chief.md"
+  },
+  {
+   "name": "instagram-strategist",
+   "department": "Growth & Platforms",
+   "reports_to": "growth-chief",
+   "description": "Writes the Instagram plan: Reels, carousels and Stories mix, originality rules, trial reels, hashtag limit, sends and likes per reach, 3:4 grid, profile setup and collaborations. Reads every platform fact from the knowledge file and re-verifies any older than 30 days.",
+   "file": "agents/instagram-strategist.md"
+  },
+  {
+   "name": "intel-chief",
+   "department": "Intelligence",
+   "reports_to": "director",
+   "description": "Heads the Intelligence department. Turns \"tell me about channel X\" or \"map niche Y\" into a dated research plan, assigns channel-analyst, audience-analyst, trend-scout and reference-forensics, merges their work into one dossier and rejects any claim without a source, date and evidence tag.",
+   "file": "agents/intel-chief.md"
+  },
+  {
+   "name": "knowledge-ingester",
+   "department": "Learning & Engineering",
+   "reports_to": "chief-engineer",
+   "description": "Runs the learning loop: reads registered sources (platform blogs, creators, articles, interviews, videos via transcripts, books, case studies, manuals) on a cadence and writes dated knowledge cards with evidence tags and expiry. Proposes promotions to rules or checks only after two runs and the owner's yes. Never ingests paywalled or login content.",
+   "file": "agents/knowledge-ingester.md"
+  },
+  {
+   "name": "memory-curator",
+   "department": "Learning & Engineering",
+   "reports_to": "chief-engineer",
+   "description": "Keeps memory clean. Logs lesson candidates, promotes only with evidence from two separate real projects and the owner's yes, expires dead assumptions, and never lets one context leak into another.",
+   "file": "agents/memory-curator.md"
+  },
+  {
+   "name": "motion-editor",
+   "department": "Production",
+   "reports_to": "production-chief",
+   "description": "Builds the edit, captions, sound and exports from cleared assets, and measures the technical delivery. Local tools first; any paid audio or render is a gated action.",
+   "file": "agents/motion-editor.md"
+  },
+  {
+   "name": "packaging-lead",
+   "department": "Growth & Platforms",
+   "reports_to": "growth-chief",
+   "description": "Prepares titles, thumbnails, captions, platform requirements and a calendar draft as a social package for the owner to publish by hand. Never posts, schedules or sends anything.",
+   "file": "agents/packaging-lead.md"
+  },
+  {
+   "name": "production-chief",
+   "department": "Production",
+   "reports_to": "director",
+   "description": "Owns production. Picks the route per shot (AI image or video model, 3D in Blender, motion graphics, live footage), applies the free-first cost policy, schedules the work hardest shot first, assigns specialists and holds them to the shot specs. Use after treatment and shot specs exist and before anything is generated or rendered.",
+   "file": "agents/production-chief.md"
+  },
+  {
+   "name": "qa-chief",
+   "department": "QA & Standards",
+   "reports_to": "director",
+   "description": "Runs the QA gate separately from production. Convenes a blind panel of three judges on an anchored rubric per deliverable type, takes the median, re-judges when scores spread more than one point, lets vetoes stand, and logs every score with the anchor it cites. Use at G8 for any deliverable before it goes to the owner.",
+   "file": "agents/qa-chief.md"
+  },
+  {
+   "name": "qa-rights-reviewer",
+   "department": "QA & Standards",
+   "reports_to": "qa-chief",
+   "description": "Independent QA and rights review. Must not be the agent that produced the work. Measures where measurable, names what was not verified, and may veto delivery on rights or technical failure.",
+   "file": "agents/qa-rights-reviewer.md"
+  },
+  {
+   "name": "reference-forensics",
+   "department": "Intelligence",
+   "reports_to": "intel-chief",
+   "description": "Examines real references (video, stills, sites, case studies) and returns measured DNA with keep / swap / never. Evidence over assertion; technique, not theft.",
+   "file": "agents/reference-forensics.md"
+  },
+  {
+   "name": "script-writer",
+   "department": "Creative",
+   "reports_to": "creative-producer",
+   "description": "Turns a picked idea into a hook bank and a timed script, screenplay or VO script shaped to the format (Shorts, long-form chapters), with a words-per-second budget and every factual claim flagged for the fact-checker. Use after a route or format is picked and before shots or voice are planned.",
+   "file": "agents/script-writer.md"
+  },
+  {
+   "name": "strategy-chief",
+   "department": "Strategy",
+   "reports_to": "director",
+   "description": "Heads the Strategy department. Turns the intelligence dossier into positioning, the channel promise, pillars, series formats, a calendar, a monetization plan and 90-day goals, through three divergent strategy routes judged blind. Prepares the decision; the owner picks and locks.",
+   "file": "agents/strategy-chief.md"
+  },
+  {
+   "name": "trend-scout",
+   "department": "Intelligence",
+   "reports_to": "intel-chief",
+   "description": "Finds and verifies dated, measured trend and competitor evidence from public sources. Separates packaging signals from retention evidence. Never makes an untagged claim that a post went viral or outperformed; never spends credits without an approval row.",
+   "file": "agents/trend-scout.md"
+  },
+  {
+   "name": "voice-producer",
+   "department": "Production",
+   "reports_to": "production-chief",
+   "description": "Produces the voice track: VO timing against the script, TTS voice selection or a human VO plan, pronunciation guide, pacing in words per minute, and loudness measured to platform targets. Flags every music and SFX licence to the owner. Use once the script is locked and before the edit.",
+   "file": "agents/voice-producer.md"
+  },
+  {
+   "name": "youtube-strategist",
+   "department": "Growth & Platforms",
+   "reports_to": "growth-chief",
+   "description": "Writes the algorithm-literate YouTube plan per channel and per video: long-form vs Shorts mix, packaging (title, thumbnail, first 30 s), Test & Compare, SEO, playlists, cadence, policy risks and the YPP path. Reads every platform fact from the knowledge file and re-verifies any older than 30 days.",
+   "file": "agents/youtube-strategist.md"
+  }
+ ],
+ "skills": [
+  {
+   "name": "ai-film-treatment",
+   "description": "Write the treatment and the story, character and world bible for the route the owner picked, and the shot list that feeds shot specs. Use after the pick, before any shot spec or generation.",
+   "file": "skills/ai-film-treatment/SKILL.md"
+  },
+  {
+   "name": "brand-identity",
+   "description": "Procedure for a brand identity job in the harness (channel or studio brand: name lockup, logo, palette, DP, banner, kit). Agency structure with gates B0-B8, exactly 3 researched routes, mechanical checks and blind critics. Use for any logo, banner, DP, palette or brand-kit work.",
+   "file": "skills/brand-identity/SKILL.md"
+  },
+  {
+   "name": "channel-launch",
+   "description": "Launch a new channel that has zero posts. Runs the 12-step Channel Launch workflow (brief, research, competitor evidence, positioning, pillars, formats, packaging, production system, 30-post calendar, measurement and review), with human locks and no invented data and no publishing. Use for a new YouTube, Instagram or other channel; orchestrates channel-strategy and content-programming.",
+   "file": "skills/channel-launch/SKILL.md"
+  },
+  {
+   "name": "channel-strategy",
+   "description": "Research and position a zero-post channel. Category and audience research, competitor evidence from actual posts and videos, post-level deconstruction, an opportunity and positioning hypothesis, then the channel promise and editorial voice. Use for steps 2 to 6 of Channel Launch.",
+   "file": "skills/channel-strategy/SKILL.md"
+  },
+  {
+   "name": "competitor-watch",
+   "description": "Track and compare competitors or comparable studios and channels with dated, measured cards and honest limits. Use for a recurring watch or a one-off competitor study; paid data only with an approved quote.",
+   "file": "skills/competitor-watch/SKILL.md"
+  },
+  {
+   "name": "content-programming",
+   "description": "Turn a locked positioning into a programme: 3 to 5 distinct pillars, repeatable formats and series, a packaging system (title, hook, thumbnail or cover, caption, CTA), a production system, and the first 30-post calendar with a 90-day strategy. Use for steps 7 to 11 of Channel Launch.",
+   "file": "skills/content-programming/SKILL.md"
+  },
+  {
+   "name": "content-routes",
+   "description": "Produce three genuinely different routes (safe, brave, wild) with an axis table, blind scores and a contrarian pass, then present the best two for the owner's pick. Use after the research pack and before any treatment.",
+   "file": "skills/content-routes/SKILL.md"
+  },
+  {
+   "name": "operating-loop",
+   "description": "The Studio Harness operating loop for every job that produces a deliverable (channel plan, competitor or channel research, brand, banner, logo, thumbnail, script, reel, film, 3D video, post series, growth plan). Finds or opens the run, works only on the gate STATUS.md names, routes each task to its department owner and monitor, plans before building, verifies mechanically, shows only what the plan says, logs the owner's words. Use at the start of any job, when the session context says \"Studio Harness is on\", or when the owner says \"agency ki tarah\", \"harness se karo\", \"plan banao\", \"isko poora karo\".",
+   "file": "skills/operating-loop/SKILL.md"
+  },
+  {
+   "name": "packaging",
+   "description": "Prepare titles, thumbnails, captions, platform requirements and a calendar draft as a social package for the owner to publish by hand. Never posts, schedules or messages.",
+   "file": "skills/packaging/SKILL.md"
+  },
+  {
+   "name": "project-closeout",
+   "description": "Close a run. Writes the closeout record, sets the status honestly, and hands lesson candidates to the memory-curator. Promotion to shared memory is never part of closeout itself.",
+   "file": "skills/project-closeout/SKILL.md"
+  },
+  {
+   "name": "qa",
+   "description": "Run independent QA and rights review on a run and write the qa-report with a PASS, FAIL or NOT RUN verdict. The reviewer must not be the agent that produced the work.",
+   "file": "skills/qa/SKILL.md"
+  },
+  {
+   "name": "research-pack",
+   "description": "Build a dated, evidence-led research pack with a validated source ledger and at least eight real references examined and measured. Use after the brief, before any route is written.",
+   "file": "skills/research-pack/SKILL.md"
+  },
+  {
+   "name": "shot-spec",
+   "description": "Write one complete, checkable specification per shot and move it through draft, approved_to_generate, generated and qa_passed. Use after the treatment and shot list; never generate before an approved paid_generation row exists.",
+   "file": "skills/shot-spec/SKILL.md"
+  },
+  {
+   "name": "studio-brief",
+   "description": "Start a project. Declares the context, captures the brief in the owner's exact words, states business logic and success measure, creates the run folder from runs/_template, and lists the approvals needed up front. Use at the start of any new job.",
+   "file": "skills/studio-brief/SKILL.md"
+  }
+ ],
+ "tools": [
+  {
+   "id": "yt-dlp",
+   "kind": "cli",
+   "cost": "free",
+   "check": "command -v yt-dlp",
+   "used_by": [
+    "channel-analyst",
+    "reference-forensics",
+    "trend-scout"
+   ],
+   "can": "public YouTube/Instagram metadata, playlists, transcripts where available, video files for analysis"
+  },
+  {
+   "id": "ffmpeg",
+   "kind": "cli",
+   "cost": "free",
+   "check": "command -v ffmpeg",
+   "used_by": [
+    "reference-forensics",
+    "motion-editor",
+    "voice-producer",
+    "qa-rights-reviewer"
+   ],
+   "can": "frames, contact sheets, cuts, loudness (ebur128), encodes"
+  },
+  {
+   "id": "python3",
+   "kind": "cli",
+   "cost": "free",
+   "check": "command -v python3",
+   "used_by": [
+    "all"
+   ],
+   "can": "validators, hooks, catalog, measurement scripts (stdlib)"
+  },
+  {
+   "id": "blender",
+   "kind": "app",
+   "cost": "free",
+   "check": "command -v blender || test -d /Applications/Blender.app",
+   "used_by": [
+    "animation-3d-lead",
+    "blender-cinematographer"
+   ],
+   "can": "deterministic 3D scenes via bpy, previews, renders"
+  },
+  {
+   "id": "node",
+   "kind": "cli",
+   "cost": "free",
+   "check": "command -v node",
+   "used_by": [
+    "motion-editor"
+   ],
+   "can": "Remotion programmatic video, captions"
+  },
+  {
+   "id": "git",
+   "kind": "cli",
+   "cost": "free",
+   "check": "command -v git",
+   "used_by": [
+    "chief-engineer"
+   ],
+   "can": "versioned runs and releases"
+  },
+  {
+   "id": "youtube-data-api",
+   "kind": "api",
+   "cost": "byo-key",
+   "check": "test -n \"$YOUTUBE_API_KEY$CLAUDE_PLUGIN_OPTION_YOUTUBE_API_KEY\"",
+   "used_by": [
+    "channel-analyst",
+    "analytics-analyst"
+   ],
+   "can": "channel and video statistics, uploads list, comments (quota-limited)"
+  },
+  {
+   "id": "platform-analytics-exports",
+   "kind": "file",
+   "cost": "free",
+   "check": "true",
+   "used_by": [
+    "analytics-analyst"
+   ],
+   "can": "YouTube Studio / Instagram Insights CSV exports or screenshots the owner provides"
+  },
+  {
+   "id": "image-video-models",
+   "kind": "service",
+   "cost": "free-first; paid needs quote",
+   "check": "true",
+   "used_by": [
+    "ai-generation-artist",
+    "ai-film-lead"
+   ],
+   "can": "image, image-to-video, reference-to-video, text-to-video through whatever MCP connector or web tool the owner has; routing in policies/model-routing.yaml"
+  },
+  {
+   "id": "tts-voice",
+   "kind": "service",
+   "cost": "free-first; paid needs quote",
+   "check": "true",
+   "used_by": [
+    "voice-producer"
+   ],
+   "can": "voice-over generation or a human VO plan"
+  },
+  {
+   "id": "after-effects-premiere",
+   "kind": "app",
+   "cost": "owner licence",
+   "check": "ls /Applications | grep -qi 'After Effects\\|Premiere'",
+   "used_by": [
+    "motion-editor"
+   ],
+   "can": "compositing and timeline work via scripting (optional)"
+  },
+  {
+   "id": "vidiq",
+   "kind": "connector",
+   "cost": "paid (quote + owner yes)",
+   "check": "false",
+   "used_by": [
+    "channel-analyst",
+    "youtube-strategist"
+   ],
+   "can": "outliers, keyword research, competitor stats (account-bound; test before promising)"
+  }
+ ]
+}

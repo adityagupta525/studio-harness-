@@ -1,6 +1,6 @@
 ---
 name: content-routes
-description: Produce three genuinely different routes (safe, brave, wild) with an axis table, blind scores and a contrarian pass, then present the best two for Ashish's pick. Use after the research pack and before any treatment.
+description: Produce three genuinely different routes (safe, brave, wild) with an axis table, blind scores and a contrarian pass, then present the best two for the owner's pick. Use after the research pack and before any treatment.
 ---
 # content-routes
 
@@ -16,7 +16,7 @@ Any brief that needs a creative direction: film, motion, graphic, content series
 4. Each route cites reference ids (technique only) and says what is invented. Style comes from the client system, never a house style.
 5. Score each route **alone** (blind): one critic run per route. Vetoes cannot be averaged away.
 6. Run one contrarian pass trying to kill the front-runner; write the result.
-7. Present the best two to Ashish with scores, costs `[TO VERIFY]` and rights risks. Ask him to pick.
+7. Present the best two to the owner with scores, costs `[TO VERIFY]` and rights risks. Ask him to pick.
 8. On his reply, log his exact words, the pick and the rejects in `decision-log.md` (G5). Fusions of routes are explored on purpose and built before they are judged.
 
 ## Outputs

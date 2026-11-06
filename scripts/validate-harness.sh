@@ -142,7 +142,7 @@ for f in agents/*.md; do
   done
   grep -q "^from: $base\$" "$f" || fail "$f: handoff 'from:' must be $base"
 done
-[ "$count" -eq 10 ] && ok "10 agent cards, all sections and handoff fields present" || fail "expected 10 agent cards, found $count"
+[ "$count" -eq 31 ] && ok "31 agent cards (8 departments, docs/15), all sections and handoff fields present" || fail "expected 31 agent cards (docs/15 roster), found $count"
 
 # ---------------------------------------------------------------- 4. skills
 section "4. skills"
@@ -167,6 +167,9 @@ python3 -c "import json;[json.load(open(f)) for f in ('.claude-plugin/plugin.jso
 grep -q 'CLAUDE_PLUGIN_ROOT' hooks/hooks.json && ! grep -q 'studio-harness/scripts' hooks/hooks.json && ok "hooks use \${CLAUDE_PLUGIN_ROOT}, no hard-coded paths" || fail "hooks/hooks.json must call scripts via \${CLAUDE_PLUGIN_ROOT}"
 ! grep -n "expanduser('~/studio-harness')" scripts/hooks/*.py >/dev/null && ok "hooks resolve the workspace via _ws.py" || fail "a hook hard-codes ~/studio-harness; use _ws.workspace()"
 [ -x bin/studio-harness ] && ok "bin/studio-harness executable" || fail "chmod +x bin/studio-harness"
+python3 scripts/build-catalog.py --check >/dev/null && ok "docs/CATALOG.md and catalog/capabilities.json are current" || fail "capability catalog is stale: run scripts/build-catalog.py"
+for f in agents/*.md; do grep -q "^department: ..*" "$f" && grep -q "^reports_to: ..*" "$f" || fail "$f: front matter needs department and reports_to (docs/15)"; done
+! grep -l "creative_os_equivalent" agents/*.md >/dev/null 2>&1 && ok "agent cards carry no private-pack keys" || fail "remove creative_os_equivalent from agent cards"
 
 section "5. templates and runs/_template stay in sync"
 cmp -s templates/project-brief.md runs/_template/brief.md && ok "brief template matches runs/_template/brief.md" || fail "templates/project-brief.md differs from runs/_template/brief.md"

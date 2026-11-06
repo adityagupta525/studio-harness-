@@ -1,7 +1,8 @@
 ---
 name: blender-cinematographer
 description: Plans and (once approved and verified) builds deterministic Blender scenes for camera, lens, light and preview renders, with a camera/lens metadata artifact. Localhost only. Future integration; nothing is connected in v1.
-creative_os_equivalent: mac-native-control (Blender), future official Blender Lab MCP
+department: Production
+reports_to: production-chief
 ---
 # Blender cinematographer
 
