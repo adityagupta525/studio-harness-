@@ -1,45 +1,30 @@
 #!/usr/bin/env python3
-"""harness_context.py: UserPromptSubmit hook. Puts HARNESS MODE + the active run's gate and next action in
-Claude's context on every prompt, so harness work cannot silently drop (Ashish, 6 Nov 2026). Never blocks;
-any error exits 0 so the prompt still goes through. Stdlib only.
+"""harness_context.py: UserPromptSubmit hook. Adds the active run's gate and next action to the context on
+every prompt, so the loop cannot silently drop. Never blocks; any error exits 0. Stdlib only.
 """
-import json, os, re, sys
-
-HARNESS = os.path.expanduser('~/studio-harness')
-
-def section(text, name):
-    m = re.search(r'^## ' + name + r'\s*\n(.*?)(?=^## |\Z)', text, re.S | re.M)
-    return ' '.join(m.group(1).split())[:400] if m else ''
+import json, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import _ws
 
 def main():
     try:
         data = json.load(sys.stdin)
     except Exception:
         data = {}
-    prompt = (data.get('prompt') or '').strip()
-    if prompt.startswith('<task-notification>'):
+    if (data.get('prompt') or '').lstrip().startswith('<task-notification>'):
         return
-    run = ''
-    try:
-        run = open(os.path.join(HARNESS, 'ACTIVE_RUN'), encoding='utf-8').read().strip()
-    except OSError:
-        pass
-    status = ''
+    ws = _ws.workspace()
+    run, status = _ws.active_run(ws)
+    lines = ['Studio Harness is on: this task runs inside a harness run (skill `operating-loop`).']
     if run:
-        try:
-            status = open(os.path.join(HARNESS, run, 'STATUS.md'), encoding='utf-8').read()
-        except OSError:
-            status = ''
-    lines = ['HARNESS MODE (mandatory, Ashish 6 Nov 2026: no work outside ~/studio-harness). Load the `studio-harness` skill and follow its loop.']
-    if run and status:
-        lines.append(f'Active run: ~/studio-harness/{run}')
-        st = section(status, 'Status')
-        nx = section(status, 'Next action')
-        if st: lines.append('Gate: ' + st)
-        if nx: lines.append('Next action: ' + nx)
-        lines.append('Before ending the turn: log his words, update STATUS.md (updated date, gate, next action).')
+        lines.append(f'Active run: {os.path.join(ws, run)}')
+        for label, sec in (('Gate', 'Status'), ('Next action', 'Next action')):
+            v = _ws.section(status, sec)
+            if v:
+                lines.append(f'{label}: {v}')
+        lines.append('A turn that changes run files ends with STATUS.md updated (updated date, gate, next action) and the owner\'s words logged.')
     else:
-        lines.append('No active run: open one with ~/studio-harness/scripts/harness-run.sh new <slug> before any work.')
+        lines.append('No active run. New job: `studio-harness new <slug>`; continuing one: `studio-harness use <run>`. A quick question needs no run.')
     print(json.dumps({'hookSpecificOutput': {'hookEventName': 'UserPromptSubmit', 'additionalContext': '\n'.join(lines)}}, ensure_ascii=False))
 
 if __name__ == '__main__':

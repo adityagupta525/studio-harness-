@@ -1,0 +1,14 @@
+{
+  "name": "studio-harness",
+  "owner": {
+    "name": "Ashish Gupta"
+  },
+  "description": "Studio Harness: an agency-grade operating system for creators and studios.",
+  "plugins": [
+    {
+      "name": "studio-harness",
+      "source": "./",
+      "description": "Agency-grade operating system for creators and studios."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# studio-harness: workspace and run commands (on PATH while the plugin is enabled).
+#   studio-harness init               create the workspace (profile, runs, memory, taste)
+#   studio-harness new <slug>         copy the run template to runs/<today>-<slug>, set it active
+#   studio-harness use <run>          set an existing run active
+#   studio-harness show               active run and its status line
+#   studio-harness check [run]        run completeness + source ledger checks on a run
+#   studio-harness doctor             workspace, plugin root, tools
+set -euo pipefail
+SRC="${BASH_SOURCE[0]}"; while [ -L "$SRC" ]; do SRC="$(readlink "$SRC")"; done
+ROOT="$(cd "$(dirname "$SRC")/.." && pwd)"
+WS="${CLAUDE_PLUGIN_OPTION_WORKSPACE_DIR:-${STUDIO_HARNESS_WORKSPACE:-$HOME/StudioHarness}}"
+WS="${WS/#\~/$HOME}"
+init() { mkdir -p "$WS"/{runs,channels,memory/candidates,memory/knowledge,taste}; [ -f "$WS/profile.md" ] || cp "$ROOT/templates/workspace/profile.md" "$WS/profile.md"; }
+case "${1:-show}" in
+  init) init; echo "workspace: $WS (edit $WS/profile.md)" ;;
+  new)
+    [ -n "${2:-}" ] || { echo "usage: studio-harness new <slug>"; exit 1; }
+    init; R="runs/$(date +%F)-$2"
+    [ -e "$WS/$R" ] && { echo "exists: $WS/$R"; exit 1; }
+    cp -R "$ROOT/runs/_template" "$WS/$R"
+    sed -i.bak "s/^run_id: .*/run_id: $(basename "$R")/; s/^created: .*/created: $(date +%F)/; s/^updated: .*/updated: $(date +%F)/" "$WS/$R/STATUS.md" && rm -f "$WS/$R/STATUS.md.bak"
+    echo "$R" > "$WS/ACTIVE_RUN"; echo "active: $WS/$R" ;;
+  use)
+    R="${2:-}"; R="${R#"$WS/"}"; [ -d "$WS/$R" ] || R="runs/$R"
+    [ -d "$WS/$R" ] || { echo "no such run: ${2:-}"; exit 1; }
+    echo "$R" > "$WS/ACTIVE_RUN"; echo "active: $WS/$R" ;;
+  show)
+    R=$(cat "$WS/ACTIVE_RUN" 2>/dev/null || true); echo "workspace: $WS"; echo "active: ${R:-none}"
+    [ -n "$R" ] && awk '/^## Status/{getline; print; exit}' "$WS/$R/STATUS.md" || true ;;
+  check)
+    R="${2:-$(cat "$WS/ACTIVE_RUN" 2>/dev/null || true)}"; [ -n "$R" ] || { echo "no run"; exit 1; }
+    [ -d "$R" ] || R="$WS/$R"
+    cd "$ROOT" && bash scripts/check-run-completeness.sh "$R" && bash scripts/check-source-ledger.sh "$R/sources.csv" ;;
+  doctor)
+    echo "plugin root: $ROOT"; echo "workspace:   $WS $( [ -f "$WS/profile.md" ] && echo '(ok)' || echo '(missing: run init)')"
+    for t in python3 yt-dlp ffmpeg node blender git gh; do printf '  %-8s %s\n' "$t" "$(command -v $t || echo missing)"; done ;;
+  *) sed -n '2,9p' "$SRC"; exit 1 ;;
+esac

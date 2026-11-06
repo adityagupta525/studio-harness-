@@ -1,10 +1,30 @@
-# Studio Harness v1
+# Studio Harness
 
+**v2.0.0-alpha.1 (6 Nov 2026): now a Claude Code plugin.** Install once and it is on in every session: no slash command needed.
+
+## Install (Claude Code)
+```text
+/plugin marketplace add adityagupta525/studio-harness-
+/plugin install studio-harness@studio-harness
+```
+It asks for a workspace folder (default `~/StudioHarness`) and an optional YouTube Data API key. Your profile, runs, channel dossiers, memory and taste live in the workspace; the plugin ships only the system. First session: it asks your name, language and channels and writes `profile.md`.
+
+| Always on | How |
+|---|---|
+| Operating contract + workspace + tool probe | SessionStart hook (`scripts/hooks/session_start.py`) |
+| Active run gate + next action on every prompt | UserPromptSubmit hook (`harness_context.py`) |
+| STATUS must be fresh before a turn ends | Stop hook (`harness_stop_check.py`) |
+| Reply and work rules | output style `Studio Harness` (forced, coding instructions kept) |
+| Runs from the shell | `studio-harness init / new <slug> / use <run> / show / check / doctor` |
+
+The core is plain files (Markdown, YAML, CSV, Python, shell), so other agent runtimes can use it through `AGENTS.md`; the Claude Code plugin is one adapter.
+
+## What it is
 A Claude Code-native, **local-first, evidence-led** operating system for an independent global design studio: content creation, AI film, social strategy, motion, 3D and client delivery.
 
 It is a contract made of files: Markdown, YAML, CSV and shell validators. It reuses the skills, standards and measurement tools already in `~/creative-os` and adds the parts that were missing: staged tool and approval policy, source and rights ledgers, shot-spec schema, a validated run layout, and memory with a promotion rule.
 
-**Status (2026-11-04):** foundation only. No tool was installed, no account connected, nothing published, no credits spent, nothing committed or pushed. Integrations are **designed and gated, not connected**. Anything unknown is marked `[TO VERIFY]`.
+**Status (2026-11-06):** plugin alpha. Roadmap: departments and director orchestration, channel dossier (competitors, biography, monetization), YouTube and Instagram growth department, calibrated critic panels, learning loop, generalised production skills. Integrations are **designed and gated**; anything unknown is marked `[TO VERIFY]`.
 
 ## The loop
 ```
@@ -28,11 +48,9 @@ Brief → research and evidence → real references examined → three genuinely
 
 ## Start a project
 ```bash
-cd ~/studio-harness
-cp -R runs/_template runs/$(date +%F)-<slug>
-claude
+studio-harness new <slug>
 ```
-Then tell Claude: "Use skills/studio-brief to start this run" and give the brief in your own words.
+Or just describe the job in a session: the `operating-loop` skill opens the run, plans, and asks for your yes before building.
 
 ## Routes
 | Route | Use it when | Start |
@@ -55,4 +73,4 @@ One Director decides. The client system outranks taste. Evidence before assertio
 `~/creative-os` stays the authority for the charter, taste ledger, skills and builders. This repo links to it and never edits it.
 
 ## Remote
-`origin` points at `https://github.com/adityagupta525/studio-harness-.git`. Nothing has been pushed; pushing is a `deployment`-class action that needs your go-ahead.
+`origin`: https://github.com/adityagupta525/studio-harness-

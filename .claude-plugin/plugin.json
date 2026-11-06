@@ -1,0 +1,25 @@
+{
+  "name": "studio-harness",
+  "version": "2.0.0-alpha.1",
+  "description": "An agency-grade operating system for creators and studios: any channel, any style. Director + departments (intelligence, strategy, growth, creative, production, QA, learning), gates, blind critic panels, mechanical checks and logged decisions, always on through hooks.",
+  "author": { "name": "Ashish Gupta" },
+  "homepage": "https://github.com/adityagupta525/studio-harness-",
+  "repository": "https://github.com/adityagupta525/studio-harness-",
+  "license": "SEE LICENSE",
+  "keywords": ["creator", "youtube", "instagram", "agency", "harness", "ai-film", "content-strategy"],
+  "userConfig": {
+    "workspace_dir": {
+      "type": "directory",
+      "title": "Workspace folder",
+      "description": "Where your profile, runs, channel dossiers, memory and taste live. Nothing personal is stored inside the plugin.",
+      "default": "~/StudioHarness"
+    },
+    "youtube_api_key": {
+      "type": "string",
+      "title": "YouTube Data API key (optional)",
+      "description": "Bring your own key for richer channel and competitor data. Leave empty to use public data only.",
+      "sensitive": true,
+      "default": ""
+    }
+  }
+}
