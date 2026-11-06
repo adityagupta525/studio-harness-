@@ -156,7 +156,7 @@ for d in skills/*/; do
   grep -q '^## Steps' "$f" || fail "$f: no '## Steps' section"
   grep -q '^## Never' "$f" || fail "$f: no '## Never' section"
 done
-[ "$scount" -eq 12 ] && ok "12 skills, front matter and sections present" || fail "expected 12 skills, found $scount"
+[ "$scount" -eq 13 ] && ok "13 skills, front matter and sections present" || fail "expected 13 skills, found $scount"
 
 # ---------------------------------------------------------------- 5. templates and run template in sync
 section "5. templates and runs/_template stay in sync"

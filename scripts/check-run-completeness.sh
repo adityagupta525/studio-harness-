@@ -43,7 +43,7 @@ APPROVAL_HEADER = ("approval_id,requested_on,action_type,description,cost_quote,
 ACTION_TYPES = {"paid_generation", "publishing", "external_communication", "login", "account_connection",
                 "deletion", "deployment", "financial_or_legal_action", "licence_decision",
                 "tool_install_or_update", "lock_positioning", "lock_visual_direction", "lock_pillars",
-                "lock_calendar"}
+                "lock_calendar", "approve_plan", "lock_brand_core", "lock_palette", "lock_route", "lock_launch_sequence", "resolve_open_decision"}
 ROUTES = {"standard", "channel-launch"}   # optional front matter key `route`; default standard
 APPROVAL_STATUS = {"pending", "approved", "rejected", "expired"}
 ORIGINS = {"real", "AI-made", "unknown"}

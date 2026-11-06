@@ -18,6 +18,9 @@ Brief → research and evidence → real references examined → three genuinely
 8. **Never print or store secrets.** No installs, no global installs, no pushes unless he says so.
 9. **Name what you skipped.** Failed fetch, rate limit, unverified claim: say it.
 
+## Mandatory mode (Ashish, 6 Nov 2026)
+All his studio and channel work runs through this harness, zero exceptions: skill `studio-harness` (loop contract), `ACTIVE_RUN` (pointer read by the hooks), `scripts/harness-run.sh new|use|show`. Hooks in `.claude/settings.json` here and in `~/creative-os/.claude/settings.json`: `scripts/hooks/harness_context.py` (gate + next action on every prompt), `scripts/hooks/harness_stop_check.py` (STATUS must be fresh before a turn ends). Brand jobs: `skills/brand-identity` (B0-B8) with `scripts/check-banner.py` and `scripts/check-brand-assets.py` (run ban list). A correction from him becomes a check or a rule, not just a note (`memory/candidates/`).
+
 ## Where things live
 | Need | Go to |
 |---|---|
