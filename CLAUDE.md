@@ -19,7 +19,7 @@ Brief → research and evidence → real references examined → three genuinely
 9. **Name what you skipped.** Failed fetch, rate limit, unverified claim: say it.
 
 ## Mandatory mode (Ashish, 6 Nov 2026)
-All his studio and channel work runs through this harness, zero exceptions: skill `studio-harness` (loop contract), `ACTIVE_RUN` (pointer read by the hooks), `scripts/harness-run.sh new|use|show`. Hooks in `.claude/settings.json` here and in `~/creative-os/.claude/settings.json`: `scripts/hooks/harness_context.py` (gate + next action on every prompt), `scripts/hooks/harness_stop_check.py` (STATUS must be fresh before a turn ends). Brand jobs: `skills/brand-identity` (B0-B8) with `scripts/check-banner.py` and `scripts/check-brand-assets.py` (run ban list). A correction from him becomes a check or a rule, not just a note (`memory/candidates/`).
+All studio and channel work runs through this harness, zero exceptions. Since v2 (6 Nov 2026) it ships as a Claude Code plugin (`.claude-plugin/`, `hooks/hooks.json`: SessionStart, UserPromptSubmit, Stop; output style; `bin/studio-harness`); the loop skill is `skills/operating-loop`. Personal data (profile, runs, ACTIVE_RUN, memory, taste) lives in the workspace (`~/StudioHarness` by default), never in this repo. Brand jobs: `skills/brand-identity` (B0-B8) with `scripts/check-banner.py` and `scripts/check-brand-assets.py`. A correction becomes a check or a rule, not just a note (workspace `memory/candidates/`).
 
 ## Where things live
 | Need | Go to |
@@ -45,7 +45,7 @@ scripts/validate-harness.sh                      # everything
 scripts/check-source-ledger.sh [file]            # source ledgers
 scripts/check-run-completeness.sh [run-dir]      # run folders
 scripts/check-channel-plan.sh [run-dir]          # Channel Launch plans
-cp -R runs/_template runs/$(date +%F)-<slug>     # start a project
+studio-harness new <slug>                       # start a project
 ```
 
 ## Reuse, don't duplicate
