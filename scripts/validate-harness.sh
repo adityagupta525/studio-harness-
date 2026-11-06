@@ -184,7 +184,7 @@ for f in glob.glob('rubrics/*.json'):
 sys.exit(1 if bad else 0)
 PY
 for g in calibration/*/gold.json; do r=$(python3 -c "import json;print(json.load(open('$g'))['rubric'])"); [ -f "rubrics/$r.json" ] && ok "$g uses rubrics/$r.json" || fail "$g names a rubric that does not exist"; done
-for c in evals/*/; do [ -f "$c/prompt.md" ] && ls "$c"graders/*.md >/dev/null 2>&1 && ok "eval case $c has prompt and grader" || fail "eval case $c needs prompt.md and graders/*.md"; done
+for c in evals/*/; do [ "$c" = "evals/results/" ] && continue; [ -f "$c/prompt.md" ] && ls "$c"graders/*.md >/dev/null 2>&1 && ok "eval case $c has prompt and grader" || fail "eval case $c needs prompt.md and graders/*.md"; done
 
 section "5. templates and runs/_template stay in sync"
 cmp -s templates/project-brief.md runs/_template/brief.md && ok "brief template matches runs/_template/brief.md" || fail "templates/project-brief.md differs from runs/_template/brief.md"
