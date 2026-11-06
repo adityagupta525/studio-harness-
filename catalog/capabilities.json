@@ -230,6 +230,11 @@
    "file": "skills/brand-identity/SKILL.md"
   },
   {
+   "name": "channel-dossier",
+   "description": "Build a Channel Dossier for any YouTube channel (and its Instagram if public) from one handle or URL - biography and timeline, formats and series, cadence, measured performance and outliers, packaging patterns, competitor map, monetization streams with earning points, risks and lessons to steal (structure, not assets). Use for \"is channel ke baare me batao\", \"tell me about channel X\", \"competitors kaun hain\", \"ye kitna kamata hai\", \"how does X grow\", or before planning a channel in the same niche.",
+   "file": "skills/channel-dossier/SKILL.md"
+  },
+  {
    "name": "channel-launch",
    "description": "Launch a new channel that has zero posts. Runs the 12-step Channel Launch workflow (brief, research, competitor evidence, positioning, pillars, formats, packaging, production system, 30-post calendar, measurement and review), with human locks and no invented data and no publishing. Use for a new YouTube, Instagram or other channel; orchestrates channel-strategy and content-programming.",
    "file": "skills/channel-launch/SKILL.md"
@@ -301,7 +306,7 @@
     "reference-forensics",
     "trend-scout"
    ],
-   "can": "public YouTube/Instagram metadata, playlists, transcripts where available, video files for analysis"
+   "can": "public YouTube/Instagram metadata, playlists, transcripts where available, video files for analysis; scripts/channel-pull.py + channel-stats.py turn it into measured channel data"
   },
   {
    "id": "ffmpeg",

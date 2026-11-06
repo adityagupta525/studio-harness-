@@ -1,17 +1,134 @@
 {
-  "_note": "Hand-kept list of external tools the departments can use. build-catalog.py merges it with agents/ and skills/. 'check' is a shell command whose success means the tool is present; 'cost' is free / byo-key / paid (quote + owner yes).",
-  "tools": [
-    {"id": "yt-dlp", "kind": "cli", "cost": "free", "check": "command -v yt-dlp", "used_by": ["channel-analyst", "reference-forensics", "trend-scout"], "can": "public YouTube/Instagram metadata, playlists, transcripts where available, video files for analysis"},
-    {"id": "ffmpeg", "kind": "cli", "cost": "free", "check": "command -v ffmpeg", "used_by": ["reference-forensics", "motion-editor", "voice-producer", "qa-rights-reviewer"], "can": "frames, contact sheets, cuts, loudness (ebur128), encodes"},
-    {"id": "python3", "kind": "cli", "cost": "free", "check": "command -v python3", "used_by": ["all"], "can": "validators, hooks, catalog, measurement scripts (stdlib)"},
-    {"id": "blender", "kind": "app", "cost": "free", "check": "command -v blender || test -d /Applications/Blender.app", "used_by": ["animation-3d-lead", "blender-cinematographer"], "can": "deterministic 3D scenes via bpy, previews, renders"},
-    {"id": "node", "kind": "cli", "cost": "free", "check": "command -v node", "used_by": ["motion-editor"], "can": "Remotion programmatic video, captions"},
-    {"id": "git", "kind": "cli", "cost": "free", "check": "command -v git", "used_by": ["chief-engineer"], "can": "versioned runs and releases"},
-    {"id": "youtube-data-api", "kind": "api", "cost": "byo-key", "check": "test -n \"$YOUTUBE_API_KEY$CLAUDE_PLUGIN_OPTION_YOUTUBE_API_KEY\"", "used_by": ["channel-analyst", "analytics-analyst"], "can": "channel and video statistics, uploads list, comments (quota-limited)"},
-    {"id": "platform-analytics-exports", "kind": "file", "cost": "free", "check": "true", "used_by": ["analytics-analyst"], "can": "YouTube Studio / Instagram Insights CSV exports or screenshots the owner provides"},
-    {"id": "image-video-models", "kind": "service", "cost": "free-first; paid needs quote", "check": "true", "used_by": ["ai-generation-artist", "ai-film-lead"], "can": "image, image-to-video, reference-to-video, text-to-video through whatever MCP connector or web tool the owner has; routing in policies/model-routing.yaml"},
-    {"id": "tts-voice", "kind": "service", "cost": "free-first; paid needs quote", "check": "true", "used_by": ["voice-producer"], "can": "voice-over generation or a human VO plan"},
-    {"id": "after-effects-premiere", "kind": "app", "cost": "owner licence", "check": "ls /Applications | grep -qi 'After Effects\\|Premiere'", "used_by": ["motion-editor"], "can": "compositing and timeline work via scripting (optional)"},
-    {"id": "vidiq", "kind": "connector", "cost": "paid (quote + owner yes)", "check": "false", "used_by": ["channel-analyst", "youtube-strategist"], "can": "outliers, keyword research, competitor stats (account-bound; test before promising)"}
-  ]
+ "_note": "Hand-kept list of external tools the departments can use. build-catalog.py merges it with agents/ and skills/. 'check' is a shell command whose success means the tool is present; 'cost' is free / byo-key / paid (quote + owner yes).",
+ "tools": [
+  {
+   "id": "yt-dlp",
+   "kind": "cli",
+   "cost": "free",
+   "check": "command -v yt-dlp",
+   "used_by": [
+    "channel-analyst",
+    "reference-forensics",
+    "trend-scout"
+   ],
+   "can": "public YouTube/Instagram metadata, playlists, transcripts where available, video files for analysis; scripts/channel-pull.py + channel-stats.py turn it into measured channel data"
+  },
+  {
+   "id": "ffmpeg",
+   "kind": "cli",
+   "cost": "free",
+   "check": "command -v ffmpeg",
+   "used_by": [
+    "reference-forensics",
+    "motion-editor",
+    "voice-producer",
+    "qa-rights-reviewer"
+   ],
+   "can": "frames, contact sheets, cuts, loudness (ebur128), encodes"
+  },
+  {
+   "id": "python3",
+   "kind": "cli",
+   "cost": "free",
+   "check": "command -v python3",
+   "used_by": [
+    "all"
+   ],
+   "can": "validators, hooks, catalog, measurement scripts (stdlib)"
+  },
+  {
+   "id": "blender",
+   "kind": "app",
+   "cost": "free",
+   "check": "command -v blender || test -d /Applications/Blender.app",
+   "used_by": [
+    "animation-3d-lead",
+    "blender-cinematographer"
+   ],
+   "can": "deterministic 3D scenes via bpy, previews, renders"
+  },
+  {
+   "id": "node",
+   "kind": "cli",
+   "cost": "free",
+   "check": "command -v node",
+   "used_by": [
+    "motion-editor"
+   ],
+   "can": "Remotion programmatic video, captions"
+  },
+  {
+   "id": "git",
+   "kind": "cli",
+   "cost": "free",
+   "check": "command -v git",
+   "used_by": [
+    "chief-engineer"
+   ],
+   "can": "versioned runs and releases"
+  },
+  {
+   "id": "youtube-data-api",
+   "kind": "api",
+   "cost": "byo-key",
+   "check": "test -n \"$YOUTUBE_API_KEY$CLAUDE_PLUGIN_OPTION_YOUTUBE_API_KEY\"",
+   "used_by": [
+    "channel-analyst",
+    "analytics-analyst"
+   ],
+   "can": "channel and video statistics, uploads list, comments (quota-limited)"
+  },
+  {
+   "id": "platform-analytics-exports",
+   "kind": "file",
+   "cost": "free",
+   "check": "true",
+   "used_by": [
+    "analytics-analyst"
+   ],
+   "can": "YouTube Studio / Instagram Insights CSV exports or screenshots the owner provides"
+  },
+  {
+   "id": "image-video-models",
+   "kind": "service",
+   "cost": "free-first; paid needs quote",
+   "check": "true",
+   "used_by": [
+    "ai-generation-artist",
+    "ai-film-lead"
+   ],
+   "can": "image, image-to-video, reference-to-video, text-to-video through whatever MCP connector or web tool the owner has; routing in policies/model-routing.yaml"
+  },
+  {
+   "id": "tts-voice",
+   "kind": "service",
+   "cost": "free-first; paid needs quote",
+   "check": "true",
+   "used_by": [
+    "voice-producer"
+   ],
+   "can": "voice-over generation or a human VO plan"
+  },
+  {
+   "id": "after-effects-premiere",
+   "kind": "app",
+   "cost": "owner licence",
+   "check": "ls /Applications | grep -qi 'After Effects\\|Premiere'",
+   "used_by": [
+    "motion-editor"
+   ],
+   "can": "compositing and timeline work via scripting (optional)"
+  },
+  {
+   "id": "vidiq",
+   "kind": "connector",
+   "cost": "paid (quote + owner yes)",
+   "check": "false",
+   "used_by": [
+    "channel-analyst",
+    "youtube-strategist"
+   ],
+   "can": "outliers, keyword research, competitor stats (account-bound; test before promising)"
+  }
+ ]
 }

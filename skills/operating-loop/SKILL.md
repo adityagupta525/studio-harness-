@@ -14,7 +14,7 @@ The harness is the process; skills and tools do the craft. One director thread (
 5. **Route to the department.** Write the Job Plan from `templates/job-plan.md`: per task one doer, the department chief, and a monitor from another department ([docs/15](../../docs/15-departments-and-orchestration.md)). Route by `docs/CATALOG.md` (`studio-harness catalog` shows what works on this machine).
    | Department (chief) | Specialists | Typical procedures |
    |---|---|---|
-   | Intelligence (intel-chief) | channel-analyst, audience-analyst, trend-scout, reference-forensics | research-pack, competitor-watch, channel-strategy |
+   | Intelligence (intel-chief) | channel-analyst, audience-analyst, trend-scout, reference-forensics | channel-dossier, research-pack, competitor-watch, channel-strategy |
    | Strategy (strategy-chief) | — | channel-strategy, content-programming |
    | Growth & Platforms (growth-chief) | youtube-strategist, instagram-strategist, analytics-analyst, channel-setup-lead, packaging-lead | channel-launch, packaging |
    | Creative (creative-producer) | script-writer, art-director | content-routes, brand-identity, ai-film-treatment |

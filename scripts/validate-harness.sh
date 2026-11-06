@@ -156,7 +156,7 @@ for d in skills/*/; do
   grep -q '^## Steps' "$f" || fail "$f: no '## Steps' section"
   grep -q '^## Never' "$f" || fail "$f: no '## Never' section"
 done
-[ "$scount" -eq 14 ] && ok "14 skills, front matter and sections present" || fail "expected 14 skills, found $scount"
+[ "$scount" -eq 15 ] && ok "15 skills, front matter and sections present" || fail "expected 15 skills, found $scount"
 
 # ---------------------------------------------------------------- 5. templates and run template in sync
 section "4b. plugin packaging (Claude Code adapter)"
