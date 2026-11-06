@@ -7,6 +7,9 @@
 #   studio-harness check [run]        run completeness + source ledger checks on a run
 #   studio-harness doctor             workspace, plugin root, tools
 #   studio-harness catalog            agents, skills and tools, with this machine's tool status
+#   studio-harness learn [args]       learning loop intake (ingest.py --due by default)
+#   studio-harness knowledge <cmd>    cards: check | index | expire | use | promote | search
+#   studio-harness release            gate before commit/push: validator, catalog, secrets (exit code decides)
 set -euo pipefail
 SRC="${BASH_SOURCE[0]}"; while [ -L "$SRC" ]; do SRC="$(readlink "$SRC")"; done
 ROOT="$(cd "$(dirname "$SRC")/.." && pwd)"
@@ -37,5 +40,15 @@ case "${1:-show}" in
     echo "plugin root: $ROOT"; echo "workspace:   $WS $( [ -f "$WS/profile.md" ] && echo '(ok)' || echo '(missing: run init)')"
     for t in python3 yt-dlp ffmpeg node blender git gh; do printf '  %-8s %s\n' "$t" "$(command -v $t || echo missing)"; done ;;
   catalog) python3 "$ROOT/scripts/build-catalog.py" --probe ;;
-  *) sed -n '2,10p' "$SRC"; exit 1 ;;
+  learn) shift; python3 "$ROOT/scripts/ingest.py" "${@:---due}" ;;
+  knowledge) shift; python3 "$ROOT/scripts/knowledge.py" "$@" ;;
+  release)
+    cd "$ROOT" || exit 1; rc=0
+    bash scripts/validate-harness.sh >/tmp/sh-validate.$$ 2>&1 || { rc=1; grep -E '^FAIL' /tmp/sh-validate.$$; }
+    python3 scripts/build-catalog.py --check || rc=1
+    bash scripts/scan-secrets.sh >/tmp/sh-scan.$$ 2>&1 || { rc=1; tail -5 /tmp/sh-scan.$$; }
+    rm -f /tmp/sh-validate.$$ /tmp/sh-scan.$$
+    [ $rc -eq 0 ] && echo "GO: validator, catalog and secret scan pass" || echo "NO-GO: fix the lines above before commit or push"
+    exit $rc ;;
+  *) sed -n '2,13p' "$SRC"; exit 1 ;;
 esac

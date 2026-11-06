@@ -267,6 +267,11 @@
    "file": "skills/content-routes/SKILL.md"
   },
   {
+   "name": "learning-loop",
+   "description": "Keep the studio learning - read registered sources (platform blogs, model makers, creators, analysts, publications, manuals) on a cadence, open and read the new items, write dated knowledge cards with evidence tags and expiry, index them, expire stale ones, and promote a card into a rule, check or skill change once two runs relied on it. Also deep-learns one topic on request (a model, tool, creator, platform change). Use for \"naya kya aaya\", \"weekly learning\", \"ye model/tool/creator deeply padho\", \"algorithm change hua kya\", \"knowledge update karo\".",
+   "file": "skills/learning-loop/SKILL.md"
+  },
+  {
    "name": "operating-loop",
    "description": "The Studio Harness operating loop for every job that produces a deliverable (channel plan, competitor or channel research, brand, banner, logo, thumbnail, script, reel, film, 3D video, post series, growth plan). Finds or opens the run, works only on the gate STATUS.md names, routes each task to its department owner and monitor, plans before building, verifies mechanically, shows only what the plan says, logs the owner's words. Use at the start of any job, when the session context says \"Studio Harness is on\", or when the owner says \"agency ki tarah\", \"harness se karo\", \"plan banao\", \"isko poora karo\".",
    "file": "skills/operating-loop/SKILL.md"

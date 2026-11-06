@@ -156,7 +156,7 @@ for d in skills/*/; do
   grep -q '^## Steps' "$f" || fail "$f: no '## Steps' section"
   grep -q '^## Never' "$f" || fail "$f: no '## Never' section"
 done
-[ "$scount" -eq 16 ] && ok "16 skills, front matter and sections present" || fail "expected 16 skills, found $scount"
+[ "$scount" -eq 17 ] && ok "17 skills, front matter and sections present" || fail "expected 17 skills, found $scount"
 
 # ---------------------------------------------------------------- 5. templates and run template in sync
 section "4b. plugin packaging (Claude Code adapter)"
@@ -185,6 +185,9 @@ sys.exit(1 if bad else 0)
 PY
 for g in calibration/*/gold.json; do r=$(python3 -c "import json;print(json.load(open('$g'))['rubric'])"); [ -f "rubrics/$r.json" ] && ok "$g uses rubrics/$r.json" || fail "$g names a rubric that does not exist"; done
 for c in evals/*/; do [ "$c" = "evals/results/" ] && continue; [ -f "$c/prompt.md" ] && ls "$c"graders/*.md >/dev/null 2>&1 && ok "eval case $c has prompt and grader" || fail "eval case $c needs prompt.md and graders/*.md"; done
+
+python3 -c "import json;d=json.load(open('sources/registry.json'));assert all(s['url'].startswith('http') and s['tier'] in (1,2,3) and s['cadence'] in ('daily','weekly','monthly','quarterly') for s in d['sources'])" && ok "sources/registry.json: every source has a URL, tier 1-3 and a cadence" || fail "sources/registry.json has a source without URL, tier or cadence"
+[ -f templates/knowledge-card.md ] && ok "knowledge card template present" || fail "templates/knowledge-card.md missing"
 
 section "5. templates and runs/_template stay in sync"
 cmp -s templates/project-brief.md runs/_template/brief.md && ok "brief template matches runs/_template/brief.md" || fail "templates/project-brief.md differs from runs/_template/brief.md"

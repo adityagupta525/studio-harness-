@@ -1,0 +1,415 @@
+{
+ "note": "Registry of sources the learning loop reads. tier 1 = the platform or maker in its own words; 2 = reliable reporter/analyst who links primary sources; 3 = practitioner or vendor, verify. Feeds are checked with scripts/ingest.py --test; sources without a feed are visited by cadence. Add sources by PR; workspace may add private ones in <workspace>/memory/knowledge/sources.json (P5 follow-up).",
+ "sources": [
+  {
+   "id": "yt-blog",
+   "name": "YouTube Official Blog",
+   "url": "https://blog.youtube/",
+   "feed": "https://blog.youtube/rss/",
+   "type": "official",
+   "tier": 1,
+   "cadence": "weekly",
+   "domains": [
+    "platforms",
+    "youtube"
+   ],
+   "extract": "launches, policy and algorithm explanations"
+  },
+  {
+   "id": "yt-creator-insider",
+   "name": "Creator Insider (YouTube staff)",
+   "url": "https://www.youtube.com/@CreatorInsider",
+   "feed": "https://www.youtube.com/feeds/videos.xml?channel_id=UCGg-UqjRgzhYDPJMr-9HXCg",
+   "type": "official",
+   "tier": 1,
+   "cadence": "weekly",
+   "domains": [
+    "platforms",
+    "youtube"
+   ],
+   "extract": "Studio and analytics changes; cite from the transcript"
+  },
+  {
+   "id": "yt-liaison",
+   "name": "YouTube Liaison",
+   "url": "https://www.youtube.com/@YouTubeLiaison",
+   "feed": "",
+   "type": "official",
+   "tier": 1,
+   "cadence": "weekly",
+   "domains": [
+    "platforms",
+    "youtube"
+   ],
+   "extract": "myth corrections"
+  },
+  {
+   "id": "yt-help-ypp",
+   "name": "YouTube YPP changes",
+   "url": "https://support.google.com/youtube/answer/12843009",
+   "feed": "",
+   "type": "official",
+   "tier": 1,
+   "cadence": "weekly",
+   "domains": [
+    "platforms",
+    "youtube",
+    "monetization"
+   ],
+   "extract": "thresholds, activity rules, revenue shares"
+  },
+  {
+   "id": "yt-help-monetization-policy",
+   "name": "YouTube channel monetization policies",
+   "url": "https://support.google.com/youtube/answer/1311392",
+   "feed": "",
+   "type": "official",
+   "tier": 1,
+   "cadence": "monthly",
+   "domains": [
+    "platforms",
+    "youtube",
+    "policy"
+   ],
+   "extract": "inauthentic and reused content"
+  },
+  {
+   "id": "yt-how-recommendations",
+   "name": "How YouTube Works: recommendations",
+   "url": "https://www.youtube.com/howyoutubeworks/product-features/recommendations/",
+   "feed": "",
+   "type": "official",
+   "tier": 1,
+   "cadence": "quarterly",
+   "domains": [
+    "platforms",
+    "youtube"
+   ],
+   "extract": "named recommendation signals"
+  },
+  {
+   "id": "ig-creators-blog",
+   "name": "Instagram Creators blog",
+   "url": "https://creators.instagram.com/blog",
+   "feed": "",
+   "type": "official",
+   "tier": 1,
+   "cadence": "weekly",
+   "domains": [
+    "platforms",
+    "instagram"
+   ],
+   "extract": "features, originality, trial reels"
+  },
+  {
+   "id": "ig-newsroom",
+   "name": "Instagram newsroom",
+   "url": "https://about.instagram.com/blog",
+   "feed": "",
+   "type": "official",
+   "tier": 1,
+   "cadence": "weekly",
+   "domains": [
+    "platforms",
+    "instagram"
+   ],
+   "extract": "ranking explainers, launches"
+  },
+  {
+   "id": "meta-ranking-cards",
+   "name": "Meta Transparency: ranking system cards",
+   "url": "https://transparency.meta.com/features/explaining-ranking/",
+   "feed": "",
+   "type": "official",
+   "tier": 1,
+   "cadence": "quarterly",
+   "domains": [
+    "platforms",
+    "instagram"
+   ],
+   "extract": "predictions and signals per surface"
+  },
+  {
+   "id": "smt",
+   "name": "Social Media Today",
+   "url": "https://www.socialmediatoday.com/",
+   "feed": "https://www.socialmediatoday.com/feeds/news/",
+   "type": "news",
+   "tier": 2,
+   "cadence": "weekly",
+   "domains": [
+    "platforms",
+    "creator-economy"
+   ],
+   "extract": "platform changes; verify against the primary post"
+  },
+  {
+   "id": "tubefilter",
+   "name": "Tubefilter",
+   "url": "https://www.tubefilter.com/",
+   "feed": "https://www.tubefilter.com/feed/",
+   "type": "news",
+   "tier": 2,
+   "cadence": "weekly",
+   "domains": [
+    "platforms",
+    "creator-economy",
+    "youtube"
+   ],
+   "extract": "creator economy, YouTube business"
+  },
+  {
+   "id": "film-booth",
+   "name": "Film Booth",
+   "url": "https://www.youtube.com/@FilmBooth",
+   "feed": "https://www.youtube.com/feeds/videos.xml?channel_id=UCSQ6ebJE6MTrEAN_P-L-fuA",
+   "type": "analyst",
+   "tier": 3,
+   "cadence": "monthly",
+   "domains": [
+    "packaging",
+    "youtube"
+   ],
+   "extract": "packaging and title craft"
+  },
+  {
+   "id": "paddy-galloway",
+   "name": "Paddy Galloway",
+   "url": "https://www.youtube.com/@PaddyGalloway",
+   "feed": "",
+   "type": "analyst",
+   "tier": 2,
+   "cadence": "monthly",
+   "domains": [
+    "packaging",
+    "strategy",
+    "youtube"
+   ],
+   "extract": "ideation and packaging strategy"
+  },
+  {
+   "id": "colin-samir",
+   "name": "Colin and Samir",
+   "url": "https://www.youtube.com/@colinandsamir",
+   "feed": "https://www.youtube.com/feeds/videos.xml?channel_id=UCamLstJyCa-t5gfZegxsFMw",
+   "type": "analyst",
+   "tier": 2,
+   "cadence": "monthly",
+   "domains": [
+    "creator-economy",
+    "monetization"
+   ],
+   "extract": "creator business models, interviews"
+  },
+  {
+   "id": "vidiq-blog",
+   "name": "vidIQ blog",
+   "url": "https://vidiq.com/blog/",
+   "feed": "",
+   "type": "vendor",
+   "tier": 3,
+   "cadence": "monthly",
+   "domains": [
+    "platforms",
+    "youtube"
+   ],
+   "extract": "change summaries; vendor bias, verify"
+  },
+  {
+   "id": "blender-news",
+   "name": "Blender news",
+   "url": "https://www.blender.org/news/",
+   "feed": "https://www.blender.org/feed/",
+   "type": "official",
+   "tier": 1,
+   "cadence": "monthly",
+   "domains": [
+    "3d",
+    "tools"
+   ],
+   "extract": "releases, features"
+  },
+  {
+   "id": "blender-dev",
+   "name": "Blender developers blog",
+   "url": "https://code.blender.org/",
+   "feed": "https://code.blender.org/feed/",
+   "type": "official",
+   "tier": 1,
+   "cadence": "monthly",
+   "domains": [
+    "3d",
+    "tools"
+   ],
+   "extract": "upcoming features, pipeline changes"
+  },
+  {
+   "id": "blender-yt",
+   "name": "Blender (official channel)",
+   "url": "https://www.youtube.com/@BlenderOfficial",
+   "feed": "https://www.youtube.com/feeds/videos.xml?channel_id=UCSMOQeBJ2RAnuFungnQOxLg",
+   "type": "official",
+   "tier": 1,
+   "cadence": "monthly",
+   "domains": [
+    "3d",
+    "tools"
+   ],
+   "extract": "release demos, talks"
+  },
+  {
+   "id": "blender-manual",
+   "name": "Blender manual",
+   "url": "https://docs.blender.org/manual/en/latest/",
+   "feed": "",
+   "type": "manual",
+   "tier": 1,
+   "cadence": "quarterly",
+   "domains": [
+    "3d",
+    "tools"
+   ],
+   "extract": "exact operator and render settings"
+  },
+  {
+   "id": "corridor",
+   "name": "Corridor Crew",
+   "url": "https://www.youtube.com/@CorridorCrew",
+   "feed": "https://www.youtube.com/feeds/videos.xml?channel_id=UCSpFnDQr88xCZ80N-X7t0nQ",
+   "type": "creator",
+   "tier": 2,
+   "cadence": "monthly",
+   "domains": [
+    "vfx",
+    "ai-film",
+    "3d"
+   ],
+   "extract": "VFX and AI workflows, breakdowns"
+  },
+  {
+   "id": "motionographer",
+   "name": "Motionographer",
+   "url": "https://motionographer.com/",
+   "feed": "https://motionographer.com/feed/",
+   "type": "publication",
+   "tier": 2,
+   "cadence": "monthly",
+   "domains": [
+    "motion",
+    "design"
+   ],
+   "extract": "motion design work and studio process"
+  },
+  {
+   "id": "cartoon-brew",
+   "name": "Cartoon Brew",
+   "url": "https://www.cartoonbrew.com/",
+   "feed": "https://www.cartoonbrew.com/feed",
+   "type": "publication",
+   "tier": 2,
+   "cadence": "monthly",
+   "domains": [
+    "animation",
+    "3d"
+   ],
+   "extract": "animation industry, pipelines, case studies"
+  },
+  {
+   "id": "brand-new",
+   "name": "Brand New (UnderConsideration)",
+   "url": "https://www.underconsideration.com/brandnew/",
+   "feed": "",
+   "type": "publication",
+   "tier": 2,
+   "cadence": "monthly",
+   "domains": [
+    "brand",
+    "design"
+   ],
+   "extract": "identity case studies and critique",
+   "note": "feed returned HTTP 500 on 2026-11-06; visit by cadence"
+  },
+  {
+   "id": "openai-news",
+   "name": "OpenAI news",
+   "url": "https://openai.com/news/",
+   "feed": "https://openai.com/news/rss.xml",
+   "type": "official",
+   "tier": 1,
+   "cadence": "weekly",
+   "domains": [
+    "ai-models"
+   ],
+   "extract": "model launches, limits"
+  },
+  {
+   "id": "deepmind-blog",
+   "name": "Google DeepMind blog",
+   "url": "https://deepmind.google/discover/blog/",
+   "feed": "https://deepmind.google/blog/rss.xml",
+   "type": "official",
+   "tier": 1,
+   "cadence": "weekly",
+   "domains": [
+    "ai-models"
+   ],
+   "extract": "Veo, Imagen, Gemini launches"
+  },
+  {
+   "id": "anthropic-eng",
+   "name": "Anthropic engineering",
+   "url": "https://www.anthropic.com/engineering",
+   "feed": "",
+   "type": "official",
+   "tier": 1,
+   "cadence": "monthly",
+   "domains": [
+    "agents",
+    "harness"
+   ],
+   "extract": "agent and harness engineering patterns"
+  },
+  {
+   "id": "hf-blog",
+   "name": "Hugging Face blog",
+   "url": "https://huggingface.co/blog",
+   "feed": "https://huggingface.co/blog/feed.xml",
+   "type": "publication",
+   "tier": 2,
+   "cadence": "weekly",
+   "domains": [
+    "ai-models",
+    "open-models"
+   ],
+   "extract": "open model releases and methods"
+  },
+  {
+   "id": "simon-willison",
+   "name": "Simon Willison",
+   "url": "https://simonwillison.net/",
+   "feed": "https://simonwillison.net/atom/everything/",
+   "type": "analyst",
+   "tier": 2,
+   "cadence": "weekly",
+   "domains": [
+    "ai-models",
+    "agents"
+   ],
+   "extract": "tested notes on models and tools"
+  },
+  {
+   "id": "runway-changelog",
+   "name": "Runway changelog",
+   "url": "https://help.runwayml.com/hc/en-us/sections/",
+   "feed": "",
+   "type": "official",
+   "tier": 1,
+   "cadence": "monthly",
+   "domains": [
+    "ai-models",
+    "ai-film"
+   ],
+   "extract": "model features and limits"
+  }
+ ]
+}

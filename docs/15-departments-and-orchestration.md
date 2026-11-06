@@ -33,7 +33,7 @@ Each task line in the Job Plan (`templates/job-plan.md`) names:
 4. **Handoffs** go chief → director with the HANDOFF block; the director never accepts a "done" without `verification` and `risks` filled.
 5. **QA gate (qa-chief).** Blind panel against the anchored rubric for the deliverable; vetoes stand; the monitor's checks and the mechanical checks (`studio-harness check`, job-specific scripts) are run, with exit codes.
 6. **Show (director).** Only what the plan says (usually the best two of three routes), one line each, then the owner's pick and exact words are logged.
-7. **Closeout + learning.** `project-closeout`; misses become candidate checks (chief-engineer) and candidate lessons (memory-curator); knowledge cards are refreshed (knowledge-ingester).
+7. **Closeout + learning.** `project-closeout`; misses become candidate checks (chief-engineer) and candidate lessons (memory-curator); knowledge cards are refreshed weekly by the `learning-loop` skill (knowledge-ingester: `sources/registry.json` → inbox → cards → index → promote after two runs).
 
 ## Escalation
 | Situation | Goes to |

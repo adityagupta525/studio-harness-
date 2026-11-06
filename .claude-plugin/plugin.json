@@ -1,6 +1,6 @@
 {
   "name": "studio-harness",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "An agency-grade operating system for creators and studios: any channel, any style. Director + departments (intelligence, strategy, growth, creative, production, QA, learning), gates, blind critic panels, mechanical checks and logged decisions, always on through hooks.",
   "author": { "name": "Ashish Gupta" },
   "homepage": "https://github.com/adityagupta525/studio-harness-",
