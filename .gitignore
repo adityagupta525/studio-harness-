@@ -51,3 +51,4 @@ runs/*/media/
 
 # Keep the empty template folders
 !runs/_template/**
+evals/results/

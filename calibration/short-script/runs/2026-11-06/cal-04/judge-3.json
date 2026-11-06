@@ -1,0 +1,11 @@
+{"judge": "j3", "item": "cal-04", "rubric": "short-script", "rubric_version": "1.0",
+ "scores": {
+  "hook": {"score": 5, "anchor": "5", "evidence": "'Archaeologists opened this jar after 3,000 years — and the honey inside was still edible.' over a spoon cracking an ancient wax seal: concrete, surprising image and stake that belongs only to this topic."},
+  "structure": {"score": 5, "anchor": "5", "evidence": "Hook -> dry ('17% water... dried out from the inside') -> peroxide -> acid -> stacked summary 'Three defences at once. That's why it lasts.' -> turn in the last two lines 'So what can kill it? You. Leave the lid open, let steam in — and the clock starts.' Each line sets up the next and the ending lands on the viewer."},
+  "clarity": {"score": 5, "anchor": "5", "evidence": "One idea per sentence; each defence named once and recapped visually ('DRY · ACID · PEROXIDE'); 'a built-in disinfectant' glosses hydrogen peroxide; a listener could retell the three reasons."},
+  "pace": {"score": 5, "anchor": "5", "evidence": "75 spoken words (78 tokens minus 3 spaced em-dashes) / 30 s = 2.50 wps, inside 2.3-2.8; short sayable sentences ('It's also acidic, around pH 3.9.'); [VISUAL] cue on every beat."},
+  "accuracy": {"score": 4, "anchor": "5", "evidence": "Hook flagged '[claim reported widely; original excavation source to confirm]', water '[source: USDA]', enzyme '[source: J. Apic. Res. review]'; only the pH 3.9 line carries no source, so between 3 and 5, nearer 5."},
+  "voice": {"score": 4, "anchor": "5", "evidence": "'So what can kill it? You.' and 'the clock starts' give a distinct, slightly wry voice; 'a built-in disinfectant' and 'That's why it lasts' are plainer; nearer 5 than 3."}
+ },
+ "vetoes": [],
+ "notes": "Pace counted with bracketed VISUAL/source notes excluded."}

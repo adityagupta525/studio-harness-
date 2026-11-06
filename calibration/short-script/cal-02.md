@@ -1,0 +1,3 @@
+Target: 30-second YouTube Short, VO script. Topic: why honey never spoils.
+
+Did you know honey basically never goes bad? Archaeologists have reported finding pots of honey in ancient Egyptian tombs that were still edible. The reason is that honey has very little water in it, so bacteria can't grow. Bees also add an enzyme that makes a small amount of hydrogen peroxide. And honey is acidic. All of these things together make it really hard for microbes to survive. That's why your honey jar can sit in the cupboard for years. So next time you see crystallised honey, don't throw it out, just warm it up.

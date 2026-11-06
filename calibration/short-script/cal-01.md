@@ -1,0 +1,3 @@
+Target: 30-second YouTube Short, VO script. Topic: why honey never spoils.
+
+Hey guys, welcome back to the channel! Today we are going to talk about something really interesting. Honey. Everyone loves honey, right? Honey is made by bees. Bees are very important for the planet. Honey can last a very long time. Scientists found honey in Egyptian tombs and it was still good. This is because honey is special. It has a lot of sugar. Also bees add stuff to it. So that's why honey doesn't go bad. Pretty cool, right? Make sure to like and subscribe and comment your favourite food below. See you in the next video, bye!

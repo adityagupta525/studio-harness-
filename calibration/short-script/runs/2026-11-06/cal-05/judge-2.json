@@ -1,0 +1,11 @@
+{"judge": "j2", "item": "cal-05", "rubric": "short-script", "rubric_version": "1.0",
+ "scores": {
+  "hook": {"score": 5, "anchor": "5", "evidence": "'This drop could outlive you.' - concrete image (the falling drop) plus a personal stake; it could not open another video."},
+  "structure": {"score": 5, "anchor": "5", "evidence": "Hook -> tomb proof -> three mechanisms (dry, peroxide, acid) -> 'Dry. Acidic. Self-disinfecting.' -> twist payoff 'the only thing that ruins honey... is water' in the last 2 lines; the drop-in-tea visual loops back to the opening drop."},
+  "clarity": {"score": 4, "anchor": "5", "evidence": "Short, one-idea sentences and 'honey drinks them dry' is retellable; held from 5 because 'Bees add glucose oxidase' drops an unexplained term (never called an enzyme) on a listener."},
+  "pace": {"score": 5, "anchor": "5", "evidence": "69 spoken words / 30 s = 2.30 wps (lower edge of 2.3-2.8); every sentence is one breath ('Dry. Acidic. Self-disinfecting.'); each beat has a [VISUAL] cue."},
+  "accuracy": {"score": 4, "anchor": "5", "evidence": "Tomb claim marked '[reported claim; flagged for source check]'; water and enzyme claims sourced (USDA FoodData, J. Apic. Res. review); but 'around pH 3.9' has no source tag and 'the only thing that ruins honey... is water' slightly overstates."},
+  "voice": {"score": 5, "anchor": "5", "evidence": "Ownable, specific wording: 'This drop could outlive you', 'honey drinks them dry', the three-word chant 'Dry. Acidic. Self-disinfecting.'"}
+ },
+ "vetoes": [],
+ "notes": "Pace sits right at the 2.3 floor."}

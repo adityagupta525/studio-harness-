@@ -1,0 +1,11 @@
+{"judge": "j2", "item": "cal-02", "rubric": "short-script", "rubric_version": "1.0",
+ "scores": {
+  "hook": {"score": 3, "anchor": "3", "evidence": "Opens 'Did you know honey basically never goes bad?' - a premise in exactly the generic 'Did you know' phrasing the 3 anchor names; no image or stake."},
+  "structure": {"score": 3, "anchor": "3", "evidence": "Setup (tomb honey) -> explanation (low water, peroxide, acidity) -> payoff present, but 'That's why your honey jar can sit in the cupboard for years' restates the premise as filler, and the last line pivots to crystallised honey instead of landing the 'never spoils' idea."},
+  "clarity": {"score": 4, "anchor": "5", "evidence": "Mostly one idea per sentence ('And honey is acidic.') and retellable after one hearing; pulled down from 5 because the closing 'crystallised honey... just warm it up' introduces crystallisation with no setup."},
+  "pace": {"score": 3, "anchor": "3", "evidence": "95 spoken words / 30 s = 3.17 wps: inside 2.0-3.2 but above 2.8; 'Archaeologists have reported finding pots of honey in ancient Egyptian tombs that were still edible' is a long breath; no visual cues marked."},
+  "accuracy": {"score": 3, "anchor": "3", "evidence": "Claims plausible and the tomb claim is hedged ('have reported'), but no claim carries a source (17%-type water figure absent, enzyme/peroxide and acidity unsourced)."},
+  "voice": {"score": 2, "anchor": "1", "evidence": "Consistent but generic: 'Did you know', 'really hard for microbes to survive', 'So next time you see...' could be any channel; slightly above 1 because the tone is even and not padded."}
+ },
+ "vetoes": [],
+ "notes": "Competent but generic explainer; no visual cues, no sources."}

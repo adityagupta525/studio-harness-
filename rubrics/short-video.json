@@ -1,0 +1,85 @@
+{
+ "id": "short-video",
+ "version": "1.0",
+ "scale": "1-5; 2 and 4 sit between the written anchors",
+ "title": "Short-form video (YouTube Shorts, Reels)",
+ "bar": 4.5,
+ "criteria": [
+  {
+   "id": "hook",
+   "name": "Hook (first 2 s)",
+   "weight": 2,
+   "anchors": {
+    "1": "No hook: logo, intro or slow setup; nothing makes a viewer stay.",
+    "3": "A clear premise by ~3 s, but the first frame is static or generic.",
+    "5": "The first frame is already the question or the action; premise lands in under 2 s with sound off."
+   }
+  },
+  {
+   "id": "structure",
+   "name": "Retention structure",
+   "weight": 2,
+   "anchors": {
+    "1": "Information order is random; the payoff is missing or comes first.",
+    "3": "A setup → middle → payoff exists but one beat drags or repeats.",
+    "5": "Every beat raises or answers a question; the payoff lands in the last 15%; no dead beat."
+   }
+  },
+  {
+   "id": "clarity",
+   "name": "Clarity of the idea",
+   "weight": 1.5,
+   "anchors": {
+    "1": "A viewer cannot say what it was about.",
+    "3": "The idea is clear, but one step needs a pause or replay.",
+    "5": "One idea, explained so a 12-year-old could retell it after one view."
+   }
+  },
+  {
+   "id": "craft",
+   "name": "Visual craft",
+   "weight": 1.5,
+   "anchors": {
+    "1": "Artefacts, inconsistent characters, unreadable frames.",
+    "3": "Clean and consistent but generic; looks like many others.",
+    "5": "Every frame composed for vertical; consistent world; motion serves the explanation."
+   }
+  },
+  {
+   "id": "audio",
+   "name": "Voice, sound and captions",
+   "weight": 1,
+   "anchors": {
+    "1": "VO unclear or mistimed; captions missing or wrong.",
+    "3": "Clear VO and captions; music or SFX generic or too loud.",
+    "5": "VO pacing matches cuts; captions exact and readable at phone size; sound design adds meaning."
+   }
+  },
+  {
+   "id": "originality",
+   "name": "Originality",
+   "weight": 1,
+   "anchors": {
+    "1": "A copy of a known creator's format and look.",
+    "3": "Familiar format with one own element.",
+    "5": "A recognisable own device (look, structure or voice) that passes the '500 others' test."
+   }
+  },
+  {
+   "id": "fit",
+   "name": "Brief and channel fit",
+   "weight": 1,
+   "anchors": {
+    "1": "Ignores the brief or the channel's promise.",
+    "3": "Fits the brief; the channel's promise is only implied.",
+    "5": "Delivers the channel's promise and the brief's success test exactly."
+   }
+  }
+ ],
+ "vetoes": [
+  "rights: uses footage, music or characters without a cleared right",
+  "fact: a factual error in a claim presented as true",
+  "policy: violates platform policy (misleading, unsafe, inauthentic mass-produced)",
+  "ai-tell: obvious AI artefacts a viewer would notice (hands, faces, text)"
+ ]
+}

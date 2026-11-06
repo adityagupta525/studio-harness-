@@ -1,0 +1,63 @@
+{
+ "id": "thumbnail-title",
+ "version": "1.0",
+ "scale": "1-5; 2 and 4 sit between the written anchors",
+ "title": "Packaging: thumbnail + title",
+ "bar": 4.5,
+ "criteria": [
+  {
+   "id": "read",
+   "name": "Read at small size",
+   "weight": 2,
+   "anchors": {
+    "1": "Unreadable or cluttered at 168 px wide.",
+    "3": "Subject reads at small size; text or second element competes.",
+    "5": "One subject and at most 3 words read instantly at phone size."
+   }
+  },
+  {
+   "id": "curiosity",
+   "name": "Curiosity gap",
+   "weight": 2,
+   "anchors": {
+    "1": "Tells the whole story or says nothing.",
+    "3": "Creates interest, but title and thumbnail repeat each other.",
+    "5": "Title and thumbnail each add a different half of the question; honest to the video."
+   }
+  },
+  {
+   "id": "contrast",
+   "name": "Contrast and colour",
+   "weight": 1,
+   "anchors": {
+    "1": "Low contrast, blends into the feed.",
+    "3": "Good contrast, generic palette.",
+    "5": "Stands out in a feed of competitors while staying on brand."
+   }
+  },
+  {
+   "id": "honesty",
+   "name": "Honesty to the video",
+   "weight": 1.5,
+   "anchors": {
+    "1": "Misleading: promises something the video does not deliver.",
+    "3": "Mostly accurate, slightly exaggerated.",
+    "5": "Exactly what the video pays off in its first minute."
+   }
+  },
+  {
+   "id": "brand",
+   "name": "Series and brand consistency",
+   "weight": 1,
+   "anchors": {
+    "1": "No relation to the channel's system.",
+    "3": "Some shared elements.",
+    "5": "Recognisable as this channel with the name hidden."
+   }
+  }
+ ],
+ "vetoes": [
+  "misleading: clickbait the video does not deliver",
+  "rights: uses another's image, logo or character without right"
+ ]
+}

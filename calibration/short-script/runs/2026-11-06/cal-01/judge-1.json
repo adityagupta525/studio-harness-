@@ -1,0 +1,40 @@
+{
+ "judge": "j1",
+ "item": "cal-01",
+ "rubric": "short-script",
+ "rubric_version": "1.0",
+ "scores": {
+  "hook": {
+   "score": 1,
+   "anchor": "1",
+   "evidence": "Opens with 'Hey guys, welcome back to the channel! Today we are going to talk about something really interesting.' — greeting and channel context, no reason to stay."
+  },
+  "structure": {
+   "score": 2,
+   "anchor": "1",
+   "evidence": "Facts drift ('Honey is made by bees. Bees are very important for the planet.') with filler beats and a CTA outro; between 1 and 3 because a thin payoff exists: 'So that's why honey doesn't go bad.'"
+  },
+  "clarity": {
+   "score": 2,
+   "anchor": "3",
+   "evidence": "Easy words but the mechanism is vague: 'This is because honey is special. It has a lot of sugar. Also bees add stuff to it.' — more than one step skipped ('stuff' is ambiguous), so below 3."
+  },
+  "pace": {
+   "score": 2,
+   "anchor": "3",
+   "evidence": "99 spoken words / 30 s = 3.30 wps, above the 3.2 ceiling but not over 180 or under 40; no visual cues marked; between 1 and 3."
+  },
+  "accuracy": {
+   "score": 2,
+   "anchor": "1",
+   "evidence": "'Scientists found honey in Egyptian tombs and it was still good' stated as fact with no source; no sourcing anywhere; between 1 and 3 because nothing is clearly wrong, only oversimplified ('It has a lot of sugar' as the reason)."
+  },
+  "voice": {
+   "score": 1,
+   "anchor": "1",
+   "evidence": "Generic YouTuber template: 'Pretty cool, right? Make sure to like and subscribe and comment your favourite food below. See you in the next video, bye!' — could be any channel."
+  }
+ },
+ "vetoes": [],
+ "notes": "Pace counts spoken words only (brackets excluded, punctuation-only tokens excluded) over 30 s target."
+}

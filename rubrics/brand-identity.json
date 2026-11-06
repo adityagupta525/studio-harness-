@@ -1,0 +1,74 @@
+{
+ "id": "brand-identity",
+ "version": "1.0",
+ "scale": "1-5; 2 and 4 sit between the written anchors",
+ "title": "Brand identity asset (logo, banner, avatar, kit)",
+ "bar": 4.5,
+ "criteria": [
+  {
+   "id": "idea",
+   "name": "Idea",
+   "weight": 2,
+   "anchors": {
+    "1": "No idea: a font and a colour.",
+    "3": "An idea is present but needs explaining.",
+    "5": "One strong idea a viewer gets in 2 seconds, tied to the brand core."
+   }
+  },
+  {
+   "id": "distinct",
+   "name": "Distinctiveness",
+   "weight": 2,
+   "anchors": {
+    "1": "Looks like a template or a competitor.",
+    "3": "Distinct in one element.",
+    "5": "Could not be mistaken for any competitor; owns a device."
+   }
+  },
+  {
+   "id": "small",
+   "name": "Recognition at small sizes",
+   "weight": 1.5,
+   "anchors": {
+    "1": "Breaks below 98 px.",
+    "3": "Survives at 98 px, weak at 40 px.",
+    "5": "Reads at 40 px and in one colour."
+   }
+  },
+  {
+   "id": "craft",
+   "name": "Craft and alignment",
+   "weight": 1.5,
+   "anchors": {
+    "1": "Misaligned, uneven spacing, artefacts.",
+    "3": "Clean, minor optical issues.",
+    "5": "Optically balanced, measured spacing, flawless at every size."
+   }
+  },
+  {
+   "id": "system",
+   "name": "System fit",
+   "weight": 1,
+   "anchors": {
+    "1": "Assets don't belong together.",
+    "3": "Shared palette and type.",
+    "5": "A system: every asset obviously from one family, with rules."
+   }
+  },
+  {
+   "id": "core",
+   "name": "Brand-core fit",
+   "weight": 1,
+   "anchors": {
+    "1": "Contradicts the brand core or the ban list.",
+    "3": "Consistent with the core.",
+    "5": "Expresses the core's beliefs; zero banned elements."
+   }
+  }
+ ],
+ "vetoes": [
+  "ban-list: contains a banned element",
+  "collision: confusable with an existing mark in the same space",
+  "safe-zone: key element outside the platform safe area"
+ ]
+}

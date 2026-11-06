@@ -142,7 +142,7 @@ for f in agents/*.md; do
   done
   grep -q "^from: $base\$" "$f" || fail "$f: handoff 'from:' must be $base"
 done
-[ "$count" -eq 31 ] && ok "31 agent cards (8 departments, docs/15), all sections and handoff fields present" || fail "expected 31 agent cards (docs/15 roster), found $count"
+[ "$count" -eq 32 ] && ok "32 agent cards (8 departments, docs/15), all sections and handoff fields present" || fail "expected 32 agent cards (docs/15 roster), found $count"
 
 # ---------------------------------------------------------------- 4. skills
 section "4. skills"
@@ -156,7 +156,7 @@ for d in skills/*/; do
   grep -q '^## Steps' "$f" || fail "$f: no '## Steps' section"
   grep -q '^## Never' "$f" || fail "$f: no '## Never' section"
 done
-[ "$scount" -eq 15 ] && ok "15 skills, front matter and sections present" || fail "expected 15 skills, found $scount"
+[ "$scount" -eq 16 ] && ok "16 skills, front matter and sections present" || fail "expected 16 skills, found $scount"
 
 # ---------------------------------------------------------------- 5. templates and run template in sync
 section "4b. plugin packaging (Claude Code adapter)"
@@ -170,6 +170,21 @@ grep -q 'CLAUDE_PLUGIN_ROOT' hooks/hooks.json && ! grep -q 'studio-harness/scrip
 python3 scripts/build-catalog.py --check >/dev/null && ok "docs/CATALOG.md and catalog/capabilities.json are current" || fail "capability catalog is stale: run scripts/build-catalog.py"
 for f in agents/*.md; do grep -q "^department: ..*" "$f" && grep -q "^reports_to: ..*" "$f" || fail "$f: front matter needs department and reports_to (docs/15)"; done
 ! grep -l "creative_os_equivalent" agents/*.md >/dev/null 2>&1 && ok "agent cards carry no private-pack keys" || fail "remove creative_os_equivalent from agent cards"
+
+section "4c. consistency (rubrics, calibration, evals)"
+python3 - <<'PY' && ok "rubrics: every criterion has weight and anchors 1/3/5; bar and vetoes set" || fail "a rubric in rubrics/ is malformed (see message above)"
+import json, glob, sys
+bad = 0
+for f in glob.glob('rubrics/*.json'):
+    r = json.load(open(f))
+    for k in ('id', 'version', 'bar', 'criteria', 'vetoes'):
+        if k not in r: print(f'{f}: missing {k}'); bad += 1
+    for c in r.get('criteria', []):
+        if not all(str(i) in c.get('anchors', {}) for i in (1, 3, 5)) or not c.get('weight'): print(f'{f}: {c.get("id")} needs weight and anchors 1, 3, 5'); bad += 1
+sys.exit(1 if bad else 0)
+PY
+for g in calibration/*/gold.json; do r=$(python3 -c "import json;print(json.load(open('$g'))['rubric'])"); [ -f "rubrics/$r.json" ] && ok "$g uses rubrics/$r.json" || fail "$g names a rubric that does not exist"; done
+for c in evals/*/; do [ -f "$c/prompt.md" ] && ls "$c"graders/*.md >/dev/null 2>&1 && ok "eval case $c has prompt and grader" || fail "eval case $c needs prompt.md and graders/*.md"; done
 
 section "5. templates and runs/_template stay in sync"
 cmp -s templates/project-brief.md runs/_template/brief.md && ok "brief template matches runs/_template/brief.md" || fail "templates/project-brief.md differs from runs/_template/brief.md"

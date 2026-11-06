@@ -1,0 +1,72 @@
+{
+ "item": "cal-02",
+ "rubric": "short-script",
+ "rubric_version": "1.0",
+ "bar": 4.5,
+ "score": 3.06,
+ "score_100": 51,
+ "judge_totals": [
+  3.17,
+  3.06,
+  3.06
+ ],
+ "criteria": {
+  "hook": {
+   "scores": [
+    3,
+    3,
+    3
+   ],
+   "median": 3,
+   "spread": 0
+  },
+  "structure": {
+   "scores": [
+    3,
+    3,
+    3
+   ],
+   "median": 3,
+   "spread": 0
+  },
+  "clarity": {
+   "scores": [
+    4,
+    4,
+    4
+   ],
+   "median": 4,
+   "spread": 0
+  },
+  "pace": {
+   "scores": [
+    3,
+    3,
+    3
+   ],
+   "median": 3,
+   "spread": 0
+  },
+  "accuracy": {
+   "scores": [
+    3,
+    3,
+    3
+   ],
+   "median": 3,
+   "spread": 0
+  },
+  "voice": {
+   "scores": [
+    3,
+    2,
+    2
+   ],
+   "median": 2,
+   "spread": 1
+  }
+ },
+ "vetoes": [],
+ "rejudge_on": [],
+ "verdict": "BELOW_BAR"
+}

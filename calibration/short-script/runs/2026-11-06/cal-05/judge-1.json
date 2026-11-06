@@ -1,0 +1,40 @@
+{
+ "judge": "j1",
+ "item": "cal-05",
+ "rubric": "short-script",
+ "rubric_version": "1.0",
+ "scores": {
+  "hook": {
+   "score": 5,
+   "anchor": "5",
+   "evidence": "'This drop could outlive you.' — a concrete, surprising stake in five words over a single slow-motion drop; could not open another video."
+  },
+  "structure": {
+   "score": 5,
+   "anchor": "5",
+   "evidence": "Hook -> tomb evidence -> dry -> peroxide -> acid -> 'Dry. Acidic. Self-disinfecting.' -> 'Which is why the only thing that ruins honey… is water.' The 'Add a little water' line sets up the ending; the drop visual loops from open to close; payoff in last 2 lines."
+  },
+  "clarity": {
+   "score": 4,
+   "anchor": "5",
+   "evidence": "Short one-idea sentences ('so honey drinks them dry'); between 3 and 5 because 'Bees add glucose oxidase' drops an unexplained technical term on a cold listener."
+  },
+  "pace": {
+   "score": 4,
+   "anchor": "5",
+   "evidence": "68 spoken words / 30 s = 2.27 wps — inside 2.0-3.2, just under the 2.3 floor of anchor 5; every sentence one breath and every line has a [VISUAL] cue, so between 3 and 5."
+  },
+  "accuracy": {
+   "score": 4,
+   "anchor": "5",
+   "evidence": "Tomb claim hedged 'reportedly' and '[reported claim; flagged for source check]', water '[source: USDA FoodData]', enzyme '[source: J. Apic. Res. review]'; between 3 and 5 because pH 3.9 is unsourced and 'the only thing that ruins honey… is water' overstates."
+  },
+  "voice": {
+   "score": 5,
+   "anchor": "5",
+   "evidence": "Ownable, specific wording: 'This drop could outlive you.', 'so honey drinks them dry', 'Dry. Acidic. Self-disinfecting.' — no clichés."
+  }
+ },
+ "vetoes": [],
+ "notes": "Pace counts spoken words only (brackets excluded, punctuation-only tokens excluded) over 30 s target."
+}

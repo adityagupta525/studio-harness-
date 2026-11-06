@@ -1,0 +1,57 @@
+{
+ "rubric": "short-script",
+ "rubric_version": "1.0",
+ "note": "Gold scores agreed by the harness authors for calibration; synthetic, original scripts written for this set. Tolerance: mean absolute error <= 0.6 per criterion and <= 0.4 on the weighted score. Pace measured as spoken words (bracketed visual and source notes excluded) / 30 s: cal-01 3.3, cal-02 3.17, cal-03 2.77, cal-04 2.6, cal-05 2.33 words per second.",
+ "items": {
+  "cal-01": {
+   "hook": 1,
+   "structure": 1,
+   "clarity": 2,
+   "pace": 2,
+   "accuracy": 2,
+   "voice": 1
+  },
+  "cal-02": {
+   "hook": 2,
+   "structure": 3,
+   "clarity": 4,
+   "pace": 3,
+   "accuracy": 2,
+   "voice": 2
+  },
+  "cal-03": {
+   "hook": 5,
+   "structure": 4,
+   "clarity": 4,
+   "pace": 4,
+   "accuracy": 3,
+   "voice": 4
+  },
+  "cal-04": {
+   "hook": 4,
+   "structure": 5,
+   "clarity": 5,
+   "pace": 5,
+   "accuracy": 4,
+   "voice": 4
+  },
+  "cal-05": {
+   "hook": 5,
+   "structure": 5,
+   "clarity": 5,
+   "pace": 4,
+   "accuracy": 4,
+   "voice": 5
+  }
+ },
+ "gold_version": "1.1",
+ "changelog": [
+  {
+   "date": "2026-11-06",
+   "version": "1.1",
+   "change": "accuracy gold: cal-01 1->2, cal-03 4->3, cal-04 5->4, cal-05 5->4",
+   "reason": "First calibration run: all 3 blind judges agreed and cited the anchor text. cal-04/05 leave \"around pH 3.9\" unsourced, so anchor 5 (\"every factual claim flagged\") is not met; cal-03 states the 3,000-year hook as fact with no flag; cal-01 has no source but no claim is clearly wrong, so it sits between anchors 1 and 3. The gold, not the panel, broke the rubric.",
+   "guard": "A corrected gold is confirmed by a fresh panel on the next release; if that panel disagrees, the anchor wording is rewritten instead of moving gold again."
+  }
+ ]
+}

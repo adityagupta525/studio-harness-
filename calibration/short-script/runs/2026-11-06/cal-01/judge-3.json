@@ -1,0 +1,11 @@
+{"judge": "j3", "item": "cal-01", "rubric": "short-script", "rubric_version": "1.0",
+ "scores": {
+  "hook": {"score": 1, "anchor": "1", "evidence": "Opens 'Hey guys, welcome back to the channel! Today we are going to talk about something really interesting.' — greeting and channel context, no reason to stay."},
+  "structure": {"score": 2, "anchor": "1", "evidence": "Facts in loose order with filler ('Honey is made by bees. Bees are very important for the planet.'); a weak payoff exists ('So that's why honey doesn't go bad.') but the last two lines are a like/subscribe CTA and sign-off; between 1 and 3, nearer 1."},
+  "clarity": {"score": 2, "anchor": "3", "evidence": "No jargon and easy to follow, but the mechanism is skipped, not just one step: 'This is because honey is special. It has a lot of sugar. Also bees add stuff to it.' A listener cannot retell why; between 1 and 3."},
+  "pace": {"score": 2, "anchor": "3", "evidence": "99 spoken words / 30 s = 3.30 wps, above the 3.2 ceiling of anchor 3 but not over 180 words; sentences are sayable; no visual cues marked; between 1 and 3."},
+  "accuracy": {"score": 2, "anchor": "1", "evidence": "'Scientists found honey in Egyptian tombs and it was still good.' stated as fact with no source or hedge; no claim anywhere is sourced; nothing clearly false, so between 1 and 3, nearer 1."},
+  "voice": {"score": 1, "anchor": "1", "evidence": "Stock YouTuber phrasing ('Pretty cool, right?', 'Make sure to like and subscribe', 'See you in the next video, bye!'); could be any channel."}
+ },
+ "vetoes": [],
+ "notes": "Pace counted on all spoken text; item has no bracketed notes."}

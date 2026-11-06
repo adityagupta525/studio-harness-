@@ -155,6 +155,13 @@
    "file": "agents/packaging-lead.md"
   },
   {
+   "name": "panel-judge",
+   "department": "QA & Standards",
+   "reports_to": "qa-chief",
+   "description": "One blind judge on the QA panel. Scores ONE item against ONE anchored rubric from rubrics/, citing the anchor level and the evidence for every criterion, and returns strict JSON. Never sees the other routes, other judges' scores or the maker's notes. qa-chief runs three of these per item.",
+   "file": "agents/panel-judge.md"
+  },
+  {
    "name": "production-chief",
    "department": "Production",
    "reports_to": "director",
@@ -273,6 +280,11 @@
    "name": "project-closeout",
    "description": "Close a run. Writes the closeout record, sets the status honestly, and hands lesson candidates to the memory-curator. Promotion to shared memory is never part of closeout itself.",
    "file": "skills/project-closeout/SKILL.md"
+  },
+  {
+   "name": "qa-panel",
+   "description": "Score any deliverable the same way every time - three blind panel judges on an anchored rubric (rubrics/), median per criterion, re-judge when judges disagree, vetoes stand, and a calibration drift check before scores are trusted. Use at every QA gate before work reaches the owner, when the owner asks \"kitne number milenge\", \"score karo\", \"kaunsa better hai\", or when scores look inconsistent across days.",
+   "file": "skills/qa-panel/SKILL.md"
   },
   {
    "name": "qa",

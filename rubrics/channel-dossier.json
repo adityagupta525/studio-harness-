@@ -1,0 +1,62 @@
+{
+ "id": "channel-dossier",
+ "version": "1.0",
+ "scale": "1-5; 2 and 4 sit between the written anchors",
+ "title": "Channel dossier (research on an existing channel)",
+ "bar": 4.5,
+ "criteria": [
+  {
+   "id": "evidence",
+   "name": "Evidence and method",
+   "weight": 2,
+   "anchors": {
+    "1": "Numbers without method or source.",
+    "3": "Most numbers sourced; some methods missing.",
+    "5": "Every number traceable to a pull file or a dated URL with its method."
+   }
+  },
+  {
+   "id": "examined",
+   "name": "Media examined",
+   "weight": 1.5,
+   "anchors": {
+    "1": "Describes videos nobody watched.",
+    "3": "Some videos examined, few measurements.",
+    "5": "Outliers and medians examined with measured hook, cuts and pacing."
+   }
+  },
+  {
+   "id": "insight",
+   "name": "Insight",
+   "weight": 2,
+   "anchors": {
+    "1": "A list of facts with no 'so what'.",
+    "3": "Some patterns named.",
+    "5": "Explains why it works (what drives outliers) in a way a planner can act on."
+   }
+  },
+  {
+   "id": "money",
+   "name": "Monetization honesty",
+   "weight": 1.5,
+   "anchors": {
+    "1": "States earnings as fact.",
+    "3": "Estimates with method, missing ranges or sources.",
+    "5": "Every stream evidenced; estimates as ranges with method and tags."
+   }
+  },
+  {
+   "id": "gaps",
+   "name": "Honesty about gaps",
+   "weight": 1,
+   "anchors": {
+    "1": "Hides what was not checked.",
+    "3": "Lists some gaps.",
+    "5": "Complete 'could not examine' with blocked URLs and what would close each gap."
+   }
+  }
+ ],
+ "vetoes": [
+  "fabrication: an invented number, quote or source"
+ ]
+}

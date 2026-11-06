@@ -1,0 +1,11 @@
+{"judge": "j2", "item": "cal-03", "rubric": "short-script", "rubric_version": "1.0",
+ "scores": {
+  "hook": {"score": 5, "anchor": "5", "evidence": "'This honey is three thousand years old. And you could still eat it.' - a concrete object on screen plus a surprising stake addressed to the viewer."},
+  "structure": {"score": 4, "anchor": "5", "evidence": "Hook -> water/raisin -> enzyme -> acid -> summary -> payoff 'The only thing that can ruin it? Water. Keep the lid on.' with the tomb jar loop; held from 5 because 'Microbes don't stand a chance' restates the line before it and 'Here's the trick' is a connective beat."},
+  "clarity": {"score": 5, "anchor": "5", "evidence": "Analogies make each step retellable: 'like a raisin drying in the sun', 'about as acidic as orange juice'; glucose oxidase is named as 'an enzyme'; one idea per sentence."},
+  "pace": {"score": 5, "anchor": "5", "evidence": "83 spoken words / 30 s = 2.77 wps (inside 2.3-2.8); sentences sayable in a breath; every beat has a [VISUAL] cue."},
+  "accuracy": {"score": 3, "anchor": "3", "evidence": "Water and enzyme claims sourced (USDA, J. Apic. Res.), but the lead claim 'three thousand years old... you could still eat it' is stated as fact with no source or hedge, and the pH/orange-juice comparison is unsourced."},
+  "voice": {"score": 4, "anchor": "5", "evidence": "Specific touches ('quietly disinfecting itself', raisin image, 'Keep the lid on'), but 'Here's the trick' and 'Microbes don't stand a chance' are stock phrasing, so between 3 and 5."}
+ },
+ "vetoes": [],
+ "notes": "Strong script; the unhedged lead claim is the main gap."}

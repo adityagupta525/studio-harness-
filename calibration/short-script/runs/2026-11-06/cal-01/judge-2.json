@@ -1,0 +1,11 @@
+{"judge": "j2", "item": "cal-01", "rubric": "short-script", "rubric_version": "1.0",
+ "scores": {
+  "hook": {"score": 1, "anchor": "1", "evidence": "'Hey guys, welcome back to the channel! Today we are going to talk about something really interesting.' - greeting and channel context, no reason to stay."},
+  "structure": {"score": 1, "anchor": "1", "evidence": "Loose facts in no build ('Honey is made by bees. Bees are very important for the planet.'), filler throughout, explanation collapses to 'honey is special', and it ends on a like/subscribe outro rather than a payoff."},
+  "clarity": {"score": 2, "anchor": "1", "evidence": "Simple words, but the mechanism is ambiguous ('Also bees add stuff to it', 'honey is special'); a listener could not retell why honey lasts. Not jargon, so slightly above 1."},
+  "pace": {"score": 2, "anchor": "3", "evidence": "99 spoken words / 30 s = 3.30 wps, above the 3.2 ceiling of the 3 anchor but not in the 1 range (>180 or <40 words); no visual cues."},
+  "accuracy": {"score": 2, "anchor": "1", "evidence": "'Scientists found honey in Egyptian tombs and it was still good' stated as fact with no source or hedge; no clearly wrong claim, so not 1, but 'It has a lot of sugar... So that's why' oversimplifies the cause."},
+  "voice": {"score": 1, "anchor": "1", "evidence": "Boilerplate creator voice: 'Pretty cool, right?', 'Make sure to like and subscribe', 'See you in the next video, bye!' - could be any channel."}
+ },
+ "vetoes": [],
+ "notes": "Generic template script."}

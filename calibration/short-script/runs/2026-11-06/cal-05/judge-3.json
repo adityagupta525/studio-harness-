@@ -1,0 +1,11 @@
+{"judge": "j3", "item": "cal-05", "rubric": "short-script", "rubric_version": "1.0",
+ "scores": {
+  "hook": {"score": 5, "anchor": "5", "evidence": "'This drop could outlive you.' over a single slow-motion honey drop on black: a concrete image plus a personal, surprising stake that could not open another video."},
+  "structure": {"score": 5, "anchor": "5", "evidence": "Hook -> tomb evidence -> dry ('honey drinks them dry') -> peroxide -> acid -> triad 'Dry. Acidic. Self-disinfecting.' -> payoff in the last line 'the only thing that ruins honey… is water' as the same drop dissolves in tea, looping back to the opening drop."},
+  "clarity": {"score": 4, "anchor": "5", "evidence": "One idea per sentence and the dry step is explained ('Microbes need far more — so honey drinks them dry'), but 'Bees add glucose oxidase.' names the enzyme without saying it is an enzyme, a small jargon bump; nearer 5."},
+  "pace": {"score": 5, "anchor": "5", "evidence": "69 spoken words (70 tokens minus one spaced em-dash) / 30 s = 2.30 wps, at the floor of 2.3-2.8; all sentences short and one-breath ('And it's acidic — around pH 3.9.'); every beat has a [VISUAL] cue."},
+  "accuracy": {"score": 4, "anchor": "5", "evidence": "Tomb claim hedged 'reportedly' and flagged '[reported claim; flagged for source check]'; water '[source: USDA FoodData]'; enzyme '[source: J. Apic. Res. review]'; pH 3.9 unsourced and 'the only thing that ruins honey… is water' mildly overstates; nearer 5."},
+  "voice": {"score": 5, "anchor": "5", "evidence": "Specific, ownable wording: 'This drop could outlive you', 'honey drinks them dry', the clipped triad 'Dry. Acidic. Self-disinfecting.', the ellipsis reveal '… is water'."}
+ },
+ "vetoes": [],
+ "notes": "Pace counted with bracketed VISUAL/source notes excluded; sits exactly on the 2.3 floor."}

@@ -1,0 +1,40 @@
+{
+ "judge": "j1",
+ "item": "cal-04",
+ "rubric": "short-script",
+ "rubric_version": "1.0",
+ "scores": {
+  "hook": {
+   "score": 5,
+   "anchor": "5",
+   "evidence": "Opens on a concrete, surprising image: 'Archaeologists opened this jar after 3,000 years — and the honey inside was still edible.' with a wax-seal crack visual; topic-specific, could not open another video."
+  },
+  "structure": {
+   "score": 4,
+   "anchor": "5",
+   "evidence": "Hook -> water -> peroxide -> acid -> 'Three defences at once. That's why it lasts.' -> twist 'So what can kill it? You.' Payoff in last 2 lines and the ending lands; held below 5 because the middle three beats are a flat list with no rising tension."
+  },
+  "clarity": {
+   "score": 4,
+   "anchor": "5",
+   "evidence": "One idea per sentence ('Honey is only about 17% water.', 'It's also acidic, around pH 3.9.'); between 3 and 5 because the ending 'let steam in — and the clock starts' leaves the water-dilution step implicit."
+  },
+  "pace": {
+   "score": 5,
+   "anchor": "5",
+   "evidence": "75 spoken words / 30 s = 2.50 wps, inside 2.3-2.8; longest sentence (~14 words) sayable in one breath; every line has a [VISUAL] cue."
+  },
+  "accuracy": {
+   "score": 4,
+   "anchor": "5",
+   "evidence": "Hook flagged '[claim reported widely; original excavation source to confirm]', water '[source: USDA]', enzyme '[source: J. Apic. Res. review]'; between 3 and 5 because 'around pH 3.9' is unsourced and 'Anything that lands in it gets dried out' overstates."
+  },
+  "voice": {
+   "score": 4,
+   "anchor": "5",
+   "evidence": "Specific turns like 'So what can kill it? You.' and 'the clock starts' give personality; between 3 and 5 because mid-script lines ('a built-in disinfectant', 'That's why it lasts') are stock phrasing."
+  }
+ },
+ "vetoes": [],
+ "notes": "Pace counts spoken words only (brackets excluded, punctuation-only tokens excluded) over 30 s target."
+}

@@ -1,0 +1,73 @@
+{
+ "id": "channel-strategy",
+ "version": "1.0",
+ "scale": "1-5; 2 and 4 sit between the written anchors",
+ "title": "Channel strategy (positioning, pillars, formats, calendar)",
+ "bar": 4.5,
+ "criteria": [
+  {
+   "id": "evidence",
+   "name": "Evidence base",
+   "weight": 2,
+   "anchors": {
+    "1": "Opinions only; no real channels or posts examined.",
+    "3": "Some real competitors with URLs; few measured numbers.",
+    "5": "Built on examined competitors and posts with measured numbers and dates."
+   }
+  },
+  {
+   "id": "position",
+   "name": "Positioning",
+   "weight": 2,
+   "anchors": {
+    "1": "Generic ('educational content for everyone').",
+    "3": "A clear niche, but a competitor could claim it.",
+    "5": "A promise only this channel can keep; passes the swap test."
+   }
+  },
+  {
+   "id": "pillars",
+   "name": "Pillars and formats",
+   "weight": 1.5,
+   "anchors": {
+    "1": "Pillars overlap or are topics, not repeatable formats.",
+    "3": "Distinct pillars; formats loosely defined.",
+    "5": "3–5 distinct pillars, each with a repeatable format, structure and production route."
+   }
+  },
+  {
+   "id": "feasible",
+   "name": "Feasibility",
+   "weight": 1,
+   "anchors": {
+    "1": "Cadence or budget impossible for the team.",
+    "3": "Feasible with strain.",
+    "5": "Cadence and cost proven or piloted; batch plan exists."
+   }
+  },
+  {
+   "id": "growth",
+   "name": "Platform and growth logic",
+   "weight": 1.5,
+   "anchors": {
+    "1": "Ignores how the platform recommends content.",
+    "3": "Mentions the algorithm in general terms.",
+    "5": "Uses verified platform facts (dated) for packaging, cadence and format mix."
+   }
+  },
+  {
+   "id": "measure",
+   "name": "Measurement and money",
+   "weight": 1,
+   "anchors": {
+    "1": "No metrics, no monetization path.",
+    "3": "Metrics listed; money vague.",
+    "5": "Metrics against own median, review cadence, a monetization path with thresholds."
+   }
+  }
+ ],
+ "vetoes": [
+  "invented-data: numbers without a source",
+  "policy: plan relies on inauthentic or mass-produced content"
+ ]
+}

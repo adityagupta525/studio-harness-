@@ -1,0 +1,11 @@
+{"judge": "j3", "item": "cal-02", "rubric": "short-script", "rubric_version": "1.0",
+ "scores": {
+  "hook": {"score": 3, "anchor": "3", "evidence": "'Did you know honey basically never goes bad?' — the premise is there but phrased with the generic 'Did you know…' the anchor names."},
+  "structure": {"score": 3, "anchor": "3", "evidence": "Setup (tombs) -> explanation (low water, peroxide enzyme, acidity) -> payoff 'That's why your honey jar can sit in the cupboard for years.'; tension stays flat and the last line jumps to a crystallised-honey tip instead of landing or looping."},
+  "clarity": {"score": 4, "anchor": "5", "evidence": "Mostly one idea per sentence and retellable ('honey has very little water in it, so bacteria can't grow'), but the closing line introduces crystallisation, never set up, overloading the end; nearer 5."},
+  "pace": {"score": 3, "anchor": "3", "evidence": "95 spoken words / 30 s = 3.17 wps, inside 2.0-3.2 but above 2.8; longer lines ('Archaeologists have reported finding pots of honey in ancient Egyptian tombs that were still edible.') are a stretch for one breath; no visual cues."},
+  "accuracy": {"score": 3, "anchor": "3", "evidence": "Claims plausible and the tomb claim is hedged ('have reported'), but no source is given for the water, enzyme or acidity claims."},
+  "voice": {"score": 2, "anchor": "1", "evidence": "Consistent but plain explainer register ('really hard for microbes to survive', 'All of these things together'); no specific wording; between 1 and 3, nearer 3 only for consistency."}
+ },
+ "vetoes": [],
+ "notes": "Pace counted on all spoken text; item has no bracketed notes."}

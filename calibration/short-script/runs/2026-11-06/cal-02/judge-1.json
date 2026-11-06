@@ -1,0 +1,40 @@
+{
+ "judge": "j1",
+ "item": "cal-02",
+ "rubric": "short-script",
+ "rubric_version": "1.0",
+ "scores": {
+  "hook": {
+   "score": 3,
+   "anchor": "3",
+   "evidence": "'Did you know honey basically never goes bad?' — a premise phrased exactly in the generic 'Did you know…' form."
+  },
+  "structure": {
+   "score": 3,
+   "anchor": "3",
+   "evidence": "Setup (never goes bad) -> evidence (tombs) -> three reasons -> 'That's why your honey jar can sit in the cupboard for years.' Payoff present, but the last line 'next time you see crystallised honey… just warm it up' is an off-topic filler beat."
+  },
+  "clarity": {
+   "score": 4,
+   "anchor": "5",
+   "evidence": "Plain cause-and-effect a listener can retell ('very little water in it, so bacteria can't grow'); between 3 and 5 because the crystallisation tip introduces a new unexplained idea at the end."
+  },
+  "pace": {
+   "score": 3,
+   "anchor": "3",
+   "evidence": "95 spoken words / 30 s = 3.17 wps, inside 2.0-3.2 but above 2.8; long lines like 'Archaeologists have reported finding pots of honey in ancient Egyptian tombs that were still edible.' (15 words); no visual cues marked."
+  },
+  "accuracy": {
+   "score": 3,
+   "anchor": "3",
+   "evidence": "Main claims plausible and the tomb claim hedged ('have reported'), but no source given for any claim (water content, peroxide, acidity)."
+  },
+  "voice": {
+   "score": 3,
+   "anchor": "3",
+   "evidence": "Consistent, friendly explainer tone ('basically', 'really hard for microbes to survive') with little personality; could be many channels."
+  }
+ },
+ "vetoes": [],
+ "notes": "Pace counts spoken words only (brackets excluded, punctuation-only tokens excluded) over 30 s target."
+}

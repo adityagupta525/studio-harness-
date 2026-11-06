@@ -1,0 +1,74 @@
+{
+ "id": "short-script",
+ "version": "1.0",
+ "scale": "1-5; 2 and 4 sit between the written anchors",
+ "title": "Script for a short video (VO script, 30–60 s)",
+ "bar": 4.5,
+ "criteria": [
+  {
+   "id": "hook",
+   "name": "Hook line",
+   "weight": 2,
+   "anchors": {
+    "1": "Opens with a greeting, a channel name or context; no reason to stay.",
+    "3": "Opens with a premise, but phrased generically ('Did you know…').",
+    "5": "First line is a concrete, surprising question, stake or image; it could not open another video."
+   }
+  },
+  {
+   "id": "structure",
+   "name": "Beat structure",
+   "weight": 2,
+   "anchors": {
+    "1": "Facts in random order; no payoff.",
+    "3": "Setup → explanation → payoff present; one beat is filler.",
+    "5": "Each line earns the next; tension rises; payoff in the last 2 lines; ending loops or lands."
+   }
+  },
+  {
+   "id": "clarity",
+   "name": "Clarity",
+   "weight": 1.5,
+   "anchors": {
+    "1": "Jargon, ambiguity, a listener gets lost.",
+    "3": "Understandable, but one step is skipped or overloaded.",
+    "5": "A listener can retell it after one hearing; one idea per sentence."
+   }
+  },
+  {
+   "id": "pace",
+   "name": "Length and pace",
+   "weight": 1,
+   "anchors": {
+    "1": "Over 180 words for 60 s or under 40 words; unreadable aloud.",
+    "3": "Within 2.0–3.2 words per second for the target length, but some sentences are hard to say.",
+    "5": "Within 2.3–2.8 words per second; every sentence sayable in one breath; visual cues marked."
+   }
+  },
+  {
+   "id": "accuracy",
+   "name": "Claims and sourcing",
+   "weight": 1.5,
+   "anchors": {
+    "1": "Claims stated as fact with no source; at least one likely wrong.",
+    "3": "Main claims plausible; sources missing for some.",
+    "5": "Every factual claim flagged with a source or marked uncertain; no overstatement."
+   }
+  },
+  {
+   "id": "voice",
+   "name": "Voice",
+   "weight": 1,
+   "anchors": {
+    "1": "Flat, generic, could be any channel.",
+    "3": "Consistent tone, little personality.",
+    "5": "A distinct voice the channel could own; wording is specific, not cliché."
+   }
+  }
+ ],
+ "vetoes": [
+  "fact: a claim that is false",
+  "harm: dangerous instructions or misleading health/finance advice",
+  "theft: lifts another creator's script or signature lines"
+ ]
+}

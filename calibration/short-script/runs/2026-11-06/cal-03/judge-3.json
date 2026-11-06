@@ -1,0 +1,11 @@
+{"judge": "j3", "item": "cal-03", "rubric": "short-script", "rubric_version": "1.0",
+ "scores": {
+  "hook": {"score": 5, "anchor": "5", "evidence": "Opens on 'This honey is three thousand years old. And you could still eat it.' over a jar opening: a concrete, surprising image and stake specific to this topic."},
+  "structure": {"score": 5, "anchor": "5", "evidence": "Hook -> water ('17% water... like a raisin drying') -> enzyme -> acidity -> summary 'Dry, acidic, and quietly disinfecting itself' -> payoff in last two lines 'The only thing that can ruin it? Water. Keep the lid on.' with VISUAL returning to the tomb jar, so the ending loops."},
+  "clarity": {"score": 5, "anchor": "5", "evidence": "One idea per sentence; the osmosis step is made concrete ('gets its own water pulled out, like a raisin drying in the sun'); 'glucose oxidase' is introduced as 'an enzyme' and its effect stated; acidity anchored to 'as acidic as orange juice'."},
+  "pace": {"score": 5, "anchor": "5", "evidence": "83 spoken words / 30 s = 2.77 wps, inside 2.3-2.8; longest sentence ('A bacterium that lands in it gets its own water pulled out, like a raisin drying in the sun.') is still one breath; every beat has a [VISUAL] cue."},
+  "accuracy": {"score": 3, "anchor": "3", "evidence": "Water and enzyme lines carry [source: USDA honey composition] and [source: review, J. Apic. Res.], but the hook 'This honey is three thousand years old. And you could still eat it.' and 'as acidic as orange juice' are stated as fact with no source or uncertainty flag; 'The only thing that can ruin it? Water.' overstates."},
+  "voice": {"score": 4, "anchor": "5", "evidence": "Specific, ownable touches ('like a raisin drying in the sun', 'quietly disinfecting itself', 'Keep the lid on'), but 'Microbes don't stand a chance' and 'Here's the trick' are stock phrasing; between 3 and 5, nearer 5."}
+ },
+ "vetoes": [],
+ "notes": "Pace counted with bracketed VISUAL/source notes excluded."}

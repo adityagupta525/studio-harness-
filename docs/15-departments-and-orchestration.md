@@ -11,7 +11,7 @@ The harness runs like an agency: one **director** thread, seven departments, a *
 | Growth & Platforms | **growth-chief** | youtube-strategist, instagram-strategist, analytics-analyst, channel-setup-lead, packaging-lead | channel setup, algorithm-literate packaging, SEO, posting system, analytics loop, weekly review |
 | Creative | **creative-producer** | script-writer, art-director | three routes, treatment, scripts, look and design sheets |
 | Production | **production-chief** | ai-generation-artist, voice-producer, animation-3d-lead, ai-film-lead, blender-cinematographer, motion-editor | the build: AI image and video, VO, 3D, film, edit, motion, exports |
-| QA & Standards | **qa-chief** | fact-checker, consistency-auditor, qa-rights-reviewer | blind panel scoring, facts, consistency and drift, rights, platform specs |
+| QA & Standards | **qa-chief** | panel-judge (x3 per item), fact-checker, consistency-auditor, qa-rights-reviewer | blind panel scoring, facts, consistency and drift, rights, platform specs |
 | Learning & Engineering | **chief-engineer** | eval-engineer, knowledge-ingester, memory-curator | the harness itself: checks, evals, capability probe, knowledge cards, lessons, releases |
 
 Role cards: `agents/<name>.md`. Every card has the same sections and the same HANDOFF block, so any agent can read any other agent's output.
@@ -46,6 +46,8 @@ Each task line in the Job Plan (`templates/job-plan.md`) names:
 
 ## Consistency (why the same work gets the same score)
 - One template per job type; validators reject runs that skip a step.
-- One rubric per deliverable type with anchored levels; three blind judges, median, re-judge when the spread is more than 1 point; spread and median logged.
+- One rubric per deliverable type with anchored levels (`rubrics/`); three blind `panel-judge` agents, median, re-judge when a criterion spreads more than 1 point; spread and median logged (`scripts/panel.py`, skill `qa-panel`).
+- Calibration sets with gold scores (`calibration/`); `scripts/drift.py` must pass before new scores are trusted.
+- Regression evals from real failures (`evals/`, `claude plugin eval`).
 - The consistency-auditor re-scores a calibration set on every release and flags drift.
 - Owner picks outrank critics; an axis capped by the owner's choice is logged as capped, not as a failure.

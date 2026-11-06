@@ -1,0 +1,11 @@
+{"judge": "j2", "item": "cal-04", "rubric": "short-script", "rubric_version": "1.0",
+ "scores": {
+  "hook": {"score": 4, "anchor": "5", "evidence": "'Archaeologists opened this jar after 3,000 years — and the honey inside was still edible.' is concrete and surprising, but leads with a context clause ('Archaeologists opened...') before the stake lands, so just short of 5."},
+  "structure": {"score": 5, "anchor": "5", "evidence": "Hook -> dry -> peroxide -> acid -> 'Three defences at once. That's why it lasts.' -> turn 'So what can kill it? You. Leave the lid open, let steam in — and the clock starts.' Payoff in the last 2 lines lands with a twist; no filler beat."},
+  "clarity": {"score": 5, "anchor": "5", "evidence": "One idea per sentence; terms explained in place ('hydrogen peroxide — a built-in disinfectant', 'gets dried out from the inside'); the three-icon recap makes it retellable."},
+  "pace": {"score": 5, "anchor": "5", "evidence": "75 spoken words / 30 s = 2.50 wps (inside 2.3-2.8); each sentence one breath; every beat has a [VISUAL] cue."},
+  "accuracy": {"score": 4, "anchor": "5", "evidence": "Tomb claim flagged '[claim reported widely; original excavation source to confirm]'; water and enzyme sourced (USDA, J. Apic. Res. review); 'around pH 3.9' unsourced, so one claim unflagged."},
+  "voice": {"score": 5, "anchor": "5", "evidence": "Specific, ownable lines: 'So what can kill it? You.', 'and the clock starts', 'a built-in disinfectant'."}
+ },
+ "vetoes": [],
+ "notes": "Spoken word count excludes em dashes."}

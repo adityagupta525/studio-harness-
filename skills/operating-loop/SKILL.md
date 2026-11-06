@@ -19,10 +19,10 @@ The harness is the process; skills and tools do the craft. One director thread (
    | Growth & Platforms (growth-chief) | youtube-strategist, instagram-strategist, analytics-analyst, channel-setup-lead, packaging-lead | channel-launch, packaging |
    | Creative (creative-producer) | script-writer, art-director | content-routes, brand-identity, ai-film-treatment |
    | Production (production-chief) | ai-generation-artist, voice-producer, animation-3d-lead, ai-film-lead, blender-cinematographer, motion-editor | shot-spec |
-   | QA & Standards (qa-chief) | fact-checker, consistency-auditor, qa-rights-reviewer | qa |
+   | QA & Standards (qa-chief) | fact-checker, consistency-auditor, qa-rights-reviewer | qa-panel, qa |
    | Learning & Engineering (chief-engineer) | eval-engineer, knowledge-ingester, memory-curator | project-closeout |
    Private packs listed in `profile.md` may add stronger craft skills; the harness gates still apply. Platform facts come from `knowledge/platforms/` and are re-read at the official page when older than 30 days.
-6. **Diverge, then judge blind.** Three routes (safe / brave / wild) that share at most one axis position. One critic per route, blind, against the anchored rubric for the deliverable; vetoes stand; show the best two with one line each.
+6. **Diverge, then judge blind.** Three routes (safe / brave / wild) that share at most one axis position. Each route scored by the `qa-panel` skill: three blind judges on the anchored rubric (`rubrics/`), median, re-judge on disagreement, vetoes stand; show the best two with one line each, score and rubric version included.
 7. **Verify mechanically before showing.** `studio-harness check` (run completeness + source ledger), plus the job's own checks (`scripts/check-banner.py`, `scripts/check-brand-assets.py`, `scripts/check-channel-plan.sh`). Known and unknown claims both get verified: open, watch, listen, measure. A link is not research.
 8. **Log at once.** The owner's exact words → `decision-log.md` and `taste/picks.jsonl`; approvals → `approvals.csv`; then `STATUS.md` (updated date, gate, next action). The Stop hook blocks once if STATUS is stale.
 9. **Close out.** `project-closeout`: deliverables, evidence, lessons as candidates in `memory/candidates/`.

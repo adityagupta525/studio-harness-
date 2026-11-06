@@ -1,0 +1,40 @@
+{
+ "judge": "j1",
+ "item": "cal-03",
+ "rubric": "short-script",
+ "rubric_version": "1.0",
+ "scores": {
+  "hook": {
+   "score": 5,
+   "anchor": "5",
+   "evidence": "'This honey is three thousand years old. And you could still eat it.' over an opening clay jar — concrete, surprising image specific to this video."
+  },
+  "structure": {
+   "score": 5,
+   "anchor": "5",
+   "evidence": "Hook -> 'Here's the trick.' -> dry (raisin) -> peroxide -> acid -> 'Dry, acidic, and quietly disinfecting itself.' -> 'The only thing that can ruin it? Water. Keep the lid on.' with [VISUAL: back to the tomb jar] looping to the open; payoff in last 2 lines."
+  },
+  "clarity": {
+   "score": 5,
+   "anchor": "5",
+   "evidence": "Retellable after one hearing: 'like a raisin drying in the sun', 'about as acidic as orange juice'; the technical term is glossed ('an enzyme, glucose oxidase'); one idea per sentence."
+  },
+  "pace": {
+   "score": 4,
+   "anchor": "5",
+   "evidence": "83 spoken words / 30 s = 2.77 wps, inside 2.3-2.8; between 3 and 5 because the raisin sentence runs ~18 words and the line 'Dry, acidic, and quietly disinfecting itself. Microbes don't stand a chance.' has no visual cue."
+  },
+  "accuracy": {
+   "score": 3,
+   "anchor": "3",
+   "evidence": "Water '[source: USDA honey composition]' and enzyme '[source: review, J. Apic. Res.]' sourced, but the headline claim 'This honey is three thousand years old. And you could still eat it.' is stated as fact with no source or flag, the orange-juice comparison is unsourced, and 'Microbes don't stand a chance' overstates."
+  },
+  "voice": {
+   "score": 4,
+   "anchor": "5",
+   "evidence": "Specific images ('like a raisin drying in the sun', 'quietly disinfecting itself') give a distinct voice; between 3 and 5 because of the cliché 'Microbes don't stand a chance.'"
+  }
+ },
+ "vetoes": [],
+ "notes": "Pace counts spoken words only (brackets excluded, punctuation-only tokens excluded) over 30 s target."
+}
